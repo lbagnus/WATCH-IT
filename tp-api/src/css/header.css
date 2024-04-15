@@ -1,0 +1,65 @@
+.logo-header{
+  height: 9vh;
+  float: left;
+}
+
+
+.contenedormenu {
+overflow: hidden; /* para contener el navbar en su lugar */
+}
+
+.contenedormenu .logo {
+float: left; /* para colocar el logo a la izquierda */
+}
+
+.contenedormenu .logo img {
+height: 50px; /* altura del logo */
+width: auto; /* para mantener la proporción */
+margin: 10px; /* margen alrededor del logo */
+}
+
+.contenedormenu .nav {
+float: left; /* para colocar los elementos del menú a la derecha */
+list-style-type: none; /* para quitar los puntos de la lista */
+}
+
+.contenedormenu .nav li {
+display: inline-block; /* para que los elementos del menú estén uno al lado del otro */
+}
+
+.contenedormenu .nav li a {
+display: block; /* para que los enlaces ocupen todo el espacio disponible */
+color: rgb(60, 59, 59); /* color del texto del enlace */
+text-align: center; /* centrar el texto */
+padding: 14px 16px; /* espacio interior */
+text-decoration: none; /* quitar subrayado */
+}
+
+.contenedormenu .nav li a:hover {
+background-color: #9e9a9a; /* color de fondo al pasar el ratón */
+}
+
+
+/* estilos para el buscador */
+.contenedormenu .buscador {
+  float: right; /* para colocar el buscador a la derecha */
+  margin-top: 10px; /* margen superior */
+}
+
+.contenedormenu .buscador input[type='text'] {
+  padding: 8px; /* espacio interior */
+  border: none; /* quitar borde */
+  border-radius: 5px; /* borde redondeado */
+  background-color: rgb(200, 155, 122);;
+  color:aliceblue;
+}
+
+
+.contenedormenu .buscador h4 {
+  display: inline; /* para colocar los elementos de texto en línea */
+  color: rgb(37, 36, 36); /* color del texto */
+  margin: 0 10px; /* margen entre elementos */
+}
+
+
+

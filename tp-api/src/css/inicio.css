@@ -1,0 +1,62 @@
+
+.main-inicio{
+    background-color:rgba(217, 217, 217, 0.3);
+}
+
+
+button.boton-genero{
+    color: rgb(200, 155, 122);
+    border-color: rgb(200, 155, 122);
+    width: 100%;
+    height: 100%;
+    text-transform: capitalize;
+    font-size: 2.5vh;
+    font-family: "Jost", sans-serif;
+    margin: 10%;
+    box-shadow: 1px 1px 1px rgb(200, 155, 122);
+
+}
+
+.botones-inicio {
+    display: flex;
+    padding: 3%;
+    justify-content: space-evenly;
+    
+
+  }
+
+  .fila-imagenes {
+    display: inline-flex; /* Mantiene las imágenes en una línea horizontal */
+  }
+  
+  .fila-imagenes img {
+    width: 15%; /* Ajusta el tamaño de las imágenes según sea necesario */
+    height: 15%;
+    margin-left: 2%; /* Espacio entre las imágenes */
+    border-radius: 10px ;
+  }
+
+  .fila-imagenes .imagencirculo{
+    width: 10%;
+    height: 10%;
+  }
+
+  .fila-imagenes-container {
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+   /* white-space: nowrap; /* Evita que las imágenes se envuelvan a la siguiente línea */
+  }
+  
+  .tituloListas{
+    margin-left: 2%;
+    font-size: 3vh;
+  }
+  
+  .fila-imagenes-container {
+    overflow-x: hidden;
+  }
+
+  .botones-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+  }

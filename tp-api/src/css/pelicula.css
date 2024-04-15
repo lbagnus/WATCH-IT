@@ -1,0 +1,42 @@
+.pantalla-pelicula {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .titulo {
+    display: flex;
+    justify-content: right; /* Alinea los elementos al inicio y al final */
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    margin-bottom: 10px; /* Espacio entre el título y los datos */
+  }
+  
+  .datos-pelicula {
+    display: flex;
+    justify-content:left;
+    
+    
+  }
+  
+  .datos-pelicula h4 {
+    margin: 0;
+   
+  }
+  
+  .rayita {
+    width: 1px;
+    height: 15px;
+    background-color: black;
+    margin: 0 5px;
+  }
+  
+  .desc {
+    display: flex;
+    margin-top: 10px; /* Espacio entre la imagen y la descripción */
+  }
+  
+  .imagen-pelicula {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 10px; /* Espacio entre la imagen y la descripción */
+  }
+  

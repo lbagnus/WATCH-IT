@@ -1,0 +1,45 @@
+.contenedorfooter {
+    background-color: rgba(200, 155, 122,0.5); /* color de fondo del footer */
+    color: white; /* color del texto */
+    padding: 20px; /* espacio interno */
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contenedorfooter .logo-footer {
+    width: 100px; /* ancho del logo */
+    margin: 2%;
+  }
+  
+  .contenedorfooter .datos {
+    text-align: center; /* centrar los elementos de la lista */
+  }
+  
+  .contenedorfooter .nav {
+    list-style-type: none; /* quitar los puntos de la lista */
+    padding: 0; /* quitar el espacio interno */
+  }
+  
+  .contenedorfooter .nav li {
+    display: block; /* para colocar los elementos en línea */
+  }
+  
+  .contenedorfooter .nav li a {
+    color: white; /* color del texto del enlace */
+    text-decoration: none; /* quitar subrayado */
+    margin: 0 10px; /* margen entre elementos */
+  }
+  
+  .contenedorfooter .nav li a:hover {
+    text-decoration: underline; /* subrayar al pasar el ratón */
+  }
+
+
+ .contenedorfooter .lineaFooter{
+    border-left: 1px solid white; /* Grosor y color de la línea vertical */
+    height: 10vh;
+    padding: 2%;
+ }
+  
