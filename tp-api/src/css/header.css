@@ -6,6 +6,8 @@
 
 .contenedormenu {
 overflow: hidden; /* para contener el navbar en su lugar */
+display: flex;
+align-items:  center;
 }
 
 .contenedormenu .logo {
@@ -44,6 +46,9 @@ background-color: #9e9a9a; /* color de fondo al pasar el ratón */
 .contenedormenu .buscador {
   float: right; /* para colocar el buscador a la derecha */
   margin-top: 10px; /* margen superior */
+  display: flex;
+  align-items: center;
+  margin-left: 65%;
 }
 
 .contenedormenu .buscador input[type='text'] {

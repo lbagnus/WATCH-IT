@@ -1,5 +1,7 @@
 import React from 'react';
 import { useRef } from 'react';
+import arrowDerecha from '../imagenes/iconitos/arrowderecha.png';
+import arrowIzquierda from '../imagenes/iconitos/arrowizquierda.png';
 
 
 function ListaContenidos({ imagenes }) {
@@ -25,11 +27,14 @@ function ListaContenidos({ imagenes }) {
           <img key={index} src={imagen} alt={`Imagen ${index + 1}`} />
         ))}
       </div>
-      <button onClick={scrollIzquierda}>Desplazar Izquierda</button>
-      <button onClick={scrollDerecha}>Desplazar Derecha</button>
+      <img onClick={scrollIzquierda} src={arrowIzquierda}></img>
+      <img className='botonDerecha' onClick={scrollDerecha} src={arrowDerecha}></img>
     </div>
+  
     
   );
-}
+  
+};
+
 
 export default ListaContenidos;

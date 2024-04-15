@@ -53,6 +53,8 @@ button.boton-genero{
   
   .fila-imagenes-container {
     overflow-x: hidden;
+    display: inline-block;
+    position: relative;
   }
 
   .botones-container {
@@ -60,3 +62,15 @@ button.boton-genero{
     justify-content: center;
     margin-top: 10px; /* Ajusta el margen superior según sea necesario */
   }
+
+  .botonDerecha{
+    width: 3%;      
+    float: right;
+    position: absolute;
+    top: 10px; /* Ajusta la distancia desde la parte superior */
+    right: 10px; /* Ajusta la distancia desde el lado derecho */
+    z-index: 999;
+
+  }
+
+  
