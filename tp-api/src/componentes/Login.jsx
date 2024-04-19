@@ -1,5 +1,5 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
+import Avatar from "../imagenes/logos/logo negro2.png";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -34,8 +34,8 @@ function Login() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-        </Avatar>
+           <img src={Avatar}/>
+        
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -54,6 +54,7 @@ function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              className="emailboton"
             />
             <TextField
               margin="normal"
@@ -74,6 +75,7 @@ function Login() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              id="botonSignIn"
             >
               Sign In
             </Button>

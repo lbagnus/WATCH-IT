@@ -12,6 +12,7 @@ import "./css/footer.css";
 import "./css/inicio.css";
 import "./css/carrusel.css";
 import './css/pelicula.css';
+import "../src/css/Login.css";
 
 
 function App() {

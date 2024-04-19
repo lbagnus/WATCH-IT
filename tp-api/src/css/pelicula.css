@@ -2,17 +2,27 @@
     display: flex;
     flex-direction: column;
   }
+
+.Contenedor1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
   
-  .titulo {
+  .Contenedor1 h1{
     display: flex;
     justify-content: right; /* Alinea los elementos al inicio y al final */
     align-items: flex-start; /* Alinea los elementos en la parte superior */
-    margin-bottom: 10px; /* Espacio entre el título y los datos */
+    margin: 3vh 20vh; /* Espacio entre el título y los datos */
+    font-size: 5vh;
   }
   
-  .datos-pelicula {
+  .Contenedor1 .datos-pelicula {
     display: flex;
     justify-content:left;
+    margin: 3vh 20vh;
+    font-size: 2vh;
     
     
   }
@@ -24,19 +34,28 @@
   
   .rayita {
     width: 1px;
-    height: 15px;
+    height: 2vh;
     background-color: black;
     margin: 0 5px;
   }
   
+  .contenedor2{
+    display: flex;
+    flex-direction: row;
+  }
   .desc {
     display: flex;
-    margin-top: 10px; /* Espacio entre la imagen y la descripción */
+    margin-top: 0; /* Espacio entre la imagen y la descripción */
+    margin-right: 15vh;
+    margin-left: 3vh;
+    font-size: 2vh;
   }
   
   .imagen-pelicula {
-    max-width: 300px;
+    width: 50%;
     height: auto;
-    margin-bottom: 10px; /* Espacio entre la imagen y la descripción */
+    margin-left: 25vh; /* Espacio entre la imagen y la descripción */
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(63, 62, 62);;
   }
   

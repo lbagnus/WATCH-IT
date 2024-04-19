@@ -34,7 +34,10 @@ button.boton-genero{
     height: 15%;
     margin-left: 2%; /* Espacio entre las imágenes */
     border-radius: 10px ;
+    display: block;
+    box-shadow: 5px 2px 2px rgb(97, 96, 95);
   }
+  
 
   .fila-imagenes .imagencirculo{
     width: 10%;
@@ -43,7 +46,7 @@ button.boton-genero{
 
   .fila-imagenes-container {
     overflow-x: auto; /* Permite el desplazamiento horizontal */
-   /* white-space: nowrap; /* Evita que las imágenes se envuelvan a la siguiente línea */
+    white-space: nowrap; /* Evita que las imágenes se envuelvan a la siguiente línea */
   }
   
   .tituloListas{
@@ -55,6 +58,7 @@ button.boton-genero{
     overflow-x: hidden;
     display: inline-block;
     position: relative;
+ 
   }
 
   .botones-container {
@@ -67,10 +71,11 @@ button.boton-genero{
     width: 3%;      
     float: right;
     position: absolute;
-    top: 10px; /* Ajusta la distancia desde la parte superior */
-    right: 10px; /* Ajusta la distancia desde el lado derecho */
+    top: 50%; /* Ajusta la distancia desde la parte superior */
+    right: 0; /* Ajusta la distancia desde el lado derecho */
     z-index: 999;
-
   }
+
+  
 
   

@@ -9,14 +9,14 @@ function ListaContenidos({ imagenes }) {
 
   const scrollDerecha = () => {
     if (contenedorRef.current) {
-      contenedorRef.current.scrollLeft += 100; // Cambia este valor según lo desees
+      contenedorRef.current.scrollLeft += 1000; // Cambia este valor según lo desees
      
     }
   };
 
   const scrollIzquierda = () => {
     if (contenedorRef.current) {
-      contenedorRef.current.scrollLeft -= 100; // Cambia este valor según lo desees
+      contenedorRef.current.scrollLeft -= 1000; // Cambia este valor según lo desees
     }
   };
 
@@ -26,9 +26,11 @@ function ListaContenidos({ imagenes }) {
         {imagenes.map((imagen, index) => (
           <img key={index} src={imagen} alt={`Imagen ${index + 1}`} />
         ))}
-      </div>
+       </div>
       <img onClick={scrollIzquierda} src={arrowIzquierda}></img>
-      <img className='botonDerecha' onClick={scrollDerecha} src={arrowDerecha}></img>
+      <div className='contenedorBotonDerecha'>
+        <img className='botonDerecha' onClick={scrollDerecha} src={arrowDerecha}></img>
+      </div>
     </div>
   
     

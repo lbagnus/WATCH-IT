@@ -1,6 +1,9 @@
 import React from "react";
 import Portada from "./Portada";
 import padrino from "../imagenes/peliculas/el_padrino_poster.jpg";
+import bookmark from "../imagenes/iconitos/bookmark vacia.png";
+import bookmark2 from "../imagenes/iconitos/bookmark relleno.png";
+import star from "../imagenes/iconitos/star.png";
 
 var titulo = "El padrino";
 var puntaje = "4.7";
@@ -17,7 +20,11 @@ const Pelicula = () => {
         anio={anio}
         tipo={tipo}
         imagen={padrino}
-        descripcion={desc_padrino}/> 
+        descripcion={desc_padrino}
+        guardar = {bookmark}
+        estrella = {star}
+        
+        /> 
     </div>
   );
 };
