@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 function CarruselAutomatico() {
   const settings = {
     infinite: true,
-    speed: 500,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,

@@ -85,17 +85,17 @@ const Inicio = () => {
 
       <div className="Actores destacados">
         <h3 className="tituloListas">Actores destacados</h3>
-        <ListaContenidos imagenes={imagenesSet3} />
+        <ListaContenidos imagenes={imagenesSet1} />
       </div>
 
       <div className="cines">
         <h3 className="tituloListas">Proximamente en cines</h3>
-        <ListaContenidos imagenes={imagenesSet4} />
+        <ListaContenidos imagenes={imagenesSet1} />
       </div>
 
       <div className="directoresMomento">
         <h3 className="tituloListas">Directores del momento</h3>
-        <ListaContenidos imagenes={imagenesSet2} />
+        <ListaContenidos imagenes={imagenesSet1} />
       </div>
 
     </main>

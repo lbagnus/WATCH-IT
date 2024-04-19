@@ -1,42 +1,29 @@
 import React from 'react';
-import { useRef } from 'react';
-import arrowDerecha from '../imagenes/iconitos/arrowderecha.png';
-import arrowIzquierda from '../imagenes/iconitos/arrowizquierda.png';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
+import { Navigation } from 'swiper/modules';
 
 function ListaContenidos({ imagenes }) {
-  const contenedorRef = useRef(null);
-
-  const scrollDerecha = () => {
-    if (contenedorRef.current) {
-      contenedorRef.current.scrollLeft += 1000; // Cambia este valor según lo desees
-     
-    }
-  };
-
-  const scrollIzquierda = () => {
-    if (contenedorRef.current) {
-      contenedorRef.current.scrollLeft -= 1000; // Cambia este valor según lo desees
-    }
-  };
-
   return (
-    <div className='fila-imagenes-container' ref={contenedorRef} >
-      <div className="fila-imagenes" >
-        {imagenes.map((imagen, index) => (
-          <img key={index} src={imagen} alt={`Imagen ${index + 1}`} />
-        ))}
-       </div>
-      <img onClick={scrollIzquierda} src={arrowIzquierda}></img>
-      <div className='contenedorBotonDerecha'>
-        <img className='botonDerecha' onClick={scrollDerecha} src={arrowDerecha}></img>
-      </div>
-    </div>
-  
-    
+    <Swiper id=''
+      modules={[Navigation]}
+      spaceBetween={10}
+      slidesPerView={3}
+      navigation = {{clickable:true}}
+      onSlideChange={() => console.log('Cambio de slide')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      {imagenes.map((imagen, index) => (
+        <SwiperSlide key={index}>
+          <img src={imagen} alt={`Slide ${index + 1}`} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
-  
-};
-
+}
 
 export default ListaContenidos;
+
+
