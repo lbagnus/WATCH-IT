@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import BotonPerfil from "./BotonPerfil"
 
 const Header = () => {
   return (
@@ -18,13 +19,13 @@ const Header = () => {
             <Link to="/">Inicio</Link>
           </li>
           <li>
-            <Link to="/preferidas">Preferidas</Link>
+            <Link to="/preferidas">Vistas</Link>
           </li>
           <li>
-            <Link to="/about">Inicio</Link>
+            <Link to="/about">Por ver</Link>
           </li>
           <li>
-            <Link to="/about">Inicio</Link>
+            <Link to="/about">Preferidas</Link>
           </li>
                   
         </ul>
@@ -40,11 +41,7 @@ const Header = () => {
 
           <h4>Julieta</h4>
 
-          <img
-            className="icono-arrow"
-            src={require("../imagenes/iconitos/arrow.png")}
-            alt="icono-arrow"
-          />
+          <BotonPerfil id='botonperfilestilo'/>
         </div>
       </nav>
     </div>

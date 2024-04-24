@@ -1,13 +1,13 @@
 import React from 'react'
 
-const Portada = ({title , puntaje, anio, tipo ,imagen, descripcion, guardar, estrella}) => {
+const Portada = ({title , puntaje, anio, tipo ,imagen, descripcion, guardadito, estrella}) => {
   return (
     <div className='pantalla-pelicula'>
         <div className='Contenedor1'>
             <h1>{title}</h1>
             <div className='datos-pelicula'>
-                <img src={guardar}  alt='img' />
-                <img src={estrella}  alt='img' />
+                <div>{guardadito}</div>
+                <img className='estrellita' src={estrella}  alt='img' />
                 <h4>{puntaje}</h4>
                 <div  className='rayita'></div>
                 <h4>{anio}</h4>

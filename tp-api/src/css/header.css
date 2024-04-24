@@ -48,7 +48,7 @@ background-color: #9e9a9a; /* color de fondo al pasar el ratón */
   margin-top: 10px; /* margen superior */
   display: flex;
   align-items: center;
-  margin-left: 65%;
+  margin-left: 55%;
 }
 
 .contenedormenu .buscador input[type='text'] {
@@ -66,5 +66,10 @@ background-color: #9e9a9a; /* color de fondo al pasar el ratón */
   margin: 0 10px; /* margen entre elementos */
 }
 
+#icono-arrow{
+  background-color: white;
+}
 
-
+.icono-persona{
+  margin-left: 10px;
+}

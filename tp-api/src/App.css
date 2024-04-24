@@ -16,8 +16,9 @@
   font-optical-sizing: auto;}
 
 html{
-  /*background-image: url(./imagenes/fondo\ 2.jpg);*/
   background-color: white;
+  /*background-color: rgb(15, 25, 51);*/
+  color: rgb(200, 155, 122);
   backdrop-filter: blur(15px);
   background-position: center;
   background-repeat: no-repeat;

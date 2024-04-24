@@ -5,7 +5,7 @@ import gato from '../imagenes/peliculas/gatoconbotas (1).jpg';
 import frogs from '../imagenes/peliculas/frogs.jpg';
 import thor from '../imagenes/peliculas/thor.jpg';
 import intensamente from '../imagenes/peliculas/intensamente (1).jpg';
-import imagen2 from '../imagenes/logos/circulo.png';
+import jdeep from '../imagenes/actores/jdeep-modified.png';
 import imagen3 from '../imagenes/logos/Imagen3.jpg';
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -23,10 +23,13 @@ const imagenesSet1 = [
   frogs
 ];
 const imagenesSet2 = [
-  imagen2,
-  imagen2,
-  imagen2
-  
+  jdeep,
+  jdeep,
+  jdeep,
+  jdeep,
+  jdeep,
+  jdeep,
+  jdeep
 ];
 
 const imagenesSet3 = [
@@ -38,8 +41,7 @@ const imagenesSet3 = [
 
 const imagenesSet4 = [
   intensamente,
-  imagen2,
-  imagen2
+  thor,
   
 ];
 
@@ -79,23 +81,23 @@ const Inicio = () => {
 
       <div className="lista-contenidos">
         <h3 className="tituloListas">Trending</h3>
-        <ListaContenidos imagenes={imagenesSet1} />
+        <ListaContenidos className="Lista" imagenes={imagenesSet1} />
        
       </div>
 
-      <div className="Actores destacados">
+      <div className="lista-contenidos">
         <h3 className="tituloListas">Actores destacados</h3>
-        <ListaContenidos imagenes={imagenesSet1} />
+        <ListaContenidos imagenes={imagenesSet2} />
       </div>
 
-      <div className="cines">
+      <div className="lista-contenidos">
         <h3 className="tituloListas">Proximamente en cines</h3>
         <ListaContenidos imagenes={imagenesSet1} />
       </div>
 
-      <div className="directoresMomento">
+      <div className="lista-contenidos">
         <h3 className="tituloListas">Directores del momento</h3>
-        <ListaContenidos imagenes={imagenesSet1} />
+        <ListaContenidos imagenes={imagenesSet2} />
       </div>
 
     </main>

@@ -29,11 +29,12 @@
   
   .datos-pelicula h4 {
     margin: 0;
+    font-size: 2.5vh;
    
   }
   
   .rayita {
-    width: 1px;
+    width: 3px;
     height: 2vh;
     background-color: black;
     margin: 0 5px;
@@ -49,6 +50,7 @@
     margin-right: 15vh;
     margin-left: 3vh;
     font-size: 2vh;
+    color: black;
   }
   
   .imagen-pelicula {
@@ -58,4 +60,42 @@
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgb(63, 62, 62);;
   }
-  
+  .datos-pelicula{
+    align-items: center;
+  }
+
+  .estrellita{
+    padding-left: 8px;
+    padding-right: 5px;
+    /*width: 50%;
+    height: auto;*/
+  }
+
+  .guardado{
+    width: 150%;
+  }
+
+  #demo-customized-button{
+    background-color: rgb(150, 83, 83);
+    color: black;
+    text-decoration: none;
+
+
+  }
+
+  #botonbookmark{
+    color: black;
+    margin: 0;
+  }
+  #botonagregar{
+    margin-left: 30px;
+    margin-right:0 ;
+  }
+  #botonagregar2{
+    margin-left: 54px;
+    margin-right:0 ;
+  }
+  #botonagregar3{
+    margin-left: 59px;
+    margin-right:0 ;
+  }
