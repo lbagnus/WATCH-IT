@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import CarruselAutomatico from "./Carrusel";
 import ListaContenidos from "./ListaContenidos";
 
+var texto1 = "Hola"
+
 
 const imagenesSet1 = [
   imagen1,
@@ -43,6 +45,14 @@ const imagenesSet4 = [
   intensamente,
   thor,
   
+];
+
+const textoSet1 = [
+  texto1,
+  texto1,
+  texto1,
+  texto1,
+  texto1
 ];
 
 
@@ -97,7 +107,8 @@ const Inicio = () => {
 
       <div className="lista-contenidos">
         <h3 className="tituloListas">Directores del momento</h3>
-        <ListaContenidos imagenes={imagenesSet2} />
+        <ListaContenidos imagenes={imagenesSet2}  />
+        
       </div>
 
     </main>

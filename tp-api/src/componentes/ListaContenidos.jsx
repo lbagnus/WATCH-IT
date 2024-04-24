@@ -5,7 +5,7 @@ import 'swiper/css/navigation';
 
 import { Navigation } from 'swiper/modules';
 
-function ListaContenidos({ imagenes }) {
+function ListaContenidos({ imagenes, textos }) {
   return (
     <Swiper id='swiperEstilo'
       modules={[Navigation]}
@@ -18,7 +18,6 @@ function ListaContenidos({ imagenes }) {
       {imagenes.map((imagen, index) => (
         <SwiperSlide id='SwiperSlideEstilo' spaceBetween={0} key={index}>
           <img src={imagen} alt={`Slide ${index + 1}`} />
-          
         </SwiperSlide>
       ))}
     </Swiper>

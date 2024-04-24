@@ -63,8 +63,6 @@ button.boton-genero{
  
   }
 
- 
-
   .lista-contenidos img{
     width: 75%; /* Ajusta el tamaño de las imágenes según sea necesario */
     height: auto;
@@ -75,21 +73,10 @@ button.boton-genero{
   .lista-contenidos{
     margin: 1%;
   }
-  #SwiperSlideEstilo img{
-    margin: 0;
-  }
 
-  #swiperEstilo{
-    margin: 0;
-  }
-
-  .Lista img{
-    margin: 0;
-  }
-
-  .swiper-slide{
-    width: 50%;
-  }
+ 
+  
+ 
 
   
 
