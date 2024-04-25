@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header";
 import imagen1 from '../imagenes/logos/imagen1.jpg';
 import avatar from '../imagenes/peliculas/avatar-portada.jpg';
 import gato from '../imagenes/peliculas/gatoconbotas (1).jpg';
@@ -57,6 +58,7 @@ const textoSet1 = [
 
 
 const Inicio = () => {
+
   return (
     <main className="main-inicio">
       <div className="CarruselPelis">
@@ -114,5 +116,6 @@ const Inicio = () => {
     </main>
   );
 };
+
 
 export default Inicio;

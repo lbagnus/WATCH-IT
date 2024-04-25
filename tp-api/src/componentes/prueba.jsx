@@ -1,42 +1,48 @@
-import React from 'react';
-import { useRef } from 'react';
-import arrowDerecha from '../imagenes/iconitos/arrowderecha.png';
-import arrowIzquierda from '../imagenes/iconitos/arrowizquierda.png';
+
+ /* if logeado
+          <img
+            className="icono-persona"
+            src={require("../imagenes/iconitos/icono-persona.png")}
+            alt="icono-persona"
+          />
+
+          <h4>Julieta</h4>
+          <BotonPerfil id='botonperfilestilo'/>*/
 
 
-function ListaContenidos({ imagenes }) {
-  const contenedorRef = useRef(null);
+          import logo from "./logo.svg";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "./App.css";
+import Header from "./componentes/Header";
+import Footer from "./componentes/Footer";
+import Inicio from "./componentes/Inicio";
+import Login from "./componentes/Login";
+import Pelicula from "./componentes/Pelicula";
 
-  const scrollDerecha = () => {
-    if (contenedorRef.current) {
-      contenedorRef.current.scrollLeft += 1000; // Cambia este valor según lo desees
-     
-    }
-  };
+import "./css/header.css";
+import "./css/footer.css";
+import "./css/inicio.css";
+import "./css/carrusel.css";
+import "./css/pelicula.css";
+import "../src/css/Login.css";
 
-  const scrollIzquierda = () => {
-    if (contenedorRef.current) {
-      contenedorRef.current.scrollLeft -= 1000; // Cambia este valor según lo desees
-    }
-  };
-
+function App() {
   return (
-    <div className='fila-imagenes-container' ref={contenedorRef} >
-      <div className="fila-imagenes" >
-        {imagenes.map((imagen, index) => (
-          <img key={index} src={imagen} alt={`Imagen ${index + 1}`} />
-        ))}
-       </div>
-      <img onClick={scrollIzquierda} src={arrowIzquierda}></img>
-      <div className='contenedorBotonDerecha'>
-        <img className='botonDerecha' onClick={scrollDerecha} src={arrowDerecha}></img>
-      </div>
-    </div>
-  
     
+    <Router>
+      <div>
+        <Header />
+        {/* Aquí debes añadir esta línea para renderizar el componente Header */}
+        <Routes>
+         <Route path="/Login" element={<Login />} />,
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/preferidas" element={<Pelicula />} />
+          {/* Añade aquí más rutas si las tienes */}
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
-  
-};
+}
 
-
-export default ListaContenidos;
+export default App;

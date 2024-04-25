@@ -1,8 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 import BotonPerfil from "./BotonPerfil"
 
-const Header = () => {
+const Header = ({isLoggedIn, handleLogout}) => {
+ 
+  
   return (
     <div>
       <nav className="contenedormenu">
@@ -16,7 +18,7 @@ const Header = () => {
 
         <ul className="nav">
           <li>
-            <Link to="/">Inicio</Link>
+            <Link to="/inicio">Inicio</Link>
           </li>
           <li>
             <Link to="/preferidas">Vistas</Link>
@@ -27,21 +29,31 @@ const Header = () => {
           <li>
             <Link to="/about">Preferidas</Link>
           </li>
-                  
-        </ul>
+                  </ul>
 
         <div class="buscador">
           <input className="buscado" type="text" />
-
-          <img
-            className="icono-persona"
-            src={require("../imagenes/iconitos/icono-persona.png")}
-            alt="icono-persona"
-          />
+          
+          <div>
+          {isLoggedIn ? (
+                <div>
+                    <img
+                    className="icono-persona"
+                    src={require("../imagenes/iconitos/icono-persona.png")}
+                    alt="icono-persona"/>
 
           <h4>Julieta</h4>
+                    <BotonPerfil handleLogout={handleLogout} />
+                </div>
+            ) : (
+                // Muestra botón de Login si no está logueado
+                <Link to="/Login">
+                    <button>Login</button>
+                </Link>
+            )}
+      
+          </div>
 
-          <BotonPerfil id='botonperfilestilo'/>
         </div>
       </nav>
     </div>

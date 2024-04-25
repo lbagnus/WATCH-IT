@@ -12,7 +12,7 @@ import Translate from '@mui/icons-material/Translate';
 import Ayuda from '@mui/icons-material/HelpOutline';
 import Logout from '@mui/icons-material/Logout';
 
-export default function AccountMenu() {
+export default function BotonPerfil({handleLogout}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -21,6 +21,9 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+ 
+
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -91,11 +94,11 @@ export default function AccountMenu() {
           </ListItemIcon>
           Ayuda
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => handleLogout()}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          Logout
+          Logout 
         </MenuItem>
       </Menu>
     </React.Fragment>
