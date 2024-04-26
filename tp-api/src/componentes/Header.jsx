@@ -21,13 +21,13 @@ const Header = ({isLoggedIn, handleLogout}) => {
             <Link to="/inicio">Inicio</Link>
           </li>
           <li>
-            <Link to="/preferidas">Vistas</Link>
+            <Link to="/MisListas">Vistas</Link>
           </li>
           <li>
-            <Link to="/about">Por ver</Link>
+            <Link to="/MisListas">Por ver</Link>
           </li>
           <li>
-            <Link to="/about">Preferidas</Link>
+            <Link to="/MisListas">Preferidas</Link>
           </li>
                   </ul>
 

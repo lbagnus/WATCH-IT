@@ -1,118 +1,123 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from 'react';
 import Avatar from "../imagenes/logos/logo negro2.png";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
+const defaultTheme = createTheme();
 
-function Login({ onLogin }) {
-  const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState('');
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
-    const data = new FormData(event.currentTarget); // Obtener los datos del formulario
-    const email = data.get("email");
-    const password = data.get("password");
+function Login({onLogin}) {
+    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
 
-    if (email === "lbagnus" && password === "12345678") {
-        onLogin(); // Llama a la función onLogin para notificar a App.jsx
-        navigate('/inicio'); // Redirige a la página de inicio
-    } else {
-        setErrorMessage('Usuario y/o contraseña incorrectos');
-    }
-};  
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        
+        // Obtener los datos de inicio de sesión ingresados por el usuario
+        const email = data.get('email');
+        const password = data.get('password');
+        
+        // Recuperar los datos guardados en local storage
+        const savedData = localStorage.getItem('userData');
+        const parsedData = savedData ? JSON.parse(savedData) : null;
+
+        // Verificar si las credenciales coinciden
+        if (parsedData && email === parsedData.email && password === parsedData.password) {
+            onLogin(); // Llama a la función onLogin para notificar a App.jsx
+            navigate('/inicio');
+           
+        } else {
+            setErrorMessage('Usuario y/o contraseña incorrectos');
+        }
+    };
+
+    const manejarClickRegistro = () => {
+        // Navegar a la ruta deseada
+        navigate('/Registro');
+      };
+      const manejarClickOlvido = () => {
+        // Navegar a la ruta deseada
+        navigate('/Olvido');
+      };
 
     return (
-        <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box
-                sx={{
-                    marginTop: 8,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                }}
-            >
-                <img src={Avatar} alt="Avatar" />
-                <Typography component="h1" variant="h5">
-                    Login
-                </Typography>
-
-                {/* Muestra el mensaje de error si existe */}
-                {errorMessage && (
-                    <Typography
-                        variant="body2"
-                        color="error"
-                        sx={{ marginTop: 2, marginBottom: 2 }}
-                    >
-                        {errorMessage}
-                    </Typography>
-                )}
-
-
+        <ThemeProvider theme={defaultTheme}>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
                 <Box
-                    component="form"
-                    onSubmit={handleSubmit}
-                    noValidate
-                    sx={{ mt: 1 }}
+                    sx={{
+                        marginTop: 8,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}
                 >
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        label="Email"
-                        name="email"
-                        autoComplete="email"
-                        autoFocus
-                        id="emailboton"
-                    />
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Contraseña"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
-                    />
-                    <div className="lineaLogin"></div>
+                     <img src={Avatar} alt="Avatar" />
+                    <Typography component="h1" variant="h5">
+                    Login
+                    </Typography>
+                   
 
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                        id="botonSignIn"
-                    >
-                      Login 
-                        
-                    </Button>
-                    <Grid container>
-                        <Grid item xs>
-                            <Link class="forgot" href="#" variant="body2">
-                                Forgot password?
+                    {errorMessage && (
+                        <Typography variant="body2" color="error" sx={{ mt: 2 }}>
+                            {errorMessage}
+                        </Typography>
+                    )}
+
+                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
+                        />
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                        >
+                            Login
+                        </Button>
+                        <Grid container>
+                            <Grid item xs>
+                            <Link class="forgot" href="#" variant="body2" onClick={manejarClickOlvido}>
+                                {"Forgot password?"}
                             </Link>
-                        </Grid>
-                        <Grid item>
-                            <Link class="forgot" href="#" variant="body2">
+                            </Grid>
+                            <Grid item>
+                            <Link href = "" class="forgot" variant="body2" onClick={manejarClickRegistro}>
                                 {"Don't have an account? Sign Up"}
                             </Link>
+                            </Grid>
                         </Grid>
-                    </Grid>
+                    </Box>
                 </Box>
-            </Box>
-        </Container>
+            </Container>
+        </ThemeProvider>
     );
 }
 

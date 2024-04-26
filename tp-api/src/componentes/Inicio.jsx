@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 import imagen1 from '../imagenes/logos/imagen1.jpg';
 import avatar from '../imagenes/peliculas/avatar-portada.jpg';
 import gato from '../imagenes/peliculas/gatoconbotas (1).jpg';
@@ -12,6 +11,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import CarruselAutomatico from "./Carrusel";
 import ListaContenidos from "./ListaContenidos";
+import { useNavigate } from 'react-router-dom';
 
 var texto1 = "Hola"
 
@@ -58,7 +58,7 @@ const textoSet1 = [
 
 
 const Inicio = () => {
-
+ 
   return (
     <main className="main-inicio">
       <div className="CarruselPelis">

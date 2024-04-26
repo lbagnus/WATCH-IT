@@ -5,6 +5,9 @@ import Footer from './componentes/Footer';
 import Inicio from './componentes/Inicio';
 import Login from './componentes/Login';
 import Pelicula from './componentes/Pelicula';
+import MisListas from './componentes/MisListas';
+import Registro from './componentes/Registro';
+import OlvidoSenha from './componentes/OlvidoSenha';
 
 
 import './App.css';
@@ -15,7 +18,11 @@ import './css/carrusel.css';
 import './css/pelicula.css';
 import './css/Login.css';
 
+
+
 function App() {
+
+
   // Obtiene la ubicación actual
   const location = useLocation();
   const navigate = useNavigate();
@@ -34,7 +41,7 @@ function App() {
     
 
     // Determina si la ruta actual es la página de Login
-    const isLoginPage = location.pathname === '/Login';
+    const isLoginPage = location.pathname === '/Login' || location.pathname=== "/Registro"|| location.pathname=== "/Olvido";
     console.log()
    
     
@@ -53,9 +60,12 @@ function App() {
                 
                 {/* Ruta para Login */}
                 <Route path="/Login" element={!isLoggedIn ? <Login onLogin={handleLogin} /> : <Inicio />} />
+                <Route path="/Registro" element={<Registro/>} />
+                <Route path="/Olvido" element={<OlvidoSenha/>} />
                 
                 {/* Ruta para Pelicula */}
-                <Route path="/preferidas" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
+                <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
+                <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
             </Routes>
             
             {/* Muestra Footer solo si no está en la página de Login */}
