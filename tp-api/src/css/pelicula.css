@@ -24,8 +24,6 @@
     justify-content:left;
     margin: 3vh 20vh;
     font-size: 2vh;
-    
-    
   }
   
   .datos-pelicula h4 {
@@ -47,8 +45,9 @@
   }
   .desc {
     display: flex;
-    margin-top: 0; /* Espacio entre la imagen y la descripción */
-    margin-right: 15vh;
+    justify-content: left;
+    padding-left: 4%;
+    padding-right: 10%;
     margin-left: 3vh;
     font-size: 2vh;
     color: white;
@@ -57,7 +56,7 @@
   .imagen-pelicula {
     width: 50%;
     height: auto;
-    margin-left: 25vh; /* Espacio entre la imagen y la descripción */
+    margin-left: 20vh; /* Espacio entre la imagen y la descripción */
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgb(0, 0, 0);;
   }

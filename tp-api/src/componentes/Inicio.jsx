@@ -11,6 +11,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import CarruselAutomatico from "./Carrusel";
 import ListaContenidos from "./ListaContenidos";
+import { useNavigate } from 'react-router-dom';
 
 var texto1 = "Hola"
 
@@ -57,6 +58,7 @@ const textoSet1 = [
 
 
 const Inicio = () => {
+ 
   return (
     <main className="main-inicio">
       <div className="CarruselPelis">
@@ -114,5 +116,6 @@ const Inicio = () => {
     </main>
   );
 };
+
 
 export default Inicio;

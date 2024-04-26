@@ -49,7 +49,9 @@ background-color: #26425A; /* color de fondo al pasar el ratón */
   margin-top: 10px; /* margen superior */
   display: flex;
   align-items: center;
-  margin-left: 55%;
+  /*margin-left: 55%;*/
+  width: 55%;
+  margin-right: 0;
 }
 
 .contenedormenu .buscador input[type='text'] {
