@@ -78,7 +78,7 @@ export default function BotonPerfil({handleLogout}) {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem  onClick={handleClose}>
           <Avatar /> My account
         </MenuItem>
         <Divider />

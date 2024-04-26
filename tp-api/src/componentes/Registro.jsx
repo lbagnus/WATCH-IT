@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import Loginpic from "../imagenes/logos/logo negro2.png";
 
 const defaultTheme = createTheme();
 
@@ -60,9 +61,7 @@ function Registro() {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
+                    <img src={Loginpic} alt="Avatar" />
                     <Typography component="h1" variant="h5">
                         Sign Up
                     </Typography>
@@ -117,12 +116,13 @@ function Registro() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            id='BotonLogIn'
                         >
                             Sign Up
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2" onClick={handleSignIn}>
+                                <Link class="forgot" href="#" variant="body2" onClick={handleSignIn}>
                                     Already have an account? Sign in
                                 </Link>
                             </Grid>

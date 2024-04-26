@@ -2,12 +2,11 @@
   height: 9vh;
   float: left;
 }
-
-
 .contenedormenu {
 overflow: hidden; /* para contener el navbar en su lugar */
 display: flex;
 align-items:  center;
+justify-content: space-between;
 }
 
 .contenedormenu .logo {
@@ -49,9 +48,7 @@ background-color: #26425A; /* color de fondo al pasar el ratón */
   margin-top: 10px; /* margen superior */
   display: flex;
   align-items: center;
-  /*margin-left: 55%;*/
-  width: 55%;
-  margin-right: 0;
+ 
 }
 
 .contenedormenu .buscador input[type='text'] {
@@ -70,6 +67,12 @@ background-color: #26425A; /* color de fondo al pasar el ratón */
   margin: 0 10px; /* margen entre elementos */
 }
 
+.perfil{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 #icono-arrow{
   background-color:#0D1E2E;
 }
@@ -83,3 +86,16 @@ background-color: #26425A; /* color de fondo al pasar el ratón */
   margin-left: 10px;
   width: 10%;
 }
+
+.botonLogin{
+  border-color: #e1cbd7;
+  background-color: #0D1E2E;
+  margin-right: 50PX;
+  margin-left: 40PX;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.8vh;
+  font-weight: bold;
+  color: #e1cbd7;
+}
+
