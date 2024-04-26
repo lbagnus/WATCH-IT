@@ -5,8 +5,8 @@
 
 
 button.boton-genero{
-    color: rgb(200, 155, 122);
-    border-color: rgb(200, 155, 122);
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgb(134, 171, 207);
     /*color: rgb(201, 198, 198);
     border-color:  rgb(201, 198, 198);*/
     width: 100%;
@@ -15,9 +15,11 @@ button.boton-genero{
     font-size: 2.5vh;
     font-family: "Jost", sans-serif;
     margin: 10%;
-    box-shadow: 1px 1px 1px rgb(200, 155, 122);
-
+    box-shadow: 1px 1px 1px #C38EB4;
+    background-color: rgba(134, 171, 207, 0.3);
 }
+
+
 
 .botones-inicio {
     display: flex;
@@ -64,6 +66,14 @@ button.boton-genero{
   }
 
   .lista-contenidos img{
+    width: 75%; /* Ajusta el tamaño de las imágenes según sea necesario */
+    height: auto;
+    border-radius: 10px ;
+    /*box-shadow: 5px 2px 2px rgb(97, 96, 95);*/
+    padding: 0;
+    box-shadow: 2px 2px 2px rgb(70, 69, 69);
+  }
+  .lista-contenidos2 img{
     width: 75%; /* Ajusta el tamaño de las imágenes según sea necesario */
     height: auto;
     border-radius: 10px ;

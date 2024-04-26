@@ -16,9 +16,9 @@
   font-optical-sizing: auto;}
 
 html{
-  background-color: white;
+  background-color: #0D1E2E;
   /*background-color: rgb(15, 25, 51);*/
-  color: rgb(200, 155, 122);
+  color: WHITE;
   backdrop-filter: blur(15px);
   background-position: center;
   background-repeat: no-repeat;

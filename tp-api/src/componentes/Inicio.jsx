@@ -64,8 +64,8 @@ const Inicio = () => {
       </div>
 
       <div className="botones-inicio">
-        <Stack spacing={2} direction="row">
-          <Button className="boton-genero" variant="outlined">
+        <Stack spacing={8} direction="row">
+          <Button className="boton-genero" variant="outlined" >
             Trending
           </Button>
           <Button className="boton-genero" variant="outlined">
@@ -95,7 +95,7 @@ const Inicio = () => {
        
       </div>
 
-      <div className="lista-contenidos">
+      <div className="lista-contenidos2">
         <h3 className="tituloListas">Actores destacados</h3>
         <ListaContenidos imagenes={imagenesSet2} />
       </div>
@@ -105,7 +105,7 @@ const Inicio = () => {
         <ListaContenidos imagenes={imagenesSet1} />
       </div>
 
-      <div className="lista-contenidos">
+      <div className="lista-contenidos2">
         <h3 className="tituloListas">Directores del momento</h3>
         <ListaContenidos imagenes={imagenesSet2}  />
         

@@ -9,7 +9,7 @@ const Header = () => {
         <div className="logo">
           <img
             className="logo-header"
-            src={require("../imagenes/logos/logo negro2.png")}
+            src={require("../imagenes/logos/logo blanco3.png")}
             alt="logo-header"
           />
         </div>
@@ -35,7 +35,7 @@ const Header = () => {
 
           <img
             className="icono-persona"
-            src={require("../imagenes/iconitos/icono-persona.png")}
+            src={require("../imagenes/iconitos/avatarwhite.png")}
             alt="icono-persona"
           />
 

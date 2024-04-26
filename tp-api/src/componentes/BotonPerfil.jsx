@@ -33,8 +33,8 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar id="icono-arrow" sx={{ width: 32, height: 32 }}><img  
-            src={require("../imagenes/iconitos/arrow.png")}
+            <Avatar id="icono-arrow" sx={{ width: 24, height: 24 }}><img  id='imagenarrow'
+            src={require("../imagenes/iconitos/arrowwhite.png")}
             alt="icono-arrow"
           /></Avatar>
           </IconButton>

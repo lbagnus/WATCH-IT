@@ -8,6 +8,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  /*background-color:  rgba(134, 171, 207, 0.3);*/
 }
   
   .Contenedor1 h1{
@@ -50,7 +51,7 @@
     margin-right: 15vh;
     margin-left: 3vh;
     font-size: 2vh;
-    color: black;
+    color: white;
   }
   
   .imagen-pelicula {
@@ -58,7 +59,7 @@
     height: auto;
     margin-left: 25vh; /* Espacio entre la imagen y la descripción */
     border-radius: 10px;
-    box-shadow: 5px 5px 5px rgb(63, 62, 62);;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);;
   }
   .datos-pelicula{
     align-items: center;
@@ -76,9 +77,13 @@
   }
 
   #demo-customized-button{
-    background-color: rgb(150, 83, 83);
+    background-color: #C38EB4;
     color: black;
     text-decoration: none;
+  }
+
+  #demo-customized-menu{
+    color: #E1CBD7;
   }
 
   #botonbookmark{
@@ -111,10 +116,12 @@
 
   .reseña{
     margin-left: 7.5vh;
-    background-color:  rgb(150, 83, 83);
+    background-color:  rgba(195, 142, 180, 0.8);
     border-radius: 5px 10px ;
     width: 180%;
     margin-bottom: 2vh;
+    box-shadow: 3px 1px 1px 1px rgb(0, 0, 0);
+    color: black;
   }
 
   .reseña h5{
@@ -143,6 +150,7 @@
   .imagenotra{
     width: 25vh;
     border-radius: 10px;
+    box-shadow: 3px 2px 2px black;
   }
 
   .subtitulo{

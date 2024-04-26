@@ -12,6 +12,7 @@ align-items:  center;
 
 .contenedormenu .logo {
 float: left; /* para colocar el logo a la izquierda */
+margin-left: 5px;
 }
 
 .contenedormenu .logo img {
@@ -31,14 +32,14 @@ display: inline-block; /* para que los elementos del menú estén uno al lado de
 
 .contenedormenu .nav li a {
 display: block; /* para que los enlaces ocupen todo el espacio disponible */
-color: rgb(60, 59, 59); /* color del texto del enlace */
+color: WHITE; /* color del texto del enlace */
 text-align: center; /* centrar el texto */
 padding: 14px 16px; /* espacio interior */
 text-decoration: none; /* quitar subrayado */
 }
 
 .contenedormenu .nav li a:hover {
-background-color: #9e9a9a; /* color de fondo al pasar el ratón */
+background-color: #26425A; /* color de fondo al pasar el ratón */
 }
 
 
@@ -55,21 +56,28 @@ background-color: #9e9a9a; /* color de fondo al pasar el ratón */
   padding: 8px; /* espacio interior */
   border: none; /* quitar borde */
   border-radius: 5px; /* borde redondeado */
-  background-color: rgb(200, 155, 122);;
-  color:aliceblue;
+  background-color: rgba(134, 171, 207, 0.5);
+  color:white;
+  box-shadow: 1PX 1PX 1px 1PX #26425A;
 }
 
 
 .contenedormenu .buscador h4 {
   display: inline; /* para colocar los elementos de texto en línea */
-  color: rgb(37, 36, 36); /* color del texto */
+  color: white; /* color del texto */
   margin: 0 10px; /* margen entre elementos */
 }
 
 #icono-arrow{
-  background-color: white;
+  background-color:#0D1E2E;
+}
+
+#imagenarrow{
+  width: 150%;
+  height: auto;
 }
 
 .icono-persona{
   margin-left: 10px;
+  width: 10%;
 }

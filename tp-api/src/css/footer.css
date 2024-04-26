@@ -1,5 +1,4 @@
-.contenedorfooter {
-    background-color: rgba(200, 155, 122,0.5); /* color de fondo del footer */
+.contenedorfooter { /* color de fondo del footer */
     color: white; /* color del texto */
     padding: 20px; /* espacio interno */
     display:flex;

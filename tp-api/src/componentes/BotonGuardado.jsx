@@ -9,6 +9,7 @@ import Update from '@mui/icons-material/Update';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import RemoveRedEye from '@mui/icons-material/RemoveRedEye';
 import BookmarkBorder from '@mui/icons-material/BookmarkBorder';
+import { withTheme } from "@emotion/react";
 
 const StyledMenu = styled((props) => (
   <Menu
