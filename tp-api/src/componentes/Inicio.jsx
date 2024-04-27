@@ -68,9 +68,7 @@ const Inicio = () => {
 
       <div className="botones-inicio">
         <Stack spacing={8} direction="row">
-          <Button className="boton-genero" variant="outlined" >
-            Trending
-          </Button>
+    
           <Button className="boton-genero" variant="outlined">
             Acción
           </Button>

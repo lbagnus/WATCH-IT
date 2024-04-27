@@ -5,6 +5,7 @@ import avatar from '../imagenes/peliculas/avatar-portada.jpg';
 import gato from '../imagenes/peliculas/gatoconbotas (1).jpg';
 import frogs from '../imagenes/peliculas/frogs.jpg';
 import thor from '../imagenes/peliculas/thor.jpg';
+import Portada from './Portada';
 
 const title = 'TRENDING'
 const imageUrls = [
@@ -17,10 +18,11 @@ const imageUrls = [
   frogs
 ]
 
+
 const MisListas = () => {
   return (
     <div className='imgcontenedor'>
-      <GridImages  imagenes={imageUrls} titulo={title}/>
+      <GridImages  id= 'TRENDING' imagenes={imageUrls} titulo={title}/>
     </div>
   )
 }
