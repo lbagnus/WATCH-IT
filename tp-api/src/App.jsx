@@ -8,6 +8,7 @@ import Pelicula from './componentes/Pelicula';
 import MisListas from './componentes/MisListas';
 import Registro from './componentes/Registro';
 import OlvidoSenha from './componentes/OlvidoSenha';
+import Actor from './componentes/Actor';
 
 
 import './App.css';
@@ -17,6 +18,7 @@ import './css/inicio.css';
 import './css/carrusel.css';
 import './css/pelicula.css';
 import './css/Login.css';
+
 
 
 
@@ -66,6 +68,11 @@ function App() {
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
                 <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
+
+                {/* Ruta para Actor */}
+                <Route path="/Actor" element={isLoggedIn ? <Actor /> : <Login onLogin={handleLogin} />} />
+               
+
             </Routes>
             
             {/* Muestra Footer solo si no está en la página de Login */}

@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,16 +14,16 @@ const Footer = () => {
       <div clasName="datos">
         <ul className="nav">
           <li>
-            <a href="default.asp">Contactanos</a>
+            <Link to="/Actor">Contactenos</Link>
           </li>
           <li>
-            <a href="news.asp">Condiciones de uso</a>
+            <Link to="/Pelicula">Condiciones de uso</Link>
           </li>
           <li>
-            <a href="contact.asp">Politicas de privacidad</a>
+            <a href="https://www.google.com/search?hl=es&q=que+es+una+politica+de+privacidad&lr=">Politica de privacidad</a>
           </li>
           <li>
-            <a href="about.asp">SubUrbaNCo</a> //no es href CAMBIAR
+              <Link to="/Pelicula">SuburbanCo</Link>
           </li>
         </ul>
       </div>
