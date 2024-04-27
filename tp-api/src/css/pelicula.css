@@ -15,21 +15,21 @@
     display: flex;
     justify-content: right; /* Alinea los elementos al inicio y al final */
     align-items: flex-start; /* Alinea los elementos en la parte superior */
-    margin: 3vh 20vh; /* Espacio entre el título y los datos */
+    margin: 3vh 0; /* Espacio entre el título y los datos */
     font-size: 5vh;
   }
   
   .Contenedor1 .datos-pelicula {
     display: flex;
     justify-content:left;
-    margin: 3vh 20vh;
-    font-size: 2vh;
+    margin: 3vh 0;
+    font-size: 1vh;
   }
   
-  .datos-pelicula h4 {
+  .datos-pelicula p {
     margin: 0;
     font-size: 2.5vh;
-   
+    font-family: 'jost', sans-serif;;
   }
   
   .rayita {
@@ -38,25 +38,32 @@
     background-color: black;
     margin: 0 5px;
   }
+  .contenedor0{
+    background-color: rgba(134, 171, 207, 0.3);
+    margin: 0 15vh;
+    padding:0vh 5vh;
+    border-radius: 10px;
+    box-shadow: 2px 3px 3px black;
+  }
   
   .contenedor2{
     display: flex;
     flex-direction: row;
+    margin-bottom: 3vh;
+    
   }
   .desc {
     display: flex;
     justify-content: left;
     padding-left: 4%;
     padding-right: 10%;
-    margin-left: 3vh;
     font-size: 2vh;
     color: white;
   }
   
   .imagen-pelicula {
-    width: 50%;
+    width: 100%;
     height: auto;
-    margin-left: 20vh; /* Espacio entre la imagen y la descripción */
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgb(0, 0, 0);;
   }
@@ -121,12 +128,17 @@
     margin-bottom: 2vh;
     box-shadow: 3px 1px 1px 1px rgb(0, 0, 0);
     color: black;
+    padding-bottom: 5px;
   }
 
   .reseña h5{
     font-size: 150%;
     margin: 2%;
     padding-top:2% ;
+  }
+
+  .reseña p{
+    margin-left: 10px;
   }
 
   .reseña h6{

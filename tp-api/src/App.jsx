@@ -17,6 +17,7 @@ import './css/inicio.css';
 import './css/carrusel.css';
 import './css/pelicula.css';
 import './css/Login.css';
+import './css/listas.css';
 
 
 
@@ -65,7 +66,7 @@ function App() {
                 
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
-                <Route path="/MisListas" element={<MisListas />} />
+                <Route path="/MisListas" element={isLoggedIn ? <MisListas /> : <Login onLogin={handleLogin} />} />
             </Routes>
             
             {/* Muestra Footer solo si no está en la página de Login */}

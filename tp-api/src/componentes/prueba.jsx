@@ -9,6 +9,8 @@
           <h4>Julieta</h4>
           <BotonPerfil id='botonperfilestilo'/>*/
 
+          /*<Route path="/MisListas" element={<MisListas />} />*/
+
 
           import logo from "./logo.svg";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
