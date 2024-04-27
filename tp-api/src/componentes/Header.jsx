@@ -14,7 +14,7 @@ const Header = ({isLoggedIn, handleLogout}) => {
             src={require("../imagenes/logos/logo blanco3.png")}
             alt="logo-header"
           />
-        </div>
+        
 
         <ul className="nav">
           <li>
@@ -29,20 +29,16 @@ const Header = ({isLoggedIn, handleLogout}) => {
           <li>
             <Link to="/MisListas">Preferidas</Link>
           </li>
-                  </ul>
+          </ul>
+        </div>
 
         <div class="buscador">
           <input className="buscado" type="text" />
           
           <div>
           {isLoggedIn ? (
-                <div>
-                    <img
-                    className="icono-persona"
-                    src={require("../imagenes/iconitos/avatarwhite.png")}
-                    alt="icono-persona"/>
-
-          <h4>Julieta</h4>
+                <div className="perfil">
+                    <h4>Julieta</h4>
                     <BotonPerfil handleLogout={handleLogout} />
                 </div>
             ) : (

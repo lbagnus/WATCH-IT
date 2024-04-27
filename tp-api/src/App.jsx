@@ -11,6 +11,7 @@ import OlvidoSenha from './componentes/OlvidoSenha';
 import Actor from './componentes/Actor';
 
 
+
 import './App.css';
 import './css/header.css';
 import './css/footer.css';
@@ -18,6 +19,7 @@ import './css/inicio.css';
 import './css/carrusel.css';
 import './css/pelicula.css';
 import './css/Login.css';
+import './css/listas.css';
 
 
 
@@ -28,7 +30,7 @@ function App() {
   // Obtiene la ubicación actual
   const location = useLocation();
   const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     // Función para manejar el inicio de sesión
     const handleLogin = () => {
@@ -44,7 +46,7 @@ function App() {
 
     // Determina si la ruta actual es la página de Login
     const isLoginPage = location.pathname === '/Login' || location.pathname=== "/Registro"|| location.pathname=== "/Olvido";
-    console.log()
+    console.log(location.pathname )
    
     
 
@@ -67,12 +69,16 @@ function App() {
                 
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
+<<<<<<< HEAD
                 <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
 
                 {/* Ruta para Actor */}
                 <Route path="/Actor" element={isLoggedIn ? <Actor /> : <Login onLogin={handleLogin} />} />
                
 
+=======
+                <Route path="/MisListas" element={isLoggedIn ? <MisListas /> : <Login onLogin={handleLogin} />} />
+>>>>>>> b90e407f3265b2f35c7c41b023975be15e230684
             </Routes>
             
             {/* Muestra Footer solo si no está en la página de Login */}

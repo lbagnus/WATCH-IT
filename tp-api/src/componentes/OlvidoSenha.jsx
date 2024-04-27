@@ -85,14 +85,14 @@ function ForgotPassword() {
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
-                        id="botonEnviar"
+                        id="BotonLogIn"
                     >
                         Enviar instrucciones
                     </Button>
 
                     <Grid container justifyContent="center">
                         <Grid item>
-                            <Link variant="body2" onClick={handleLogin}>
+                            <Link className="forgot" variant="body2" onClick={handleLogin}>
                                 {"¿Volver a iniciar sesión?"}
                             </Link>
                         </Grid>

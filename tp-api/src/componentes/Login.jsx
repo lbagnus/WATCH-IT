@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import Avatar from "../imagenes/logos/logo negro2.png";
+import Loginpic from "../imagenes/logos/logo negro2.png";
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
+//import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { withTheme } from '@emotion/react';
 
 const defaultTheme = createTheme();
 
@@ -51,18 +51,23 @@ function Login({onLogin}) {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <Box
+            <Container id='contenedor'  component="main" >
+                
+               
+                <Box  
+
                     sx={{
                         marginTop: 8,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
+                        padding: 0,
+                      
+                       
                     }}
                 >
-                     <img src={Avatar} alt="Avatar" />
-                    <Typography component="h1" variant="h5">
+                     <img src={Loginpic} alt="Avatar" />
+                    <Typography component="h1" variant="h5" color={'black'}>
                     Login
                     </Typography>
                    
@@ -73,12 +78,13 @@ function Login({onLogin}) {
                         </Typography>
                     )}
 
-                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                        <TextField
+                    <Box id='box' component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                        <TextField 
+                           
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
+                            id='emailboton'
                             label="Email"
                             name="email"
                             autoComplete="email"
@@ -94,11 +100,12 @@ function Login({onLogin}) {
                             id="password"
                             autoComplete="current-password"
                         />
-                        <Button
+                        <Button 
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
+                            id='BotonLogIn'
+                            sx={{ mt: 3, mb: 2}}
                         >
                             Login
                         </Button>

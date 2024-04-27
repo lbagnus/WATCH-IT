@@ -8,10 +8,10 @@ var desc_actor = "Lorem ipsum dolor sit amet. In quas consequatur vel enim dolor
 const Actor = () => {
     return (
       <div className="portada">
-            <InfoActor>
-                nombre={nombre_actor}
+            <InfoActor nombre={nombre_actor}
                 imagen={Marlon}
-             descripcion={desc_actor}
+             descripcion={desc_actor}>
+                
             </InfoActor>
      </div> 
 );
