@@ -26,7 +26,7 @@ function App() {
   // Obtiene la ubicación actual
   const location = useLocation();
   const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     // Función para manejar el inicio de sesión
     const handleLogin = () => {
@@ -42,7 +42,7 @@ function App() {
 
     // Determina si la ruta actual es la página de Login
     const isLoginPage = location.pathname === '/Login' || location.pathname=== "/Registro"|| location.pathname=== "/Olvido";
-    console.log()
+    console.log(location.pathname )
    
     
 
@@ -65,7 +65,7 @@ function App() {
                 
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
-                <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
+                <Route path="/MisListas" element={<MisListas />} />
             </Routes>
             
             {/* Muestra Footer solo si no está en la página de Login */}

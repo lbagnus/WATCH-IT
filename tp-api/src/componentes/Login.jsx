@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Loginpic from "../imagenes/logos/logo negro2.png";
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
+//import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { withTheme } from '@emotion/react';
 
 const defaultTheme = createTheme();
 
@@ -51,13 +52,18 @@ function Login({onLogin}) {
     return (
         <ThemeProvider theme={defaultTheme}>
             <Container id='contenedor'  component="main" >
-                <CssBaseline />
+                
+               
                 <Box  
+
                     sx={{
                         marginTop: 8,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
+                        padding: 0,
+                      
+                       
                     }}
                 >
                      <img src={Loginpic} alt="Avatar" />
@@ -73,7 +79,8 @@ function Login({onLogin}) {
                     )}
 
                     <Box id='box' component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                        <TextField
+                        <TextField 
+                           
                             margin="normal"
                             required
                             fullWidth

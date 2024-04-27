@@ -25,6 +25,11 @@
 }
 
 #box{
-    color: white;
+color: white;
 }
 
+#emailboton{
+    color: white;
+    outline-color: white;
+    border-color: white;
+}
