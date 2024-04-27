@@ -69,16 +69,13 @@ function App() {
                 
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
-<<<<<<< HEAD
                 <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
 
                 {/* Ruta para Actor */}
-                <Route path="/Actor" element={isLoggedIn ? <Actor /> : <Login onLogin={handleLogin} />} />
+               
                
 
-=======
                 <Route path="/MisListas" element={isLoggedIn ? <MisListas /> : <Login onLogin={handleLogin} />} />
->>>>>>> b90e407f3265b2f35c7c41b023975be15e230684
             </Routes>
             
             {/* Muestra Footer solo si no está en la página de Login */}
