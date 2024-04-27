@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import CarruselAutomatico from "./Carrusel";
 import ListaContenidos from "./ListaContenidos";
 import { useNavigate } from 'react-router-dom';
+import numero1 from '../imagenes/peliculas/numero1.png'; //no me lo saquen es para un futuro
 
 var texto1 = "Hola"
 
@@ -92,7 +93,7 @@ const Inicio = () => {
       </div>
 
       <div className="lista-contenidos">
-        <h3 className="tituloListas">Trending</h3>
+        <h3 className="tituloListas">Top 10 peliculas del momento</h3>
         <ListaContenidos className="Lista" imagenes={imagenesSet1} />
        
       </div>

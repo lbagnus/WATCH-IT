@@ -19,7 +19,9 @@ const imageUrls = [
 
 const MisListas = () => {
   return (
-    <GridImages imagenes={imageUrls} titulo={title}/>
+    <div className='imgcontenedor'>
+      <GridImages  imagenes={imageUrls} titulo={title}/>
+    </div>
   )
 }
 
