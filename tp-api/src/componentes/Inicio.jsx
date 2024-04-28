@@ -123,7 +123,7 @@ const Inicio = () => {
         <ListaContenidos className="Lista" imagenes={imagenesArrayPopulares} />
       </div>
  
-      <div className="lista-contenidos2">
+      <div className="lista-contenidos">
         <h3 className="tituloListas">Actores destacados</h3>
         <ListaContenidos imagenes={imagenesArrayActores} />
       </div>
@@ -133,7 +133,7 @@ const Inicio = () => {
           <ListaContenidos imagenes={imagenesArrayCines} />
       </div>
 
-      {/*<div className="lista-contenidos2">
+      {/*<div className="lista-contenidos">
         <h3 className="tituloListas">Directores del momento</h3>
        <ListaContenidos imagenes={imagenesArrayDirectores}/>
         

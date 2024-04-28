@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import GridImages from '../GridImages';
+import ListaContenidos from '../ListaContenidos';
 
 const Drama = () => {
   const [data, setData] = useState([]);
@@ -20,12 +21,13 @@ const Drama = () => {
 
         // Extraer las imágenes de las películas y almacenarlas en el array
         const imagenesArrayDrama = datosDrama.map(Drama => {
-          /*const urlImagenD = `https://image.tmdb.org/t/p/w500/${Drama.poster_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
-          return urlImagenD;*/
+          const urlImagenD = `https://image.tmdb.org/t/p/w500/${Drama.poster_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
           console.log(Drama.name)
+          return urlImagenD;
+          
         })
         
-        //setImagenesDrama(imagenesArrayDrama);
+        setImagenesDrama(imagenesArrayDrama);
 
         } catch (error) {
         console.error('Error fetching data:', error);
@@ -41,7 +43,7 @@ const Drama = () => {
     return <div>Cargando...</div>;
   }
   
-
+  
 
 
   return (
@@ -57,9 +59,11 @@ const Drama = () => {
             <div>No hay datos disponibles</div>
         )}
     </div>
-      {/*<GridImages imagenes={imagenesArrayDrama}/>*/}
+      {<GridImages imagenes={imagenesArrayDrama}/>}
     </div>
   )
+
+ 
 }
 
 export default Drama

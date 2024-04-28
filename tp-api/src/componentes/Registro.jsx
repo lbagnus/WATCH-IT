@@ -51,9 +51,9 @@ function Registro() {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <Box
+            <Container component="main" maxWidth="sm">
+                
+                <Box id='box'
                     sx={{
                         marginTop: 8,
                         display: 'flex',
@@ -61,8 +61,8 @@ function Registro() {
                         alignItems: 'center',
                     }}
                 >
-                    <img src={Loginpic} alt="Avatar" />
-                    <Typography component="h1" variant="h5">
+                    <img className='logoLogIn' src={Loginpic} alt="Avatar" />
+                    <Typography component="h1" variant="h5" color={'black'} id='titulo'>
                         Sign Up
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>

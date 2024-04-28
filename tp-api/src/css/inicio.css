@@ -54,7 +54,7 @@ button.boton-genero{
   }
   
   .tituloListas{
-    margin-left: 2%;
+    
     font-size: 3vh;
   }
   
@@ -80,11 +80,11 @@ button.boton-genero{
     /*box-shadow: 5px 2px 2px rgb(97, 96, 95);*/
     padding: 0;
   }
-  .lista-contenidos{
-    margin: 1%;
-  }
+  
 
- 
+ .lista-contenidos {
+  margin-left: 2%;
+ }
   
  
 

@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 import Avatar from "../imagenes/logos/logo negro2.png";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
@@ -36,8 +35,7 @@ function ForgotPassword() {
 
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box
+            <Box id='box'
                 sx={{
                     marginTop: 8,
                     display: "flex",
@@ -45,8 +43,8 @@ function ForgotPassword() {
                     alignItems: "center",
                 }}
             >
-                <img src={Avatar} alt="Logo" />
-                <Typography component="h1" variant="h5">
+                <img className='logoLogIn' src={Avatar} alt="Logo" />
+                <Typography component="h1" variant="h5" color={'black'} id='titulo2'>
                     Olvidé mi contraseña
                 </Typography>
 

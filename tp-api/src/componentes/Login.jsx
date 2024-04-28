@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Loginpic from "../imagenes/logos/logo blanco3.png";
+import Loginpic from "../imagenes/logos/logo negro2.png";
 import Button from '@mui/material/Button';
 //import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -51,10 +51,10 @@ function Login({onLogin}) {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Container id='contenedor'  component="main" >
+            <Container id='contenedor'  component="main" maxWidth="sm">
                 
                
-                <Box  
+                <Box  id='box'
 
                     sx={{
                         marginTop: 8,
@@ -66,8 +66,8 @@ function Login({onLogin}) {
                        
                     }}
                 >
-                     <img src={Loginpic} alt="Avatar" />
-                    <Typography component="h1" variant="h5" color={'black'}>
+                     <img className='logoLogIn' src={Loginpic} alt="Avatar" />
+                    <Typography component="h1" variant="h5" color={'black'} id='titulo'>
                     Login
                     </Typography>
                    
@@ -78,7 +78,7 @@ function Login({onLogin}) {
                         </Typography>
                     )}
 
-                    <Box id='box' component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                    <Box  component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                         <TextField 
                            
                             margin="normal"

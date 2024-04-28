@@ -70,7 +70,7 @@ function App() {
                 
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
-                <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
+                <Route path="/MisListas" element={isLoggedIn ? <MisListas /> : <Login onLogin={handleLogin} />} />
                 <Route path='/Drama' element= {<Drama/>}/>
 
                 {/* Ruta para Actor */}

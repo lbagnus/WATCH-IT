@@ -1,19 +1,31 @@
 
 
-.emailboton{
-   color: rgb(200, 155, 122);
-}
-
 #BotonLogIn{
     background-color:#0d1e2e;
     
 
 }
 
+#titulo{
+    font-size: 5vh;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}
+
+#titulo2{
+    font-size: 3.5vh;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    margin-top: 2%;
+}
 
 
 .logoSignIn{
     width: 100%;
+}
+
+.logoLogIn{
+    margin-top: 2%;
 }
 
 
@@ -23,11 +35,11 @@
 }
 
 #box{
-color: white;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px rgb(97, 95, 95);
+    padding: 4%;
+    width: cover;
 }
 
-#emailboton{
-    color: white;
-    outline-color: white;
-    border-color: white;
-}
+
