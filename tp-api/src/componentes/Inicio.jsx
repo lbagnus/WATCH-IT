@@ -63,19 +63,22 @@ const Inicio = () => {
   const [loading, setLoading] = useState(true);
   const [imagenesArrayPopulares, setImagenesTrending] = useState([]);
   const [imagenesArrayCines, setImagenesCines] = useState([]);
+  const [imagenesArrayActores, setImagenesActores] = useState([]);
   
   useEffect(() => {
     const cargarPeliculasInicio = async () => {
       try {
         const populares = await fetch('http://api.themoviedb.org/3/movie/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
-        const upcoming = await fetch ('https://api.themoviedb.org/3/movie/top_rated?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES')
+        const upcoming = await fetch ('https://api.themoviedb.org/3/movie/top_rated?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
+        const actores = await fetch ('https://api.themoviedb.org/3/person/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
 
         const datosPopulares = await populares.json();
         const datosCines = await upcoming.json();
-       
+        const datosActores = await actores.json();
        
         setData(datosPopulares.results); // Asegúrate de acceder a 'results' que contiene la lista de películas
         setData(datosCines.results);
+        setData(datosActores.results);
 
         // Extraer las imágenes de las películas y almacenarlas en el array
         const imagenesArrayPopulares = datosPopulares.results.map(pelicula1 => {
@@ -89,6 +92,12 @@ const Inicio = () => {
           return urlImagenU;
         })
         setImagenesCines(imagenesArrayCines);
+
+        const imagenesArrayActores = datosActores.results.map(actor => {
+          const urlImagenA = `https://image.tmdb.org/t/p/w500/${actor.poster_path}`;
+          return urlImagenA;
+        })
+        setImagenesActores(imagenesArrayActores);
 
 
 
@@ -146,9 +155,9 @@ const Inicio = () => {
 
      
        
-      /*<div className="lista-contenidos2">
+      <div className="lista-contenidos2">
         <h3 className="tituloListas">Actores destacados</h3>
-        <ListaContenidos imagenes={imagenesSet2} />
+        <ListaContenidos imagenes={imagenesArrayActores} />
       </div>*/
 
       <div className="lista-contenidos">
