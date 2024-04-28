@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Loginpic from "../imagenes/logos/logo negro2.png";
+import Loginpic from "../imagenes/logos/logo blanco3.png";
 import Button from '@mui/material/Button';
 //import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';

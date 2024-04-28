@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navigation } from 'swiper/modules';
 
 function ListaContenidos({ imagenes, textos }) {
-  const navigate = useNavigate();
+  
  
   return (
     <Swiper id='swiperEstilo'

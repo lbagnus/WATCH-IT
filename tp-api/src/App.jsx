@@ -22,7 +22,34 @@ import './css/Login.css';
 import './css/listas.css';
 
 
+const  cargarPeliculas = async ()=> {
 
+    try{
+        const respuesta = await fetch('http://api.themoviedb.org/3/movie/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES')
+        
+        console.log(respuesta)
+  
+        //Si la respuesta es correcta
+        if(respuesta.status=200){
+            const datos = await respuesta.json()
+           datos.results.forEach(pelicula =>{
+            console.log(pelicula.title)
+           });
+  
+  
+        }else if (respuesta.status=401){
+            console.log('ERROR EN LA KEY')
+        }else if (respuesta.status=404){
+            console.log('La pelicula no existe')}
+       
+  
+  
+    }catch(error){
+        console.log(error)
+    }
+    
+  }
+  cargarPeliculas();
 
 function App() {
 
