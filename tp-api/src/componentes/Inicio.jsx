@@ -9,7 +9,8 @@ import { Await, useNavigate } from 'react-router-dom';
 import numero1 from '../imagenes/peliculas/numero1.png'; //no me lo saquen es para un futuro
 import Pelicula from "./Pelicula";
 import { useState, useEffect } from 'react';
-import Drama from './Generos/Drama'
+import PruebaGeneros from "./PruebaGeneros";
+
 
 //const navigate = useNavigate();
 const Inicio = () => {
@@ -38,6 +39,7 @@ const Inicio = () => {
         setData(datosCines.results);
         setData(datosActores.results);
         //setData(datosDirectores.results);
+        console.log(datosPopulares.results)
 
         // Extraer las imágenes de las películas y almacenarlas en el array
         const imagenesArrayPopulares = datosPopulares.results.map(pelicula1 => {
@@ -84,9 +86,37 @@ const Inicio = () => {
   
   
   const handleDrama = () =>{
-    navigate('/Drama');
-    console.log('hola')
+    <PruebaGeneros id={1}/>
+    navigate('/PruebaGeneros');
+    
   };
+
+  const handleAccion = () =>{
+    <PruebaGeneros id={2} />
+    navigate('/PruebaGeneros');
+    
+  };
+
+  const handleRomance = () =>{
+    navigate('/Drama');
+    
+  };
+
+  const handleAnimacion = () =>{
+    navigate('/Drama');
+    
+  };
+
+  const handleTerror = () =>{
+    navigate('/Drama');
+    
+  };
+
+  const handleSuspenso = () =>{
+    navigate('/Drama');
+    
+  };
+
   return (
       
    <main className="main-inicio">
@@ -97,22 +127,22 @@ const Inicio = () => {
       <div className="botones-inicio">
         <Stack spacing={8} direction="row">
     
-          <Button className="boton-genero" variant="outlined">
+          <Button className="boton-genero" variant="outlined" onClick={handleAccion}>
             Acción
           </Button>
-          <Button className="boton-genero" variant="outlined">
+          <Button className="boton-genero" variant="outlined" onClick={handleRomance}>
             Romance
           </Button>
-          <Button className="boton-genero" variant="outlined">
+          <Button className="boton-genero" variant="outlined" onClick={handleAnimacion}>
             Animación
           </Button>
-          <Button className="boton-genero" variant="outlined">
+          <Button className="boton-genero" variant="outlined" onClick={handleTerror}>
             Terror
           </Button>
           <Button className="boton-genero" variant="outlined" onClick={handleDrama}>
             Drama
           </Button>
-          <Button className="boton-genero" variant="outlined">
+          <Button className="boton-genero" variant="outlined" onClick={handleSuspenso}>
             Suspenso
           </Button>
         </Stack>

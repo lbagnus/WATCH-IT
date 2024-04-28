@@ -12,7 +12,7 @@ const Drama = () => {
   useEffect(() => {
     const cargarGenero = async () => {
       try {
-        const Drama = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=7d453285a143f326ed0b2747103b04c1');
+        const Drama = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=7d453285a143f326ed0b2747103b04c1&with_genres=18&language=es-ES');
         
         const datosDrama = await Drama.json();
       
@@ -20,9 +20,8 @@ const Drama = () => {
        console.log(datosDrama)
 
         // Extraer las imágenes de las películas y almacenarlas en el array
-        const imagenesArrayDrama = datosDrama.map(Drama => {
+        const imagenesArrayDrama = datosDrama.results.map(Drama => {
           const urlImagenD = `https://image.tmdb.org/t/p/w500/${Drama.poster_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
-          console.log(Drama.name)
           return urlImagenD;
           
         })
@@ -48,18 +47,8 @@ const Drama = () => {
 
   return (
     <div>
-        <div>
-        {Array.isArray(data) ? (
-            data.map((item, index) => (
-                <div key={index}>
-                    {/* Renderiza cada elemento aquí */}
-                </div>
-            ))
-        ) : (
-            <div>No hay datos disponibles</div>
-        )}
-    </div>
-      {<GridImages imagenes={imagenesArrayDrama}/>}
+      <h2> Drama </h2>
+     <GridImages imagenes={imagenesArrayDrama}/>
     </div>
   )
 
