@@ -4,7 +4,7 @@ import GridImages from './GridImages';
 import { useLocation } from 'react-router-dom';
 
 
-const PruebaGeneros = () => {
+const Generos = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imagenesArray, setImagenesArray] = useState([]);
@@ -93,4 +93,4 @@ const PruebaGeneros = () => {
   );
 };
 
-export default PruebaGeneros;
+export default Generos;
