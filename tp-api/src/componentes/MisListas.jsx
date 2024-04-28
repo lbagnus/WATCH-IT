@@ -7,7 +7,19 @@ import frogs from '../imagenes/peliculas/frogs.jpg';
 import thor from '../imagenes/peliculas/thor.jpg';
 import Portada from './Portada';
 
-const title = 'TRENDING'
+
+const MisListas = () => {
+<div>
+  hola
+</div>}
+
+export default MisListas
+
+
+
+
+
+/*const title = 'TRENDING'
 const imageUrls = [
   imagen1,
   avatar,
@@ -27,4 +39,5 @@ const MisListas = () => {
   )
 }
 
-export default MisListas
+export default <MisListas></MisListas>*/
+

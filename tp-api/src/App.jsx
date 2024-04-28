@@ -8,6 +8,7 @@ import Pelicula from './componentes/Pelicula';
 import MisListas from './componentes/MisListas';
 import Registro from './componentes/Registro';
 import OlvidoSenha from './componentes/OlvidoSenha';
+import Drama from './componentes/Generos/Drama';
 import Actor from './componentes/Actor';
 
 
@@ -70,6 +71,7 @@ function App() {
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
                 <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
+                <Route path='/Drama' element= {<Drama/>}/>
 
                 {/* Ruta para Actor */}
                

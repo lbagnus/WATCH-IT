@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 
-function CarruselAutomatico() {
+function CarruselAutomatico({imagenes}) {
   const settings = {
     infinite: true,
     speed: 800,
@@ -15,15 +15,11 @@ function CarruselAutomatico() {
 
   return (
     <Slider className='carrusel' {...settings}>
-      <div className='imgcontenedorcarrusel'>
-        <img src={require('../imagenes/peliculas/carrusel 1.jpg')} alt="Imagen 1" className='imgcarrusel'/>
-      </div>
-      <div>
-        <img src={require('../imagenes/peliculas/carrusel 2.jpg')} alt="Imagen 2" className='imgcarrusel'/>
-      </div>
-      <div>
-        <img src={require('../imagenes/peliculas/carrusel 3.jpg')} alt="Imagen 3" className='imgcarrusel'/>
-      </div>
+      {imagenes.map((url, index) => (
+        <div key={index} className='imgcontenedorcarrusel'>
+          <img src={url} alt={`Imagen ${index + 1}`} />
+        </div>
+      ))}
     </Slider> // HACER EL CAMBIO EN EL IMPORT DE LAS IMAGENES
   );
 }

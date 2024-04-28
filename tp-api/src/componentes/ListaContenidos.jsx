@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Navigation } from 'swiper/modules';
 
-function ListaContenidos({ imagenes, textos }) {
+function ListaContenidos({ imagenes}) {
   
  
   return (

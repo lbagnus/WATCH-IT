@@ -1,11 +1,5 @@
 import React from "react";
 import imagen1 from '../imagenes/logos/imagen1.jpg';
-import avatar from '../imagenes/peliculas/avatar-portada.jpg';
-import gato from '../imagenes/peliculas/gatoconbotas (1).jpg';
-import frogs from '../imagenes/peliculas/frogs.jpg';
-import thor from '../imagenes/peliculas/thor.jpg';
-import intensamente from '../imagenes/peliculas/intensamente (1).jpg';
-import jdeep from '../imagenes/actores/jdeep-modified.png';
 import imagen3 from '../imagenes/logos/Imagen3.jpg';
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -15,55 +9,17 @@ import { Await, useNavigate } from 'react-router-dom';
 import numero1 from '../imagenes/peliculas/numero1.png'; //no me lo saquen es para un futuro
 import Pelicula from "./Pelicula";
 import { useState, useEffect } from 'react';
+import Drama from './Generos/Drama'
 
-var texto1 = "Hola"
-
-const imagenesSet1 = [
-  imagen1,
-  avatar,
-  gato,
-  thor,
-  frogs,
-  frogs,
-  frogs
-];
-const imagenesSet2 = [
-  jdeep,
-  jdeep,
-  jdeep,
-  jdeep,
-  jdeep,
-  jdeep,
-  jdeep
-];
-
-const imagenesSet3 = [
-  imagen3,
-  imagen3,
-  imagen3
-  
-];
-
-const imagenesSet4 = [
-  intensamente,
-  thor,
-  
-];
-
-const textoSet1 = [
-  texto1,
-  texto1,
-  texto1,
-  texto1,
-  texto1
-];
-
+//const navigate = useNavigate();
 const Inicio = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [imagenesArrayPopulares, setImagenesTrending] = useState([]);
   const [imagenesArrayCines, setImagenesCines] = useState([]);
   const [imagenesArrayActores, setImagenesActores] = useState([]);
+  //const [imagenesArrayDirectores, setImagenesDirectores] = useState([]);
   
   useEffect(() => {
     const cargarPeliculasInicio = async () => {
@@ -71,20 +27,24 @@ const Inicio = () => {
         const populares = await fetch('http://api.themoviedb.org/3/movie/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
         const upcoming = await fetch ('https://api.themoviedb.org/3/movie/top_rated?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
         const actores = await fetch ('https://api.themoviedb.org/3/person/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
+        //const directores = await fetch('https://api.themoviedb.org/3/person?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES') //no hay directores
 
         const datosPopulares = await populares.json();
         const datosCines = await upcoming.json();
         const datosActores = await actores.json();
+        //const datosDirectores = await directores.json();
        
         setData(datosPopulares.results); // Asegúrate de acceder a 'results' que contiene la lista de películas
         setData(datosCines.results);
         setData(datosActores.results);
+        //setData(datosDirectores.results);
 
         // Extraer las imágenes de las películas y almacenarlas en el array
         const imagenesArrayPopulares = datosPopulares.results.map(pelicula1 => {
-          const urlImagenP = `https://image.tmdb.org/t/p/w500/${pelicula1.poster_path}`;
+          const urlImagenP = `https://image.tmdb.org/t/p/w500/${pelicula1.poster_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
           return urlImagenP;
         })
+        
         setImagenesTrending(imagenesArrayPopulares);
 
         const imagenesArrayCines = datosCines.results.map(pelicula2 => {
@@ -94,12 +54,19 @@ const Inicio = () => {
         setImagenesCines(imagenesArrayCines);
 
         const imagenesArrayActores = datosActores.results.map(actor => {
-          const urlImagenA = `https://image.tmdb.org/t/p/w500/${actor.poster_path}`;
+          console.log(actor.known_for_department)
+          const urlImagenA = `https://image.tmdb.org/t/p/w500/${actor.profile_path}`;
           return urlImagenA;
+          
         })
         setImagenesActores(imagenesArrayActores);
 
-
+       /* const imagenesArrayDirectores = datosDirectores.results.map(director => {
+          const urlImagenP = `https://image.tmdb.org/t/p/w500/${director.profile_path}`;
+          return urlImagenP;
+        })
+        setImagenesDirectores(imagenesArrayDirectores);*/
+        
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -115,11 +82,16 @@ const Inicio = () => {
     return <div>Cargando...</div>;
   }
   
+  
+  const handleDrama = () =>{
+    navigate('/Drama');
+    console.log('hola')
+  };
   return (
       
    <main className="main-inicio">
       <div className="CarruselPelis">
-        <CarruselAutomatico />
+        <CarruselAutomatico imagenes = {imagenesArrayPopulares}/>{/*cambiar fotos*/}
       </div>
 
       <div className="botones-inicio">
@@ -137,7 +109,7 @@ const Inicio = () => {
           <Button className="boton-genero" variant="outlined">
             Terror
           </Button>
-          <Button className="boton-genero" variant="outlined">
+          <Button className="boton-genero" variant="outlined" onClick={handleDrama}>
             Drama
           </Button>
           <Button className="boton-genero" variant="outlined">
@@ -151,25 +123,21 @@ const Inicio = () => {
         <ListaContenidos className="Lista" imagenes={imagenesArrayPopulares} />
       </div>
  
-      
-
-     
-       
       <div className="lista-contenidos2">
         <h3 className="tituloListas">Actores destacados</h3>
         <ListaContenidos imagenes={imagenesArrayActores} />
-      </div>*/
+      </div>
 
       <div className="lista-contenidos">
         <h3 className="tituloListas">Proximamente en cines</h3>
           <ListaContenidos imagenes={imagenesArrayCines} />
       </div>
 
-      <div className="lista-contenidos2">
+      {/*<div className="lista-contenidos2">
         <h3 className="tituloListas">Directores del momento</h3>
-        <ListaContenidos imagenes={imagenesSet2}  />
+       <ListaContenidos imagenes={imagenesArrayDirectores}/>
         
-      </div>
+      </div>*/}
 
     </main>
   );
