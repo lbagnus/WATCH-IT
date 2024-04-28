@@ -4,12 +4,11 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 
-function GridImages({ imagenes,titulo }) {
+function GridImages({imagenes}) {
    
     return (
         
         <Box sx={{ flexGrow: 1, padding: 2 }}>
-            {titulo}
             <Grid container spacing={2}>
                 {imagenes.map((url, index) => (
                     <Grid

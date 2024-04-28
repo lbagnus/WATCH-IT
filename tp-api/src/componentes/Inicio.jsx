@@ -20,6 +20,7 @@ const Inicio = () => {
   const [imagenesArrayPopulares, setImagenesTrending] = useState([]);
   const [imagenesArrayCines, setImagenesCines] = useState([]);
   const [imagenesArrayActores, setImagenesActores] = useState([]);
+  const [objetoPelicula, setObjetoPelicula] = useState([]);
   //const [imagenesArrayDirectores, setImagenesDirectores] = useState([]);
   
   useEffect(() => {
@@ -41,11 +42,15 @@ const Inicio = () => {
         //setData(datosDirectores.results);
         console.log(datosPopulares.results)
 
+        const objetoPelicula = datosPopulares.results
+        setObjetoPelicula(objetoPelicula)
+
         // Extraer las imágenes de las películas y almacenarlas en el array
         const imagenesArrayPopulares = datosPopulares.results.map(pelicula1 => {
           const urlImagenP = `https://image.tmdb.org/t/p/w500/${pelicula1.poster_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
           return urlImagenP;
         })
+        
         
         setImagenesTrending(imagenesArrayPopulares);
 
@@ -56,7 +61,6 @@ const Inicio = () => {
         setImagenesCines(imagenesArrayCines);
 
         const imagenesArrayActores = datosActores.results.map(actor => {
-          console.log(actor.known_for_department)
           const urlImagenA = `https://image.tmdb.org/t/p/w500/${actor.profile_path}`;
           return urlImagenA;
           
@@ -118,12 +122,12 @@ const Inicio = () => {
    
     
   };
-
+  
   return (
       
    <main className="main-inicio">
       <div className="CarruselPelis">
-        <CarruselAutomatico imagenes = {imagenesArrayPopulares}/>{/*cambiar fotos*/}
+        <CarruselAutomatico imagenes = {imagenesArrayPopulares} />{/*cambiar fotos*/}
       </div>
 
       <div className="botones-inicio">
@@ -149,10 +153,11 @@ const Inicio = () => {
           </Button>
         </Stack>
       </div>
-
+      
       <div className="lista-contenidos">
+        
         <h3 className="tituloListas">Top 10 peliculas del momento</h3>
-        <ListaContenidos className="Lista" imagenes={imagenesArrayPopulares} />
+        <ListaContenidos className="Lista" imagenes={imagenesArrayPopulares} peliObjeto={objetoPelicula}  />
       </div>
  
       <div className="lista-contenidos">

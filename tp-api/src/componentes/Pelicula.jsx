@@ -13,6 +13,8 @@ import director1 from '../imagenes/actores/jdeep-modified.png'
 import director2 from '../imagenes/actores/jdeep-modified.png'
 
 
+
+
 var titulo = "El padrino";
 var puntaje = "4.7";
 var anio = "1972";
@@ -25,16 +27,16 @@ var nombrereparto4 = "Sandra Bullock"
 var nombredirector1 = "Sandra Bullock"
 var nombredirector2 = "Sandra Bullock"
 
-const Pelicula = () => {
+const Pelicula = ({objeto}) => {
   return (
     <div className="portada">
       <Portada
-        title={titulo}
-        puntaje={puntaje}
-        anio={anio}
+        title={objeto.original_title}
+        puntaje={objeto.vote_average}
+        anio={objeto.release_date}
         tipo={tipo}
         imagen={padrino}
-        descripcion={desc_padrino}
+        descripcion={objeto.overview}
         guardadito = <BotonGuardado/>
         estrella = {star}
         puntuacion =  <Rating name="read-only" value={3} readOnly />
