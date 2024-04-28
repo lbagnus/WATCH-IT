@@ -86,34 +86,36 @@ const Inicio = () => {
   
   
   const handleDrama = () =>{
-    <PruebaGeneros id={1}/>
-    navigate('/PruebaGeneros');
+    navigate('/PruebaGeneros', { state: { id: 1 } })
     
   };
 
   const handleAccion = () =>{
-    <PruebaGeneros id={2} />
-    navigate('/PruebaGeneros');
+    navigate('/PruebaGeneros', { state: { id: 2 } })
     
   };
 
   const handleRomance = () =>{
-    navigate('/Drama');
+    navigate('/PruebaGeneros', { state: { id: 3 } })
     
   };
 
   const handleAnimacion = () =>{
-    navigate('/Drama');
+    navigate('/PruebaGeneros', { state: { id: 4 } })
+   
+    
     
   };
 
   const handleTerror = () =>{
-    navigate('/Drama');
+    navigate('/PruebaGeneros', { state: { id: 5 } })
+  
     
   };
 
   const handleSuspenso = () =>{
-    navigate('/Drama');
+    navigate('/PruebaGeneros', { state: { id: 6 } })
+   
     
   };
 
