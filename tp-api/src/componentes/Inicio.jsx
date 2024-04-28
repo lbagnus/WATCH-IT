@@ -9,7 +9,7 @@ import { Await, useNavigate } from 'react-router-dom';
 import numero1 from '../imagenes/peliculas/numero1.png'; //no me lo saquen es para un futuro
 import Pelicula from "./Pelicula";
 import { useState, useEffect } from 'react';
-import PruebaGeneros from "./PruebaGeneros";
+import Generos from "./Generos";
 
 
 //const navigate = useNavigate();
@@ -86,34 +86,36 @@ const Inicio = () => {
   
   
   const handleDrama = () =>{
-    <PruebaGeneros id={1}/>
-    navigate('/PruebaGeneros');
+    navigate('/Generos', { state: { id: 1 } })
     
   };
 
   const handleAccion = () =>{
-    <PruebaGeneros id={2} />
-    navigate('/PruebaGeneros');
+    navigate('/Generos', { state: { id: 2 } })
     
   };
 
   const handleRomance = () =>{
-    navigate('/Drama');
+    navigate('/Generos', { state: { id: 3 } })
     
   };
 
   const handleAnimacion = () =>{
-    navigate('/Drama');
+    navigate('/Generos', { state: { id: 4 } })
+   
+    
     
   };
 
   const handleTerror = () =>{
-    navigate('/Drama');
+    navigate('/Generos', { state: { id: 5 } })
+  
     
   };
 
   const handleSuspenso = () =>{
-    navigate('/Drama');
+    navigate('/Generos', { state: { id: 6 } })
+   
     
   };
 
