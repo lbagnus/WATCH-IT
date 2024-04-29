@@ -17,7 +17,7 @@ function CarruselAutomatico({imagenes}) {
     <Slider className='carrusel' {...settings}>
       {imagenes.map((url, index) => (
         <div key={index} className='imgcontenedorcarrusel'>
-          <img src={url} alt={`Imagen ${index + 1}`} />
+          <img className='imagenCarrusel' src={url} alt={`Imagen ${index + 1}`} />
         </div>
       ))}
     </Slider> // HACER EL CAMBIO EN EL IMPORT DE LAS IMAGENES

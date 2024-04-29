@@ -48,7 +48,7 @@ function ListaContenidos({imagenes ,  peliObjeto}) {
     >
       {imagenes.map((imagen, index) => (
         <SwiperSlide id='SwiperSlideEstilo' spaceBetween={0} key={index} >
-          <img src={imagen} alt={`Slide ${index + 1}`} 
+          <img className='imagenSwiper' src={imagen} alt={`Slide ${index + 1}`}  //el estilo de esta clase esta en listas.css
           onClick={() => handlePelicula(imagen)}/>
          
         </SwiperSlide>

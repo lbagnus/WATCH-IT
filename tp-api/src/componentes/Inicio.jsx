@@ -20,12 +20,13 @@ const Inicio = () => {
   const [imagenesArrayPopulares, setImagenesTrending] = useState([]);
   const [imagenesArrayCines, setImagenesCines] = useState([]);
   const [imagenesArrayActores, setImagenesActores] = useState([]);
+  const [imagenesArrayCarrusel, setImagenesCarrusel] = useState([]);
   const [objetoPelicula, setObjetoPelicula] = useState([]);
   //const [imagenesArrayDirectores, setImagenesDirectores] = useState([]);
   
   useEffect(() => {
     const cargarPeliculasInicio = async () => {
-      try {
+      try { 
         const populares = await fetch('http://api.themoviedb.org/3/movie/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
         const upcoming = await fetch ('https://api.themoviedb.org/3/movie/top_rated?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
         const actores = await fetch ('https://api.themoviedb.org/3/person/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
@@ -51,6 +52,12 @@ const Inicio = () => {
           return urlImagenP;
         })
         
+        const imagenesArrayCarrusel = datosPopulares.results.map(pelicula1 => {
+          const urlImagenC = `https://image.tmdb.org/t/p/w500/${pelicula1.backdrop_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
+          return urlImagenC;
+        })
+
+        setImagenesCarrusel(imagenesArrayCarrusel)
         
         setImagenesTrending(imagenesArrayPopulares);
 
@@ -127,7 +134,7 @@ const Inicio = () => {
       
    <main className="main-inicio">
       <div className="CarruselPelis">
-        <CarruselAutomatico imagenes = {imagenesArrayPopulares} />{/*cambiar fotos*/}
+        <CarruselAutomatico imagenes = {imagenesArrayCarrusel} />{/*cambiar fotos*/}
       </div>
 
       <div className="botones-inicio">
