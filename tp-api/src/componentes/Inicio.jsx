@@ -43,15 +43,15 @@ const Inicio = () => {
         console.log(datosPopulares.results)
 
         const objetoPelicula = datosPopulares.results
-        setData(objetoPelicula)
+        setObjetoPelicula(objetoPelicula)
 
         // Extraer las imágenes de las películas y almacenarlas en el array
         const imagenesArrayPopulares = datosPopulares.results.map(pelicula1 => {
           const urlImagenP = `https://image.tmdb.org/t/p/w500/${pelicula1.poster_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
           return urlImagenP;
         })
-
-             
+        
+        
         setImagenesTrending(imagenesArrayPopulares);
 
         const imagenesArrayCines = datosCines.results.map(pelicula2 => {
@@ -122,9 +122,9 @@ const Inicio = () => {
    
     
   };
-
+  
   return (
-
+      
    <main className="main-inicio">
       <div className="CarruselPelis">
         <CarruselAutomatico imagenes = {imagenesArrayPopulares} />{/*cambiar fotos*/}
@@ -132,7 +132,7 @@ const Inicio = () => {
 
       <div className="botones-inicio">
         <Stack spacing={8} direction="row">
-
+    
           <Button className="boton-genero" variant="outlined" onClick={handleAccion}>
             Acción
           </Button>
@@ -153,11 +153,11 @@ const Inicio = () => {
           </Button>
         </Stack>
       </div>
-
+      
       <div className="lista-contenidos">
         
         <h3 className="tituloListas">Top 10 peliculas del momento</h3>
-        <ListaContenidos className="Lista" imagenes={imagenesArrayPopulares} peliObjeto={objetoPelicula}   />
+        <ListaContenidos className="Lista" imagenes={imagenesArrayPopulares} peliObjeto={objetoPelicula}  />
       </div>
  
       <div className="lista-contenidos">

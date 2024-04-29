@@ -11,19 +11,25 @@ import { useState, useEffect } from 'react';
 
  
 function ListaContenidos({imagenes ,  peliObjeto}) {
+  const navigate = useNavigate();
+  const urlBase = "https://image.tmdb.org/t/p/w500/"
 
   const handlePelicula = (imagenPeli) => {
   console.log('Contenido de peliObjeto:', peliObjeto);
 
   // Utiliza find para buscar la película que coincida con la imagen proporcionada
-  const peliculaCorrespondiente = peliObjeto.find(pelicula =>  pelicula.poster_path.substring(8) === imagenPeli);
+  const peliculaCorrespondiente = peliObjeto.find(pelicula => {
+    const urlCompleta = `${urlBase}${pelicula.poster_path}`;
+    return urlCompleta === imagenPeli;
+});
     
   
   if (peliculaCorrespondiente) {
       // Si se encuentra una película que coincida, renderiza el componente Pelicula
       // Puedes usar el componente Pelicula como desees
       // Por ejemplo, podrías llamar a una función para mostrar la película o realizar alguna acción
-      return <Pelicula objeto={peliculaCorrespondiente} />;
+      navigate('/Pelicula', { state: { objeto: peliculaCorrespondiente } });
+      //return <Pelicula objeto={peliculaCorrespondiente} />;
   } else {
       console.log('No se encontró ninguna película que coincida con la imagen proporcionada.', imagenPeli ,"aca empieza el obejeto");
       return null; // Si no se encuentra, retorna nulo o realiza alguna otra acción

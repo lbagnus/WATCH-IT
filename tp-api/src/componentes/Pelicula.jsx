@@ -1,6 +1,6 @@
 import React from "react";
 import Portada from "./Portada";
-import padrino from "../imagenes/peliculas/el_padrino_poster.jpg";
+import { useLocation } from 'react-router-dom';
 import star from "../imagenes/iconitos/star.png";
 import BotonGuardado from "./BotonGuardado";
 import Rating from '@mui/material/Rating';
@@ -27,15 +27,18 @@ var nombrereparto4 = "Sandra Bullock"
 var nombredirector1 = "Sandra Bullock"
 var nombredirector2 = "Sandra Bullock"
 
-const Pelicula = ({objeto}) => {
+const Pelicula = () => {
+  const location = useLocation();
+  const objeto = location.state?.objeto;
+  console.log('son los objetos',objeto)
   return (
     <div className="portada">
       <Portada
         title={objeto.original_title}
         puntaje={objeto.vote_average}
         anio={objeto.release_date}
-        tipo={tipo}
-        imagen={padrino}
+        tipo={objeto.genres_ids}//ver tema id genero
+        imagen={`https://image.tmdb.org/t/p/w500/${objeto.poster_path}`}
         descripcion={objeto.overview}
         guardadito = <BotonGuardado/>
         estrella = {star}
