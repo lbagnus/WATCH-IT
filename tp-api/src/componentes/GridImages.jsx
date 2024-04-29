@@ -20,12 +20,13 @@ function GridImages({imagenes}) {
                         xl={2} // Seis columnas en pantallas extra grandes
                         key={index}
                     >
-                        <Card>
+                        <Card className="contenedorgridcard">
                             <CardMedia
                                 component="img"
-                                height="200"
+                                height="450"
                                 image={url}
                                 alt={`Imagen ${index + 1}`}
+            
                             />
                         </Card>
                     </Grid>

@@ -4,29 +4,31 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-
 import { Navigation } from 'swiper/modules';
 import Pelicula from './Pelicula';
+import { useState, useEffect } from 'react';
 
-function ListaContenidos({imagenes}, {peliObjeto}) {
-  
+
+ 
+function ListaContenidos({imagenes ,  peliObjeto}) {
 
   const handlePelicula = (imagenPeli) => {
-    console.log('Contenido de peliObjeto:', peliObjeto);
+  console.log('Contenido de peliObjeto:', peliObjeto);
 
-    // Utiliza find para buscar la película que coincida con la imagen proporcionada
-    const peliculaCorrespondiente = peliObjeto.find(pelicula => pelicula.poster_path === imagenPeli);
+  // Utiliza find para buscar la película que coincida con la imagen proporcionada
+  const peliculaCorrespondiente = peliObjeto.find(pelicula =>  pelicula.poster_path.substring(8) === imagenPeli);
     
-    if (peliculaCorrespondiente) {
-        // Si se encuentra una película que coincida, renderiza el componente Pelicula
-        // Puedes usar el componente Pelicula como desees
-        // Por ejemplo, podrías llamar a una función para mostrar la película o realizar alguna acción
-        return <Pelicula objeto={peliculaCorrespondiente} />;
-    } else {
-        console.log('No se encontró ninguna película que coincida con la imagen proporcionada.');
-        return null; // Si no se encuentra, retorna nulo o realiza alguna otra acción
-    }
-};
+  
+  if (peliculaCorrespondiente) {
+      // Si se encuentra una película que coincida, renderiza el componente Pelicula
+      // Puedes usar el componente Pelicula como desees
+      // Por ejemplo, podrías llamar a una función para mostrar la película o realizar alguna acción
+      return <Pelicula objeto={peliculaCorrespondiente} />;
+  } else {
+      console.log('No se encontró ninguna película que coincida con la imagen proporcionada.', imagenPeli ,"aca empieza el obejeto");
+      return null; // Si no se encuentra, retorna nulo o realiza alguna otra acción
+  }
+  }
 
  
   return (

@@ -84,10 +84,10 @@ const Generos = () => {
     }
 }; const genero = obtenerGenero(id)
 
-
+//el estilo de tituloGenero esta en listas
   return (
     <div>
-      <h2> Películas de {genero} </h2>
+      <h2 className='tituloGenero'> Películas de {genero} </h2>
       <GridImages imagenes={imagenesArray} />
     </div>
   );
