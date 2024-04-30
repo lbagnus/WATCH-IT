@@ -4,103 +4,128 @@ import { useLocation } from 'react-router-dom';
 import star from "../imagenes/iconitos/star.png";
 import BotonGuardado from "./BotonGuardado";
 import Rating from '@mui/material/Rating';
-import thor from '../imagenes/peliculas/thor.jpg'
-import reparto1 from '../imagenes/actores/jdeep-modified.png'
-import reparto2 from '../imagenes/actores/jdeep-modified.png'
-import reparto3 from '../imagenes/actores/jdeep-modified.png'
-import reparto4 from '../imagenes/actores/jdeep-modified.png'
-import director1 from '../imagenes/actores/jdeep-modified.png'
-import director2 from '../imagenes/actores/jdeep-modified.png'
+
 import { Await, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-var nombrereparto1 = "Sandra Bullock"
-var nombrereparto2 = "Sandra Bullock"
-var nombrereparto3 = "Sandra Bullock"
-var nombrereparto4 = "Sandra Bullock"
-var nombredirector1 = "Sandra Bullock"
-var nombredirector2 = "Sandra Bullock"
+
 
 
 const Pelicula = () => {
   const location = useLocation();
   const objeto = location.state?.objeto;
-  console.log('son los objetos',objeto)
-  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [arrayGeneros, setGenero] = useState([]);
+  const [arrayObjetoGenero, setObjetoGenero] = useState([]);
+  const [imagenS, setImagenesSimilares] = useState([]);
+  const [perfilActor, setImagenActor] = useState([]);
+  const [perfilDirec, setImagenDir] = useState([]);
+  const [nameActor, setNameAct] = useState([]);
+  const [nameDir, setNameDir] = useState([]);
+  const [arraySimilares, setSimilares] = useState([]);
 
-
-  
+ 
     useEffect(() => {
-        const obtenerGeneros = async () => {
+        const obtenerDatos = async () => {
           try{
-          const generos = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=7d453285a143f326ed0b2747103b04c1&language=en')
-          
+          const generos = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=7d453285a143f326ed0b2747103b04c1&language=es')
+          const similar = await fetch (`https://api.themoviedb.org/3/movie/${objeto.id}/similar?api_key=7d453285a143f326ed0b2747103b04c1&language=es`)
+          const actoresDir = await fetch (`https://api.themoviedb.org/3/movie/${objeto.id}/credits?api_key=7d453285a143f326ed0b2747103b04c1&language=esAND`)
+
+
           const datosGeneros = await generos.json();
-          setData(datosGeneros.results);
+          setData(datosGeneros.genres);
 
-          const arrayGeneros = datosGeneros.results
-          setGenero(arrayGeneros)
+          const datosSimilar = await similar.json();
+          setData(datosSimilar.results)
 
-          return (arrayGeneros)
+          const arraySimilares = datosSimilar.results
+          setSimilares(arraySimilares)
          
+
+          const datosactoresDir = await actoresDir.json();
+          setData(datosactoresDir.result);
+     
+         
+          const arrayObjetoGenero = datosGeneros.genres.map(genero => {
+            const objetoGenero = (genero);
+            return objetoGenero;
+          })
+          setObjetoGenero(arrayObjetoGenero); 
+
+          const imagenS = datosSimilar.results.map(pSimilar =>`https://image.tmdb.org/t/p/w500/${pSimilar.poster_path}`)
+          setImagenesSimilares(imagenS);
+
+          const actores = datosactoresDir.cast;
+          const crew = datosactoresDir.crew;
           
+         const perfilActor = actores.map(actor=> `https://image.tmdb.org/t/p/w500/${actor.profile_path}`)
+         setImagenActor(perfilActor)
+         const perfilDirec = crew.map(director=> `https://image.tmdb.org/t/p/w500/${director.profile_path}`) //known_for_deparment deberia ser solo 'directing'
+         setImagenDir(perfilDirec)
+        
+
+         const nameActor = actores.map(actor=> actor.name)
+         setNameAct(nameActor)
+         const nameDir = crew.map(director=> director.name)
+         setNameDir(nameDir)
+         console.log(crew)
+         
+      
+      // Establecer el estado de los datos
+      setData({ actores, crew });
+      
+
         } catch (error) {
           console.error('Error fetching data:', error);
         } finally {
           setLoading(false);
         }
-      }; obtenerGeneros();
+      }; obtenerDatos();
     }, []);
-    console.log("lista generos:", arrayGeneros)
+   
 
-    const handleGenero = (arrayGeneroObjeto) => {
-        const generoCorrespondiente = arrayGeneros.find(genero => {
-          if (genero.id === arrayGeneroObjeto[0] ){
-            return genero.name
+    const handleGenero = (ids) => {
+      for (const id of ids) {
+          const generoCorrespondiente = arrayObjetoGenero.find(genero => genero.id === id);
+
+          if (generoCorrespondiente) {
+              return generoCorrespondiente.name;
           }
-        }
-        )
-        console.log("este es el genero:", generoCorrespondiente)
-        console.log("este el array del objeto", arrayGeneroObjeto)
-        return (generoCorrespondiente)
-
-      
-    }  
-
+      }
+  };
+  
   
   return (
     <div className="portada">
       <Portada
-        title={objeto.original_title}
+        peliObjetoS1 = {arraySimilares[0]}
+        peliObjetoS2 = {arraySimilares[1]}
+        title={objeto.title}
         puntaje={objeto.vote_average}
         anio={objeto.release_date}
-        tipo={handleGenero(objeto.genres_ids)}//ver tema id genero
+        tipo={handleGenero(objeto.genre_ids)}
         imagen={`https://image.tmdb.org/t/p/w500/${objeto.poster_path}`}
         descripcion={objeto.overview}
         guardadito = <BotonGuardado/>
         estrella = {star}
         puntuacion =  <Rating name="read-only" value={3} readOnly />
-        otraimagen1 = {thor}
-        otraimagen2 = {thor} 
-        reparto1 = {reparto1}
-        reparto2 = {reparto2}
-        reparto3 = {reparto3}
-        reparto4 = {reparto4}
-        director1 = {director1}
-        director2 = {director2}
-        nombredirector1 = {nombredirector1}
-        nombredirector2 = {nombredirector2}
-        nombrereparto1 = {nombrereparto1}
-        nombrereparto2 = {nombrereparto2}
-        nombrereparto3 = {nombrereparto3}
-        nombrereparto4 = {nombrereparto4}
+        otraimagen1 = {imagenS[0]}
+        otraimagen2 = {imagenS[1]} 
+        reparto1 = {perfilActor[0]}
+        reparto2 = {perfilActor[1]}
+        reparto3 = {perfilActor[2]}
+        reparto4 = {perfilActor[3]}
+        director1 = {perfilDirec[0]}
+        director2 = {perfilDirec[11]}
+        nombredirector1 = {nameDir[0]}
+        nombredirector2 = {nameDir[11]}
+        nombrereparto1 = {nameActor[0]}
+        nombrereparto2 = {nameActor[1]}
+        nombrereparto3 = {nameActor[2]}
+        nombrereparto4 = {nameActor[3]}
         /> 
     </div>
   );
 };
 export default Pelicula;
-
-

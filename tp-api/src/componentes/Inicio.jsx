@@ -7,9 +7,8 @@ import CarruselAutomatico from "./Carrusel";
 import ListaContenidos from "./ListaContenidos";
 import { Await, useNavigate } from 'react-router-dom';
 import numero1 from '../imagenes/peliculas/numero1.png'; //no me lo saquen es para un futuro
-import Pelicula from "./Pelicula";
 import { useState, useEffect } from 'react';
-import Generos from "./Generos";
+
 
 
 //const navigate = useNavigate();
@@ -22,6 +21,7 @@ const Inicio = () => {
   const [imagenesArrayActores, setImagenesActores] = useState([]);
   const [imagenesArrayCarrusel, setImagenesCarrusel] = useState([]);
   const [objetoPelicula, setObjetoPelicula] = useState([]);
+  const [objetoPelicula2, setObjetoPelicula2] = useState([]);
   //const [imagenesArrayDirectores, setImagenesDirectores] = useState([]);
   
   useEffect(() => {
@@ -41,10 +41,14 @@ const Inicio = () => {
         setData(datosCines.results);
         setData(datosActores.results);
         //setData(datosDirectores.results);
-        console.log(datosPopulares.results)
+        
 
         const objetoPelicula = datosPopulares.results
         setObjetoPelicula(objetoPelicula)
+
+        const objetoPelicula2 = datosCines.results
+        setObjetoPelicula2(objetoPelicula2)
+
 
         // Extraer las imágenes de las películas y almacenarlas en el array
         const imagenesArrayPopulares = datosPopulares.results.map(pelicula1 => {
@@ -174,7 +178,7 @@ const Inicio = () => {
 
       <div className="lista-contenidos">
         <h3 className="tituloListas">Proximamente en cines</h3>
-          <ListaContenidos imagenes={imagenesArrayCines} />
+          <ListaContenidos imagenes={imagenesArrayCines} peliObjeto={objetoPelicula2}/>
       </div>
 
       {/*<div className="lista-contenidos">

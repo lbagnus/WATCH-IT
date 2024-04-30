@@ -1,7 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { Await, useNavigate } from 'react-router-dom';
 
-const Portada = ({title , puntaje, anio, tipo ,imagen, descripcion, guardadito, estrella, puntuacion, otraimagen1, otraimagen2, reparto1, reparto2, reparto3, reparto4, director1, director2, nombrereparto1, nombrereparto2, nombrereparto3, nombrereparto4, nombredirector1, nombredirector2}) => {
-  return (
+
+
+const Portada = ({peliObjetoS1,peliObjetoS2, title , puntaje, anio, tipo ,imagen, descripcion, guardadito, estrella, puntuacion, otraimagen1, otraimagen2, reparto1, reparto2, reparto3, reparto4, director1, director2, nombrereparto1, nombrereparto2, nombrereparto3, nombrereparto4, nombredirector1, nombredirector2}) => {
+    const navigate = useNavigate();
+    const handlePelicula1 = () => {
+        navigate('/Pelicula', { state: { objeto: peliObjetoS1 } });
+    }
+    const handlePelicula2 = () => {
+        console.log('viajo')
+        navigate('/Pelicula', { state: { objeto: peliObjetoS2 } });
+    }
+  
+    return (
     <div className='pantalla-pelicula'>
         <div className='contenedor0'>
             <div className='Contenedor1'>
@@ -49,12 +61,12 @@ const Portada = ({title , puntaje, anio, tipo ,imagen, descripcion, guardadito, 
                 <h4 className='subtitulo'>Dirección</h4>
                 <div className='contenedores'> 
                     <div className='reparto'>
-                        <img  src={reparto1} alt="imagen1" />
-                        <h5>{nombrereparto1}</h5>
+                        <img  src={director1} alt="imagen1" />
+                        <h5>{nombredirector1}</h5>
                     </div>
                     <div className='reparto'>
-                        <img  src={reparto2} alt="imagen1" />
-                        <h5>{nombrereparto2}</h5>
+                        <img  src={director2} alt="imagen1" />
+                        <h5>{nombredirector2}</h5>
                     </div>
                 </div>
             </div>     
@@ -81,8 +93,8 @@ const Portada = ({title , puntaje, anio, tipo ,imagen, descripcion, guardadito, 
             <div className='contenedorOtrosBuscan'>
                 <h4 className='subtitulo'>Otros también buscan:</h4>
                 <div className='contenedorPeliculasOtras'>
-                    <img className='imagenotra' src={otraimagen1} alt="imagen1" />
-                    <img className='imagenotra' src={otraimagen2} alt="imagen1" />
+                    <img className='imagenotra' src={otraimagen1} alt="imagen1" onClick={handlePelicula1} />
+                    <img className='imagenotra' src={otraimagen2} alt="imagen1" onClick={handlePelicula2}/>
                 </div>
             </div>
         </div>

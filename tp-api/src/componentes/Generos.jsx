@@ -9,9 +9,12 @@ const Generos = () => {
   const [loading, setLoading] = useState(true);
   const [imagenesArray, setImagenesArray] = useState([]);
   const location = useLocation();
+  const [objetoPelicula, setObjetoPelicula] = useState([]);
   const { id } = location.state || {};
 
   useEffect(() => {
+    
+
     const cargarGenero = async () => {
       try {
         // Definir la URL dependiendo del género (id)
@@ -38,6 +41,9 @@ const Generos = () => {
         // Guardar los resultados en el estado
         setData(datos.results);
         console.log(datos.result)
+
+        const objetoPelicula = datos.results
+        setObjetoPelicula(objetoPelicula)
 
         // Extraer las imágenes de las películas
         const imagenesArray = datos.results.map(pelicula => {
@@ -88,7 +94,7 @@ const Generos = () => {
   return (
     <div>
       <h2 className='tituloGenero'> Películas de {genero} </h2>
-      <GridImages imagenes={imagenesArray} />
+      <GridImages imagenes={imagenesArray} peliObjeto={objetoPelicula}   />
     </div>
   );
 };
