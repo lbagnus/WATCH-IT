@@ -22,6 +22,7 @@ const Inicio = () => {
   const [imagenesArrayCarrusel, setImagenesCarrusel] = useState([]);
   const [objetoPelicula, setObjetoPelicula] = useState([]);
   const [objetoPelicula2, setObjetoPelicula2] = useState([]);
+  const [objetoActor ,setObjetoActor] = useState([]);
   //const [imagenesArrayDirectores, setImagenesDirectores] = useState([]);
   
   useEffect(() => {
@@ -40,6 +41,7 @@ const Inicio = () => {
         setData(datosPopulares.results); // Asegúrate de acceder a 'results' que contiene la lista de películas
         setData(datosCines.results);
         setData(datosActores.results);
+        console.log('actores', datosActores.results)
         //setData(datosDirectores.results);
         
 
@@ -48,6 +50,9 @@ const Inicio = () => {
 
         const objetoPelicula2 = datosCines.results
         setObjetoPelicula2(objetoPelicula2)
+
+        const objetoActor = datosActores.results
+        setObjetoActor(objetoActor)
 
 
         // Extraer las imágenes de las películas y almacenarlas en el array
@@ -173,7 +178,7 @@ const Inicio = () => {
  
       <div className="lista-contenidos">
         <h3 className="tituloListas">Actores destacados</h3>
-        <ListaContenidos imagenes={imagenesArrayActores} />
+        <ListaContenidos imagenes={imagenesArrayActores}  peliObjeto={objetoActor}/>
       </div>
 
       <div className="lista-contenidos">

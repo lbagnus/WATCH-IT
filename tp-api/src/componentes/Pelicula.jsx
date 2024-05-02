@@ -58,6 +58,7 @@ const Pelicula = () => {
 
           const actores = datosactoresDir.cast;
           const crew = datosactoresDir.crew;
+
           
          const perfilActor = actores.map(actor=> `https://image.tmdb.org/t/p/w500/${actor.profile_path}`)
          setImagenActor(perfilActor)

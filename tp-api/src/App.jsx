@@ -72,6 +72,7 @@ function App() {
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
                 <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
                 <Route path='/Generos' element= {<Generos/>}/>
+                <Route path='/Actor' element= {<Actor/>}/>
 
 
                 {/* Ruta para Actor */}
