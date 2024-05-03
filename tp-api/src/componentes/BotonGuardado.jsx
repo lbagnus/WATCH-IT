@@ -13,6 +13,7 @@ import { Await, useNavigate } from 'react-router-dom';
 import PorVer from "./PorVer";
 import { Link } from 'react-router-dom';
 
+
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -68,7 +69,15 @@ export default function CustomizedMenus({pelicula}) {
   };
   
   const handlePorVer = () =>{
-    <PorVer objeto = {pelicula} />
+    navigate("/PorVer", { state: { objeto: pelicula } });
+    
+  }
+  const handlePreferidas = () =>{
+    navigate("/Preferidas", { state: { objeto: pelicula } });
+    
+  }
+  const handleVistas = () =>{
+    navigate("/Vistas", { state: { objeto: pelicula } });
     
   }
 
@@ -100,7 +109,7 @@ export default function CustomizedMenus({pelicula}) {
           Agregar a lista:
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
-        <MenuItem  onClick={handleClose} disableRipple >
+        <MenuItem  onClick={handlePreferidas} disableRipple >
           <FavoriteBorder />
           Preferidas
           <AddCircleOutline id="botonagregar"/>
@@ -110,7 +119,7 @@ export default function CustomizedMenus({pelicula}) {
           Por ver
           <AddCircleOutline id="botonagregar2"/>
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleVistas} disableRipple>
           <RemoveRedEye />
           Vistas
           <AddCircleOutline id="botonagregar3"/>

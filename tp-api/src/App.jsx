@@ -10,8 +10,9 @@ import OlvidoSenha from './componentes/OlvidoSenha';
 import Actor from './componentes/Actor';
 import Generos from './componentes/Generos';
 import Buscador from './componentes/Buscador';
-import PorVer  from './componentes/PorVer';
-
+import  PorVer  from './componentes/PorVer';
+import Preferidas from './componentes/Preferidas';
+import Vistas from './componentes/Vistas'
 
 
 import './App.css';
@@ -76,6 +77,8 @@ function App() {
                 <Route path='/Actor' element= {<Actor/>}/>
                 <Route path='/Buscador' element= {<Buscador/>}/>
                 <Route path='/PorVer' element= {<PorVer/>}/>
+                <Route path='/Preferidas' element= {<Preferidas/>}/>
+                <Route path='/Vistas' element= {<Vistas/>}/>
 
 
                 {/* Ruta para Actor */}
