@@ -9,7 +9,7 @@ import Update from '@mui/icons-material/Update';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import RemoveRedEye from '@mui/icons-material/RemoveRedEye';
 import BookmarkBorder from '@mui/icons-material/BookmarkBorder';
-import { withTheme } from "@emotion/react";
+import { Await, useNavigate } from 'react-router-dom';
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -52,7 +52,10 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function CustomizedMenus() {
+export default function CustomizedMenus({pelicula}) {
+  console.log("esto es la pelicula", pelicula)
+  const navigate = useNavigate();
+  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -61,6 +64,11 @@ export default function CustomizedMenus() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
+  const handlePorVer = () =>{
+    //navigate("/PorVer", { state: { objeto: pelicula } });
+    
+  }
 
   return (
     <div>
@@ -95,7 +103,7 @@ export default function CustomizedMenus() {
           Preferidas
           <AddCircleOutline id="botonagregar"/>
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handlePorVer} disableRipple>
           <Update />
           Por ver
           <AddCircleOutline id="botonagregar2"/>

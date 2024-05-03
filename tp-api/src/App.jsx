@@ -5,12 +5,12 @@ import Footer from './componentes/Footer';
 import Inicio from './componentes/Inicio';
 import Login from './componentes/Login';
 import Pelicula from './componentes/Pelicula';
-import MisListas from './componentes/MisListas';
 import Registro from './componentes/Registro';
 import OlvidoSenha from './componentes/OlvidoSenha';
 import Actor from './componentes/Actor';
 import Generos from './componentes/Generos';
 import Buscador from './componentes/Buscador';
+import  PorVer  from './componentes/PorVer';
 
 
 
@@ -72,17 +72,16 @@ function App() {
                 
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
-                <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
                 <Route path='/Generos' element= {<Generos/>}/>
                 <Route path='/Actor' element= {<Actor/>}/>
                 <Route path='/Buscador' element= {<Buscador/>}/>
+                <Route path='/PorVer' element= {<PorVer/>}/>
 
 
                 {/* Ruta para Actor */}
                
                
 
-                <Route path="/MisListas" element={isLoggedIn ? <MisListas /> : <Login onLogin={handleLogin} />} />
             </Routes>
             
             {/* Muestra Footer solo si no está en la página de Login */}
