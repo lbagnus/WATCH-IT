@@ -6,6 +6,10 @@ import CardMedia from "@mui/material/CardMedia";
 import { useNavigate } from 'react-router-dom';
 
 function GridImages({imagenes ,  peliObjeto}) {
+  console.log("Propiedades recibidas:");
+  console.log("imagenes:", imagenes);
+  console.log("peliObjeto:", peliObjeto);
+
   const navigate = useNavigate();
   const urlBase = "https://image.tmdb.org/t/p/w500/"
 

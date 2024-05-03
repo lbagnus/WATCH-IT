@@ -11,6 +11,7 @@ import RemoveRedEye from '@mui/icons-material/RemoveRedEye';
 import BookmarkBorder from '@mui/icons-material/BookmarkBorder';
 import { Await, useNavigate } from 'react-router-dom';
 
+
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -66,7 +67,15 @@ export default function CustomizedMenus({pelicula}) {
   };
   
   const handlePorVer = () =>{
-    //navigate("/PorVer", { state: { objeto: pelicula } });
+    navigate("/PorVer", { state: { objeto: pelicula } });
+    
+  }
+  const handlePreferidas = () =>{
+    navigate("/Preferidas", { state: { objeto: pelicula } });
+    
+  }
+  const handleVistas = () =>{
+    navigate("/Vistas", { state: { objeto: pelicula } });
     
   }
 
@@ -98,7 +107,7 @@ export default function CustomizedMenus({pelicula}) {
           Agregar a lista:
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
-        <MenuItem  onClick={handleClose} disableRipple >
+        <MenuItem  onClick={handlePreferidas} disableRipple >
           <FavoriteBorder />
           Preferidas
           <AddCircleOutline id="botonagregar"/>
@@ -108,7 +117,7 @@ export default function CustomizedMenus({pelicula}) {
           Por ver
           <AddCircleOutline id="botonagregar2"/>
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleVistas} disableRipple>
           <RemoveRedEye />
           Vistas
           <AddCircleOutline id="botonagregar3"/>
