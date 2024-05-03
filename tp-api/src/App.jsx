@@ -10,7 +10,7 @@ import OlvidoSenha from './componentes/OlvidoSenha';
 import Actor from './componentes/Actor';
 import Generos from './componentes/Generos';
 import Buscador from './componentes/Buscador';
-import  PorVer  from './componentes/PorVer';
+import PorVer  from './componentes/PorVer';
 
 
 

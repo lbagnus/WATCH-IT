@@ -131,3 +131,4 @@ const Pelicula = () => {
   );
 };
 export default Pelicula;
+

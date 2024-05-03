@@ -10,6 +10,8 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import RemoveRedEye from '@mui/icons-material/RemoveRedEye';
 import BookmarkBorder from '@mui/icons-material/BookmarkBorder';
 import { Await, useNavigate } from 'react-router-dom';
+import PorVer from "./PorVer";
+import { Link } from 'react-router-dom';
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -66,7 +68,7 @@ export default function CustomizedMenus({pelicula}) {
   };
   
   const handlePorVer = () =>{
-    //navigate("/PorVer", { state: { objeto: pelicula } });
+    <PorVer objeto = {pelicula} />
     
   }
 

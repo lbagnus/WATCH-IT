@@ -42,7 +42,7 @@ function GridImages({imagenes ,  peliObjeto}) {
         
         <Box sx={{ flexGrow: 1, padding: 2 }}>
             <Grid container spacing={2}>
-                {imagenes.map((url, index) => (
+                {imagenes && imagenes.map((url, index) => (
                     <Grid
                         item
                         xs={12} // Una columna en pantallas extra pequeñas
