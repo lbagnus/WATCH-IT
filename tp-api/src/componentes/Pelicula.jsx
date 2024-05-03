@@ -109,7 +109,7 @@ const Pelicula = () => {
         tipo={handleGenero(objeto.genre_ids)}
         imagen={`https://image.tmdb.org/t/p/w500/${objeto.poster_path}`}
         descripcion={objeto.overview}
-        guardadito = <BotonGuardado/>
+        guardadito = <BotonGuardado pelicula = {objeto}/>
         estrella = {star}
         puntuacion =  <Rating name="read-only" value={3} readOnly />
         otraimagen1 = {imagenS[0]}

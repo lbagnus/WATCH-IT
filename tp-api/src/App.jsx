@@ -5,15 +5,20 @@ import Footer from './componentes/Footer';
 import Inicio from './componentes/Inicio';
 import Login from './componentes/Login';
 import Pelicula from './componentes/Pelicula';
-import MisListas from './componentes/MisListas';
 import Registro from './componentes/Registro';
 import OlvidoSenha from './componentes/OlvidoSenha';
 import Actor from './componentes/Actor';
 import Generos from './componentes/Generos';
 import Buscador from './componentes/Buscador';
+<<<<<<< HEAD
 import Director from './componentes/Director';
 import CondicionesDeUso from './componentes/CondicionesDeUso';
 import Contactenos from './componentes/Contactenos';
+=======
+import  PorVer  from './componentes/PorVer';
+import Preferidas from './componentes/Preferidas';
+import Vistas from './componentes/Vistas'
+>>>>>>> 57e4e34ee5859b571e7064297af615e9c0dacefa
 
 
 import './App.css';
@@ -76,18 +81,19 @@ function App() {
                 
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
-                <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
                 <Route path='/Generos' element= {<Generos/>}/>
                 <Route path='/Actor' element= {<Actor/>}/>
                 <Route path='/Director' element= {<Director/>}/>
                 <Route path='/Buscador' element= {<Buscador/>}/>
+                <Route path='/PorVer' element= {<PorVer/>}/>
+                <Route path='/Preferidas' element= {<Preferidas/>}/>
+                <Route path='/Vistas' element= {<Vistas/>}/>
 
 
                 {/* Ruta para Footer */}
                 <Route path='/CondicionesDeUso' element= {<CondicionesDeUso/>}/>
                 <Route path='/Contactenos' element= {<Contactenos/>}/>
 
-                <Route path="/MisListas" element={isLoggedIn ? <MisListas /> : <Login onLogin={handleLogin} />} />
             </Routes>
             
             {/* Muestra Footer solo si no está en la página de Login */}
