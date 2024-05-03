@@ -1,13 +1,17 @@
 import React from "react";
-import imagen1 from '../imagenes/logos/imagen1.jpg';
-import imagen3 from '../imagenes/logos/Imagen3.jpg';
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import CarruselAutomatico from "./Carrusel";
 import ListaContenidos from "./ListaContenidos";
 import { Await, useNavigate } from 'react-router-dom';
-import numero1 from '../imagenes/peliculas/numero1.png'; //no me lo saquen es para un futuro
 import { useState, useEffect } from 'react';
+import carrusel1 from '../imagenes/peliculas/carruselposta1.jpg'
+import carrusel2 from '../imagenes/peliculas/carrusel2.jpg'
+import carrusel3 from '../imagenes/peliculas/carrusel3.jpg'
+import carrusel4 from '../imagenes/peliculas/carrusel4.jpg'
+import carrusel5 from '../imagenes/peliculas/carrusel5.jpg'
+import carrusel6 from '../imagenes/peliculas/carrusel6.jpg'
+import carrusel7 from '../imagenes/peliculas/carrusel7.jpg'
 
 
 
@@ -19,7 +23,7 @@ const Inicio = () => {
   const [imagenesArrayPopulares, setImagenesTrending] = useState([]);
   const [imagenesArrayCines, setImagenesCines] = useState([]);
   const [imagenesArrayActores, setImagenesActores] = useState([]);
-  const [imagenesArrayCarrusel, setImagenesCarrusel] = useState([]);
+  const imagenesArrayCarrusel =[carrusel1, carrusel2, carrusel3, carrusel4, carrusel5, carrusel6, carrusel7];
   const [objetoPelicula, setObjetoPelicula] = useState([]);
   const [objetoPelicula2, setObjetoPelicula2] = useState([]);
   const [objetoActor ,setObjetoActor] = useState([]);
@@ -61,12 +65,14 @@ const Inicio = () => {
           return urlImagenP;
         })
         
-        const imagenesArrayCarrusel = datosPopulares.results.map(pelicula1 => {
+        /*const imagenesArrayCarrusel = datosPopulares.results.map(pelicula1 => {
           const urlImagenC = `https://image.tmdb.org/t/p/w500/${pelicula1.backdrop_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
           return urlImagenC;
         })
-
+          
         setImagenesCarrusel(imagenesArrayCarrusel)
+
+         const imagenesArrayCarrusel = [carrusel1, carrusel2]*/
         
         setImagenesTrending(imagenesArrayPopulares);
 

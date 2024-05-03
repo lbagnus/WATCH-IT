@@ -21,6 +21,7 @@ import './css/carrusel.css';
 import './css/pelicula.css';
 import './css/Login.css';
 import './css/listas.css';
+import './css/actor.css'
 
 
 

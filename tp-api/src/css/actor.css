@@ -1,0 +1,44 @@
+.actor-portada{
+display: flex;
+flex-direction: column;}
+
+.contenedor1 h1{
+    display: flex;
+    justify-content: left; /* Alinea los elementos al inicio y al final */
+    margin: 3vh 0; /* Espacio entre el título y los datos */
+    font-size: 5vh;
+}
+
+.fotoperfil {
+    width: 20%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);;
+}
+
+.contenedor2{
+    width: 100%;
+}
+
+.contenedor1{
+    background-color: rgba(134, 171, 207, 0.3);
+    margin: 0 15vh;
+    padding:0vh 5vh;
+    border-radius: 10px;
+    box-shadow: 2px 3px 3px black;
+    padding-bottom: 5vh;
+}
+
+.contenedorfotos{
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedorfotos p{
+    font-size:2.5vh ;
+    margin-left: 3vh;
+}
+
+#otralista{
+    margin-left: 15vh;
+}

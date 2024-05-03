@@ -1,5 +1,6 @@
 import React from 'react';
 import { Await, useNavigate } from 'react-router-dom';
+import nofoto from '../imagenes/peliculas/nofoto.jpeg'
 
 
 
@@ -12,7 +13,15 @@ const Portada = ({peliObjetoS1,peliObjetoS2, title , puntaje, anio, tipo ,imagen
         console.log('viajo')
         navigate('/Pelicula', { state: { objeto: peliObjetoS2 } });
     }
-  
+    /*
+    otraimagen1 = <verImagen imagen= {otraimagen1}/>
+    otraimagen2 = <verImagen imagen= {otraimagen2}/> 
+    reparto1= <verImagen imagen= {reparto1}/> 
+    reparto2= <verImagen imagen= {reparto2}/> 
+    reparto3= <verImagen imagen= {reparto3}/> 
+    reparto4= <verImagen imagen= {reparto4}/> 
+    director1=<verImagen imagen= {director1}/>
+    director2 = <verImagen imagen= {director2}/>*/
     return (
     <div className='pantalla-pelicula'>
         <div className='contenedor0'>
