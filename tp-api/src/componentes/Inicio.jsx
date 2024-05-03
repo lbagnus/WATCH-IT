@@ -30,6 +30,7 @@ const Inicio = () => {
   //const [imagenesArrayDirectores, setImagenesDirectores] = useState([]);
   
   useEffect(() => {
+    window.scrollTo(0, 0); // Esta línea hace que la página se desplace hacia arriba cuando se cargas
     const cargarPeliculasInicio = async () => {
       try { 
         const populares = await fetch('http://api.themoviedb.org/3/movie/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');

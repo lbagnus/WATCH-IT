@@ -26,6 +26,7 @@ const Pelicula = () => {
 
  
     useEffect(() => {
+      window.scrollTo(0, 0); // Esta línea hace que la página se desplace hacia arriba cuando se carga
         const obtenerDatos = async () => {
           try{
           const generos = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=7d453285a143f326ed0b2747103b04c1&language=es')
