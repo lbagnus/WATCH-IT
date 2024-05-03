@@ -25,6 +25,7 @@ function Login({onLogin}) {
         // Obtener los datos de inicio de sesión ingresados por el usuario
         const email = data.get('email');
         const password = data.get('password');
+      
         
         // Recuperar los datos guardados en local storage
         const savedData = localStorage.getItem('userData');

@@ -10,26 +10,32 @@ function GridImages({imagenes ,  peliObjeto}) {
   const urlBase = "https://image.tmdb.org/t/p/w500/"
 
   const handlePelicula = (imagenPeli) => {
-  console.log('Contenido de peliObjeto:', peliObjeto);
+    console.log("Contenido de peliObjeto:", peliObjeto);
 
-  // Utiliza find para buscar la película que coincida con la imagen proporcionada
-  const peliculaCorrespondiente = peliObjeto.find(pelicula => {
-    const urlCompleta = `${urlBase}${pelicula.poster_path}`;
-    return urlCompleta === imagenPeli;
-});
-    
-  
-  if (peliculaCorrespondiente) {
-      // Si se encuentra una película que coincida, renderiza el componente Pelicula
-      // Puedes usar el componente Pelicula como desees
-      // Por ejemplo, podrías llamar a una función para mostrar la película o realizar alguna acción
-      navigate('/Pelicula', { state: { objeto: peliculaCorrespondiente } });
-      //return <Pelicula objeto={peliculaCorrespondiente} />;
-  } else {
-      console.log('No se encontró ninguna película que coincida con la imagen proporcionada.', imagenPeli ,"aca empieza el obejeto");
-      return null; // Si no se encuentra, retorna nulo o realiza alguna otra acción
-  }
-  }
+    const peliculaCorrespondiente = peliObjeto.find((pelicula) => {
+      const urlCompleta = `${urlBase}${pelicula.poster_path}`;
+      return urlCompleta === imagenPeli;
+    });
+
+    if (peliculaCorrespondiente) {
+      navigate("/Pelicula", { state: { objeto: peliculaCorrespondiente } });
+    } else {
+      const ActorCorrespondiente = peliObjeto.find((Actor) => {
+        const urlCompleta = `${urlBase}${Actor.profile_path}`;
+        return urlCompleta === imagenPeli;
+      });
+      if (ActorCorrespondiente) {
+        navigate("/Actor", { state: { objeto: ActorCorrespondiente } });
+      } else {
+        console.log(
+          "No se encontró ninguna película que coincida con la imagen proporcionada.",
+          imagenPeli,
+          "aca empieza el obejeto"
+        );
+        return null; // Si no se encuentra, retorna nulo o realiza alguna otra acción}
+      }
+    }
+  };
 
    
     return (

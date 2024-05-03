@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import Loginpic from "../imagenes/logos/logo negro2.png";
 
+
 const defaultTheme = createTheme();
 
 function Registro() {
@@ -29,6 +30,7 @@ function Registro() {
         const lastName = data.get('lastName');
         const email = data.get('email');
         const password = data.get('password');
+       
         
         // Guardar los datos en local storage
         const userData = {

@@ -10,6 +10,7 @@ import Registro from './componentes/Registro';
 import OlvidoSenha from './componentes/OlvidoSenha';
 import Actor from './componentes/Actor';
 import Generos from './componentes/Generos';
+import Buscador from './componentes/Buscador';
 
 
 
@@ -74,6 +75,7 @@ function App() {
                 <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
                 <Route path='/Generos' element= {<Generos/>}/>
                 <Route path='/Actor' element= {<Actor/>}/>
+                <Route path='/Buscador' element= {<Buscador/>}/>
 
 
                 {/* Ruta para Actor */}
