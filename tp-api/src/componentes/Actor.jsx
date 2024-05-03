@@ -30,10 +30,12 @@ const Actor = () => {
       window.scrollTo(0, 0); // Esta línea hace que la página se desplace hacia arriba cuando se carga
       const obtenerDatos = async () => {
         try {
+          if(objeto.known_for_department=== "Directing"){
           const actor = await fetch(`https://api.themoviedb.org/3/person/${objeto.id}?api_key=7d453285a143f326ed0b2747103b04c1&language=es`);
           const datosActor = await actor.json();
           setActor(datosActor);
           console.log("Esto es:", datosActor);
+        }
         } catch (error) {
           console.error('Error fetching data:', error);
         } finally {

@@ -27,6 +27,7 @@ function ListaContenidos({ imagenes, peliObjeto }) {
         const urlCompleta = `${urlBase}${Actor.profile_path}`;
         return urlCompleta === imagenPeli;
       });
+      
       if (ActorCorrespondiente) {
         navigate("/Actor", { state: { objeto: ActorCorrespondiente } });
       } else {
@@ -36,7 +37,7 @@ function ListaContenidos({ imagenes, peliObjeto }) {
           "aca empieza el obejeto"
         );
         return null; // Si no se encuentra, retorna nulo o realiza alguna otra acción}
-      }
+      } 
     }
   };
 

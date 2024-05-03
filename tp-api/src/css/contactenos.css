@@ -1,0 +1,47 @@
+/* contactenos.css */
+.contacto {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  .contacto h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #0d1e2e; /* Color de texto */
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centrar el texto */
+  }
+  
+  .contacto p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #0d1e2e; /* Color de texto */
+  }
+  
+  .contacto ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contacto ul li {
+    margin-bottom: 10px;
+  }
+  
+  .contacto strong {
+    font-weight: bold; /* Texto en negrita */
+  }
+  
+  .contacto a {
+    color: #007bff; /* Color de enlace */
+    text-decoration: none;
+  }
+  
+  .contacto a:hover {
+    text-decoration: underline; /* Subrayar enlace al pasar el ratón */
+  }
+  

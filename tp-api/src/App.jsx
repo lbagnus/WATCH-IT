@@ -11,7 +11,9 @@ import OlvidoSenha from './componentes/OlvidoSenha';
 import Actor from './componentes/Actor';
 import Generos from './componentes/Generos';
 import Buscador from './componentes/Buscador';
-
+import Director from './componentes/Director';
+import CondicionesDeUso from './componentes/CondicionesDeUso';
+import Contactenos from './componentes/Contactenos';
 
 
 import './App.css';
@@ -23,6 +25,8 @@ import './css/pelicula.css';
 import './css/Login.css';
 import './css/listas.css';
 import './css/actor.css'
+import './css/condiciones.css'
+import './css/contactenos.css'
 
 
 
@@ -75,12 +79,13 @@ function App() {
                 <Route path="/MisListas" element={isLoggedIn ? <Login onLogin={handleLogin} /> : <MisListas />} />
                 <Route path='/Generos' element= {<Generos/>}/>
                 <Route path='/Actor' element= {<Actor/>}/>
+                <Route path='/Director' element= {<Director/>}/>
                 <Route path='/Buscador' element= {<Buscador/>}/>
 
 
-                {/* Ruta para Actor */}
-               
-               
+                {/* Ruta para Footer */}
+                <Route path='/CondicionesDeUso' element= {<CondicionesDeUso/>}/>
+                <Route path='/Contactenos' element= {<Contactenos/>}/>
 
                 <Route path="/MisListas" element={isLoggedIn ? <MisListas /> : <Login onLogin={handleLogin} />} />
             </Routes>

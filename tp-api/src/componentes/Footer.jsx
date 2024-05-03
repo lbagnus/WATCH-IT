@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import CondicionesUso from "./CondicionesDeUso";
+import Contactenos from "./Contactenos";
 
 const Footer = () => {
   return (
@@ -14,10 +16,10 @@ const Footer = () => {
       <div clasName="datos">
         <ul className="nav">
           <li>
-            <Link to="/Actor">Contactenos</Link>
+            <Link to="/Contactenos">Contactenos</Link>
           </li>
           <li>
-            <Link to="/Pelicula">Condiciones de uso</Link>
+            <Link to="/CondicionesDeUso">Condiciones de uso</Link>
           </li>
           <li>
             <a href="https://www.google.com/search?hl=es&q=que+es+una+politica+de+privacidad&lr=">Politica de privacidad</a>
