@@ -10,15 +10,14 @@ import OlvidoSenha from './componentes/OlvidoSenha';
 import Actor from './componentes/Actor';
 import Generos from './componentes/Generos';
 import Buscador from './componentes/Buscador';
-<<<<<<< HEAD
 import Director from './componentes/Director';
 import CondicionesDeUso from './componentes/CondicionesDeUso';
 import Contactenos from './componentes/Contactenos';
-=======
 import  PorVer  from './componentes/PorVer';
 import Preferidas from './componentes/Preferidas';
-import Vistas from './componentes/Vistas'
->>>>>>> 57e4e34ee5859b571e7064297af615e9c0dacefa
+import Vistas from './componentes/Vistas';
+import CodigoRecupero from './componentes/CodigoRecupero';
+
 
 
 import './App.css';
@@ -78,6 +77,7 @@ function App() {
                 <Route path="/Login" element={!isLoggedIn ? <Login onLogin={handleLogin} /> : <Inicio />} />
                 <Route path="/Registro" element={<Registro/>} />
                 <Route path="/Olvido" element={<OlvidoSenha/>} />
+                <Route path='/CodigoRecupero' element= {<CodigoRecupero/>}/>
                 
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />

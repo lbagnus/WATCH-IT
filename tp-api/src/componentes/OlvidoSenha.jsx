@@ -9,6 +9,13 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import CodigoRecupero from "./CodigoRecupero";
+
+function generateToken() {
+    return Math.random().toString(36).substring(2, 15);
+}
 
 function ForgotPassword() {
     const navigate = useNavigate();
@@ -22,16 +29,55 @@ function ForgotPassword() {
     const handleLogin = () => {
         navigate('/Login');
     };
-
+    const verificarToken = (token) => {
+        // Verifica si los datos del usuario están cargados
+        if (Data && Data.recoveryToken) {
+            // Compara el token ingresado con el token de recuperación guardado
+            return token === Data.recoveryToken;
+        }
+        // Si no hay datos de usuario o recoveryToken, el token no es válido
+        return false;
+    };
     const handleSubmit = (event) => {
         event.preventDefault();
+    };
+    const handleEnviar = ()=>{
+       
+        const userData = localStorage.getItem('userData')
+        if (userData) {
+            // Convierte la cadena JSON a un objeto JavaScript
+            const Data = JSON.parse(userData);
+        
+            // Accede a la propiedad `email` del objeto JavaScript `userData`
+            const emailU = Data.email;
 
+        
+        if (emailU == email) {
+            // Genera un token de recuperación
+            const recoveryToken = generateToken();
+
+            // Asocia el token con el usuario en la base de datos
+            Data.recoveryToken = recoveryToken;
+            
+            // Guarda `Data` actualizado en `localStorage`
+            localStorage.setItem('userData', JSON.stringify(Data));
+
+           
+            toast.success(`Token de recuperación: ${recoveryToken}`, {
+            position: "top-left" });
+            <CodigoRecupero verificarToken={verificarToken(recoveryToken)}/>
+
+        console.log(`Correo electrónico enviado a ${email} con instrucciones para restablecer la contraseña.`);
+       console.log(`Enlace de recuperación: https://example.com/reset?token=${recoveryToken}`);
+
+        // Muestra un mensaje de confirmación al usuario
+    } else {
+        // Si el correo no está en la base de datos
+        setMessage('El correo electrónico ingresado no está registrado.');
+    }
         // Aquí puedes agregar la lógica para enviar la solicitud de restablecimiento de contraseña
         // Por ejemplo, puedes enviar un correo electrónico al servidor para restablecer la contraseña
-
-        // Mostrar un mensaje de confirmación
-        setMessage('Si el correo electrónico está registrado, se enviarán instrucciones para restablecer la contraseña.');
-    };
+    }};
 
     return (
         <Container component="main" maxWidth="xs">
@@ -84,6 +130,7 @@ function ForgotPassword() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                         id="BotonLogIn"
+                        onClick={handleEnviar}
                     >
                         Enviar instrucciones
                     </Button>
