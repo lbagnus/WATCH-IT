@@ -26,7 +26,7 @@ function ListaContenidos({ imagenes, peliObjeto }) {
       const ActorCorrespondiente = peliObjeto.find((Actor) => {
         const urlCompleta = `${urlBase}${Actor.profile_path}`;
         return urlCompleta === imagenPeli;
-      });
+    });
       console.log("HOLAAAAAAAAAAAAAAAAAAAAAAAAAA", ActorCorrespondiente)
       if (ActorCorrespondiente && ActorCorrespondiente.known_for_department === "Acting") {
         navigate("/Actor", { state: { objeto: ActorCorrespondiente } });
@@ -52,9 +52,10 @@ function ListaContenidos({ imagenes, peliObjeto }) {
       navigation={{ clickable: true }}
       onSlideChange={() => console.log("Cambio de slide")}
       onSwiper={(swiper) => console.log(swiper)}
-    >
+    > 
       {imagenes.map((imagen, index) => (
         <SwiperSlide id="SwiperSlideEstilo" spaceBetween={0} key={index}>
+
           <img
             className="imagenSwiper"
             src={imagen}

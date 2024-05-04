@@ -6,25 +6,45 @@ import { useLocation } from 'react-router-dom';
 
 
 const filtrarPeliculasPorIdioma = (idioma, peliculas) => {
-    console.log("LLEGEU")
-    if(idioma === "Ingles"){
-        console.log("LLEGUE3")
-       const resultado = peliculas.map(pelicula => { 
+    console.log("idioma es", idioma)
+       const resultadoIngles = peliculas.map(pelicula => { 
         console.log("esto el OBJETO PELICULA", pelicula)
          if (pelicula.original_language === "en") {
            return pelicula;
          } })
-         return(resultado);
-     }else if (idioma === "Español"){
-        const resultado = peliculas.map(pelicula => { 
+  
+        const resultadoEspañol = peliculas.map(pelicula => { 
             console.log("esto el OBJETO PELICULA", pelicula)
          if (pelicula.original_language === "es") {
            return pelicula;
          } })
-         return(resultado);
+
+         const resultadoAntigua = peliculas.map(pelicula => {         
+          if (pelicula.release_date.substring(0, 4) < 2000) {
+            return pelicula;
+          } })
+          const resultadoReciente = peliculas.map(pelicula => {         
+            if (pelicula.release_date.substring(0, 4) >= 2000) {
+              return pelicula;
+            } })
+
+         if(idioma === "Ingles"){
+          console.log("LLEGUE")
+          return(resultadoIngles)
+         }else if(idioma === "Español"){
+          console.log("ANTIGUA", resultadoAntigua)
+          return (resultadoEspañol)
+        }else if(idioma === "Antigua"){
+          return (resultadoAntigua)
+        }else if(idioma === "Reciente"){
+          return (resultadoReciente)
+        }else if(idioma === "None"){
+          return (peliculas)
+
      }else {
       return [idioma, peliculas];
     }
+    
   };
 
   const BotonFiltro = () => {
@@ -34,11 +54,13 @@ const filtrarPeliculasPorIdioma = (idioma, peliculas) => {
     const genero = searchParams.get("genero");
     const peliculas = JSON.parse(decodeURIComponent(searchParams.get("peliculas")));
     const [imagenesResultados, setImagenes] = useState([]);
-  
+    console.log("IDIOMAAAAA", idioma)
+    var filtro = filtrarPeliculasPorIdioma(idioma, peliculas);
     useEffect(() => {
-      const resultado = filtrarPeliculasPorIdioma(idioma, peliculas);
+      
+      const resultado = filtro
       console.log("RESULTADO", resultado);
-      const imagenesResultados = resultado
+      var imagenesResultados = resultado
         .filter(pelicula1 => pelicula1) // Filtra los elementos undefined
         .map(pelicula1 => {
           // Verificar si poster_path está definido antes de acceder a él
@@ -47,13 +69,14 @@ const filtrarPeliculasPorIdioma = (idioma, peliculas) => {
         });
       setImagenes(imagenesResultados);
       console.log("estas son las imagenes", imagenesResultados);
-    }, []);
+    }, [filtro, genero]);
   
     // El return debe estar fuera del useEffect
     return (
       <div>
-        <h2 className='tituloGenero'> Películas de {genero} </h2>
-        <GridImages imagenes={imagenesResultados} peliObjeto={peliculas} />
+        <h2 className='tituloGenero'> Películas de {genero} </h2> {/*ver como traer genero*/}
+       
+        <GridImages imagenes={imagenesResultados} peliObjeto={peliculas} genero = {genero} />
       </div>
     );
   };

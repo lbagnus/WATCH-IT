@@ -114,27 +114,9 @@ const Generos = () => {
   return (
     <div>
       <div className='contenedorFiltro'>
-        <h2 className='tituloGenero'> Películas de {genero} </h2>
-        <div>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel htmlFor="grouped-select">Idioma</InputLabel>
-            <Select defaultValue="" id="grouped-select" label="Grouping">
-              <MenuItem value=""></MenuItem>
-              <MenuItem onClick={() => handleIdiomaClick("Ingles", genero, objetoPelicula)} value={1}>Ingles</MenuItem>
-              <MenuItem onClick={() => handleIdiomaClick("Español", genero, objetoPelicula)} value={1}>Español</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel htmlFor="grouped-select">Antigûedad</InputLabel>
-            <Select defaultValue="" id="grouped-select" label="Grouping">
-              <MenuItem value=""></MenuItem>
-              <MenuItem value={1}>Antigûa</MenuItem>
-              <MenuItem value={2}>Reciente</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
+        <h2 className='tituloGenero'> Películas de {genero} </h2>                       
       </div>
-      <GridImages imagenes={imagenesArray} peliObjeto={objetoPelicula} />
+      <GridImages imagenes={imagenesArray} peliObjeto={objetoPelicula} genero = {genero}/>
     </div>
   );
 };
