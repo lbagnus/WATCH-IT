@@ -1,0 +1,30 @@
+.condiciones-uso {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  .condiciones-uso h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #0d1e2e; /* Color de texto */
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centrar el texto */
+  }
+  
+  .condiciones-uso p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #0d1e2e; /* Color de texto */
+  }
+  
+  .condiciones-uso p.subtitle {
+    font-size: 20px; /* Tamaño de fuente para subtítulos */
+    font-weight: bold; /* Texto en negrita */
+  }
+  
+  

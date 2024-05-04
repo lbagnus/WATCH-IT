@@ -31,7 +31,7 @@ const Pelicula = () => {
           try{
           const generos = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=7d453285a143f326ed0b2747103b04c1&language=es')
           const similar = await fetch (`https://api.themoviedb.org/3/movie/${objeto.id}/similar?api_key=7d453285a143f326ed0b2747103b04c1&language=es`)
-          const actoresDir = await fetch (`https://api.themoviedb.org/3/movie/${objeto.id}/credits?api_key=7d453285a143f326ed0b2747103b04c1&language=esAND`)
+          const actoresDir = await fetch (`https://api.themoviedb.org/3/movie/${objeto.id}/credits?api_key=7d453285a143f326ed0b2747103b04c1&language=es`)
 
 
           const datosGeneros = await generos.json();

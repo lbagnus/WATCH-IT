@@ -13,6 +13,10 @@ import Buscador from './componentes/Buscador';
 import  PorVer  from './componentes/PorVer';
 import Preferidas from './componentes/Preferidas';
 import Vistas from './componentes/Vistas'
+import Director from './componentes/Director'
+import CondicionesDeUso from './componentes/CondicionesDeUso';
+import Contactenos from './componentes/Contactenos';
+import BotonFiltro from './componentes/BotonFiltro'
 
 
 import './App.css';
@@ -24,6 +28,8 @@ import './css/pelicula.css';
 import './css/Login.css';
 import './css/listas.css';
 import './css/actor.css'
+import './css/condiciones.css'
+import './css/contactenos.css'
 
 
 
@@ -75,15 +81,17 @@ function App() {
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
                 <Route path='/Generos' element= {<Generos/>}/>
                 <Route path='/Actor' element= {<Actor/>}/>
+                <Route path='/Director' element= {<Director/>}/>
                 <Route path='/Buscador' element= {<Buscador/>}/>
                 <Route path='/PorVer' element= {<PorVer/>}/>
                 <Route path='/Preferidas' element= {<Preferidas/>}/>
                 <Route path='/Vistas' element= {<Vistas/>}/>
+                <Route path='/BotonFiltro' element= {<BotonFiltro/>}/>
 
 
-                {/* Ruta para Actor */}
-               
-               
+                {/* Ruta para Footer */}
+                <Route path='/CondicionesDeUso' element= {<CondicionesDeUso/>}/>
+                <Route path='/Contactenos' element= {<Contactenos/>}/>
 
             </Routes>
             
