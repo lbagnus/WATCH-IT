@@ -11,17 +11,15 @@ import Actor from './componentes/Actor';
 import Generos from './componentes/Generos';
 import Buscador from './componentes/Buscador';
 import Director from './componentes/Director';
-import CondicionesDeUso from './componentes/CondicionesDeUso';
-import Contactenos from './componentes/Contactenos';
 import  PorVer  from './componentes/PorVer';
 import Preferidas from './componentes/Preferidas';
 import Vistas from './componentes/Vistas';
 import CodigoRecupero from './componentes/CodigoRecupero';
 //import Director from './componentes/Director'
-//import CondicionesDeUso from './componentes/CondicionesDeUso';
-//import Contactenos from './componentes/Contactenos';
+import CondicionesDeUso from './componentes/CondicionesDeUso';
+import Contactenos from './componentes/Contactenos';
 import BotonFiltro from './componentes/BotonFiltro'
-import Drawer from './componentes/Drawer';
+
 
 import './App.css';
 import './css/header.css';
@@ -79,8 +77,8 @@ function App() {
                 {/* Ruta para Login */}
                 <Route path="/Login" element={!isLoggedIn ? <Login onLogin={handleLogin} /> : <Inicio />} />
                 <Route path="/Registro" element={<Registro/>} />
-               <Route path="/Olvido" element={<OlvidoSenha/>} />
-                 <Route path='/CodigoRecupero' element= {<CodigoRecupero/>}/>
+                <Route path="/Olvido" element={<OlvidoSenha/>} />
+                <Route path='/CodigoRecupero' element= {<CodigoRecupero/>}/>
                 
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
