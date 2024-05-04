@@ -83,14 +83,14 @@ const Inicio = () => {
         })
         setImagenesActores(imagenesArrayActores);
 
-       const imagenesArrayDirectores = datosDirectores.results.map(director => {
+       /*const imagenesArrayDirectores = datosDirectores.results.map(director => {
         if(director.known_for_department === "Directing"){
           const urlImagenP = `https://image.tmdb.org/t/p/w500/${director.profile_path}`;
           return urlImagenP;
         }
           
         })
-        setImagenesDirectores(imagenesArrayDirectores);
+        setImagenesDirectores(imagenesArrayDirectores);*/
         
 
       } catch (error) {
@@ -189,11 +189,11 @@ const Inicio = () => {
           <ListaContenidos imagenes={imagenesArrayCines} peliObjeto={objetoPelicula2}/>
       </div>
 
-      <div className="lista-contenidos">
+      {/*<div className="lista-contenidos">
         <h3 className="tituloListas">Directores del momento</h3>
        <ListaContenidos imagenes={imagenesArrayDirectores}/>
         
-      </div>
+      </div>*/}
 
     </main>
   );

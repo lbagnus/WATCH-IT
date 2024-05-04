@@ -17,7 +17,10 @@ import  PorVer  from './componentes/PorVer';
 import Preferidas from './componentes/Preferidas';
 import Vistas from './componentes/Vistas';
 import CodigoRecupero from './componentes/CodigoRecupero';
-
+import Director from './componentes/Director'
+import CondicionesDeUso from './componentes/CondicionesDeUso';
+import Contactenos from './componentes/Contactenos';
+import BotonFiltro from './componentes/BotonFiltro'
 
 
 import './App.css';
@@ -88,6 +91,7 @@ function App() {
                 <Route path='/PorVer' element= {<PorVer/>}/>
                 <Route path='/Preferidas' element= {<Preferidas/>}/>
                 <Route path='/Vistas' element= {<Vistas/>}/>
+                <Route path='/BotonFiltro' element= {<BotonFiltro/>}/>
 
 
                 {/* Ruta para Footer */}

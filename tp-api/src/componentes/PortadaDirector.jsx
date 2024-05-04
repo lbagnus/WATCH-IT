@@ -1,7 +1,7 @@
 import React from 'react';
 import ListaContenidos from '../componentes/ListaContenidos';
 
-const PortadaDirectorComponent = ({ title, perfil, bibliografia, similares, objetoSimilares }) => {
+const PortadaDirector = ({ title, perfil, bibliografia }) => {
   if (!bibliografia) {
     bibliografia = <p>No hay biografía disponible</p>;
   }
@@ -18,10 +18,10 @@ const PortadaDirectorComponent = ({ title, perfil, bibliografia, similares, obje
 
       <div className="lista-contenidos" id="otralista">
         <h3 className="tituloListas">Peliculas que ha dirigido</h3>
-        <ListaContenidos imagenes={similares} peliObjeto={objetoSimilares} />
+
       </div>
     </div>
   )
 }
 
-export default PortadaDirectorComponent;
+export default PortadaDirector;

@@ -27,12 +27,14 @@ function ListaContenidos({ imagenes, peliObjeto }) {
         const urlCompleta = `${urlBase}${Actor.profile_path}`;
         return urlCompleta === imagenPeli;
       });
-      
-      if (ActorCorrespondiente) {
+      console.log("HOLAAAAAAAAAAAAAAAAAAAAAAAAAA", ActorCorrespondiente)
+      if (ActorCorrespondiente && ActorCorrespondiente.known_for_department === "Acting") {
         navigate("/Actor", { state: { objeto: ActorCorrespondiente } });
-      } else {
+      } else if (ActorCorrespondiente.known_for_department === "Directing") {
+        navigate("/Director", { state: { objeto: ActorCorrespondiente } });
+      }else{
         console.log(
-          "No se encontró ninguna película que coincida con la imagen proporcionada.",
+          "No se encontró información que coincida con la imagen proporcionada.",
           imagenPeli,
           "aca empieza el obejeto"
         );
