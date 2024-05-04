@@ -12,19 +12,20 @@ import { useEffect, useState } from 'react';
 const Header = ({ isLoggedIn, handleLogout}) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
+  const [nombre, setNombre] = useState(null);
 
-  useEffect(() => {
-    // Recuperar los datos de local storage
+  const handleName = () => {
     const savedData = localStorage.getItem('userData');
-        
-    // Verificar si hay datos en local storage
     if (savedData) {
-        // Convertir el JSON a objeto JavaScript
-        const parsedData = JSON.parse(savedData);
-        
-        // Actualizar el estado con los datos recuperados
-        setUserData(parsedData);
+        const data = JSON.parse(savedData);
+        return data.firstName; // Retorna el nombre
     }
+    return null; // Si no hay datos, retorna null
+};
+  useEffect(() => {
+  const nombre = handleName();
+  setNombre(nombre);
+  
 }, []); // El efecto se ejecuta una sola vez cuando el componente se monta
 
   
@@ -105,7 +106,7 @@ const Header = ({ isLoggedIn, handleLogout}) => {
           <div>
             {isLoggedIn ? (
               <div className="perfil">
-              <h4>ver esto</h4>
+              <h4>{nombre}</h4>
                 <BotonPerfil handleLogout={handleLogout} />
               </div>
             ) : (

@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { TextField, Button, Box, Container, Typography } from "@mui/material";
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function CodigoRecupero({ verificarToken }) {
+
+
+function CodigoRecupero() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const tokenReal = location.state?.tokenReal;
     const [token, setToken] = useState('');
     const [mensaje, setMensaje] = useState('');
 
@@ -10,6 +17,16 @@ function CodigoRecupero({ verificarToken }) {
         setToken(event.target.value);
     };
 
+    const verificarToken = (token) => {
+        console.log(tokenReal)
+        // Verifica si los datos del usuario están cargados
+       if (tokenReal == token) {
+            // Compara el token ingresado con el token de recuperación guardado
+            return tokenReal == token;
+      }
+        // Si no hay datos de usuario o recoveryToken, el token no es válido
+          return false;
+    };
     // Maneja el envío del token
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -18,7 +35,8 @@ function CodigoRecupero({ verificarToken }) {
         
         // Establece el mensaje basado en si el token es válido o no
         if (esValido) {
-            setMensaje('El token es válido. Ahora puedes proceder con la recuperación de la contraseña.');
+            navigate('/NuevaSenha')
+
         } else {
             setMensaje('El token es inválido. Inténtalo de nuevo.');
         }
