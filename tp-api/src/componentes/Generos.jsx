@@ -58,7 +58,9 @@ const Generos = () => {
         setObjetoPelicula(objetoPelicula);
 
         // Extraer las imágenes de las películas
-        const imagenesArray = datos.results.map(pelicula => {
+        const imagenesArray = datos.results
+        .filter(pelicula => pelicula.poster_path !== null) 
+        .map(pelicula => {
           // Verificar que poster_path existe antes de formar la URL de la imagen
           if (pelicula.poster_path) {
             return `https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`;
