@@ -90,7 +90,7 @@ function App() {
                 <Route path='/Preferidas' element= {<Preferidas/>}/>
                 <Route path='/Vistas' element= {<Vistas/>}/>
                 <Route path='/BotonFiltro' element= {<BotonFiltro/>}/>
-                 {/* <Route path='/Drawer' element= {<Drawer/>}/>*/}
+                {/*<Route path='/Drawer' element= {<Drawer/>}/>*/}
 
                 {/* Ruta para Footer */}
                 <Route path='/CondicionesDeUso' element= {<CondicionesDeUso/>}/>

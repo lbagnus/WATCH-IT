@@ -59,29 +59,33 @@ const Inicio = () => {
         const objetoActor = datosActores.results
         setObjetoActor(objetoActor)
 
+// Extraer las imágenes de las películas populares y almacenarlas en el array
+const imagenesArrayPopulares = datosPopulares.results
+  .filter(pelicula1 => pelicula1.poster_path !== null) // Filtra las películas que tienen poster_path
+  .map(pelicula1 => {
+    const urlImagenP = `https://image.tmdb.org/t/p/w500/${pelicula1.poster_path}`;
+    return urlImagenP;
+  });
+setImagenesTrending(imagenesArrayPopulares);
 
-        // Extraer las imágenes de las películas y almacenarlas en el array
-        const imagenesArrayPopulares = datosPopulares.results.map(pelicula1 => {
-          const urlImagenP = `https://image.tmdb.org/t/p/w500/${pelicula1.poster_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
-          return urlImagenP;
-        })
-        
-    
-        
-        setImagenesTrending(imagenesArrayPopulares);
+// Extraer las imágenes de las películas en cines y almacenarlas en el array
+const imagenesArrayCines = datosCines.results
+  .filter(pelicula2 => pelicula2.poster_path !== null) // Filtra las películas que tienen poster_path
+  .map(pelicula2 => {
+    const urlImagenU = `https://image.tmdb.org/t/p/w500/${pelicula2.poster_path}`;
+    return urlImagenU;
+  });
+setImagenesCines(imagenesArrayCines);
 
-        const imagenesArrayCines = datosCines.results.map(pelicula2 => {
-          const urlImagenU = `https://image.tmdb.org/t/p/w500/${pelicula2.poster_path}`;
-          return urlImagenU;
-        })
-        setImagenesCines(imagenesArrayCines);
+// Extraer las imágenes de los actores y almacenarlas en el array
+const imagenesArrayActores = datosActores.results
+  .filter(actor => actor.profile_path !== null) // Filtra los actores que tienen profile_path
+  .map(actor => {
+    const urlImagenA = `https://image.tmdb.org/t/p/w500/${actor.profile_path}`;
+    return urlImagenA;
+  });
+setImagenesActores(imagenesArrayActores);
 
-        const imagenesArrayActores = datosActores.results.map(actor => {
-          const urlImagenA = `https://image.tmdb.org/t/p/w500/${actor.profile_path}`;
-          return urlImagenA;
-          
-        })
-        setImagenesActores(imagenesArrayActores);
 
        /*const imagenesArrayDirectores = datosDirectores.results.map(director => {
         if(director.known_for_department === "Directing"){

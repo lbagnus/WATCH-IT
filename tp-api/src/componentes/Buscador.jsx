@@ -29,7 +29,9 @@ const Buscador = () => {
       
         
 
-        const arrayDatosBuscados = datosBuscador.results.map((dato) => {
+        const arrayDatosBuscados = datosBuscador.results
+        .filter(dato => dato.poster_path !== null || dato.profile_path !== null) 
+        .map((dato) => {
           if (dato.poster_path) {
               return `https://image.tmdb.org/t/p/w500/${dato.poster_path}`;
           } else if (dato.profile_path) {
