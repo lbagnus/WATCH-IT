@@ -57,27 +57,51 @@ function GridImages({imagenes ,  peliObjeto, genero}) {
   };
    
     return (
-      <div>
-          <div>
-          <FormControl id="filtroboton" sx={{ m: 1, minWidth: 120, }}>
-            <InputLabel id="grouped-select" htmlFor="grouped-select" sx={{ outlinecolor: 'white', backgroundcolor: 'white'}}>Idioma</InputLabel> {/*el estilo va a estar en listas.css*/}
-            <Select defaultValue=""  label="Grouping">
-              <MenuItem value=""></MenuItem>
-              <MenuItem onClick={() => handleIdiomaClick("None", genero,  peliObjeto)} value={1}>None</MenuItem>
-              <MenuItem onClick={() => handleIdiomaClick("Ingles", genero,  peliObjeto)} value={1}>Ingles</MenuItem>
-              <MenuItem onClick={() => handleIdiomaClick("Español", genero,  peliObjeto)} value={1}>Español</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="grouped-select" htmlFor="grouped-select" sx={{ color: 'white' }}>Antigûedad</InputLabel>
-            <Select defaultValue=""  label="Grouping">
-              <MenuItem value=""></MenuItem>
-              <MenuItem onClick={() => handleIdiomaClick("None", genero,  peliObjeto)} value={1}>None</MenuItem>
-              <MenuItem onClick={() => handleIdiomaClick("Antigua", genero,  peliObjeto)} value={1}>Antigûa</MenuItem>
-              <MenuItem onClick={() => handleIdiomaClick("Reciente", genero,  peliObjeto)} value={1}>Reciente</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
+<div>
+<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+  <FormControl id="filtroboton" sx={{ m: 1, minWidth: 130, border: 'solid 2px white !important' }}>
+    <InputLabel id="grouped-select" htmlFor="grouped-select" >Idioma</InputLabel>
+    <Select
+      defaultValue=""
+      label="Grouping"
+      sx={{
+        '& .MuiSelect-icon': {
+          color: 'white',
+        },
+      }}
+    >
+      <MenuItem value=""></MenuItem>
+      <MenuItem onClick={() => handleIdiomaClick("None", genero, peliObjeto)} value={1}>None</MenuItem>
+      <MenuItem onClick={() => handleIdiomaClick("Ingles", genero, peliObjeto)} value={1}>Ingles</MenuItem>
+      <MenuItem onClick={() => handleIdiomaClick("Español", genero, peliObjeto)} value={1}>Español</MenuItem>
+    </Select>
+  </FormControl>
+  <FormControl sx={{ m: 1, minWidth: 130, border: 'solid 2px white !important' }}>
+    <InputLabel id="grouped-select" htmlFor="grouped-select" sx={{ color: 'white' }}>Antiguedad</InputLabel>
+    <Select
+      defaultValue=""
+      label="Grouping"
+      sx={{
+        '& .MuiSelect-icon': {
+          color: 'white',
+        },
+      }}
+    >
+      <MenuItem value=""></MenuItem>
+      <MenuItem onClick={() => handleIdiomaClick("None", genero, peliObjeto)} value={1}>None</MenuItem>
+      <MenuItem onClick={() => handleIdiomaClick("Antigua", genero, peliObjeto)} value={1}>Antigûa</MenuItem>
+      <MenuItem onClick={() => handleIdiomaClick("Reciente", genero, peliObjeto)} value={1}>Reciente</MenuItem>
+    </Select>
+  </FormControl>
+</div>
+
+
+
+
+
+
+
+
             <Box sx={{ flexGrow: 1, padding: 2 }}>
                 <Grid container spacing={2}>
                     {imagenes && imagenes.map((url, index) => (
