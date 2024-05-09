@@ -1,9 +1,11 @@
 .carrusel{
   width: 100%;
-  height: 80vh; /* Altura del carrusel */
+  height: auto; /* Altura del carrusel */
   position: relative;
   overflow: hidden;
 }
+
+
 
 .slide {
   width: 100%;

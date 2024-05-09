@@ -12,7 +12,7 @@ import carrusel4 from '../imagenes/peliculas/carrusel4.jpg'
 import carrusel5 from '../imagenes/peliculas/carrusel5.jpg'
 import carrusel6 from '../imagenes/peliculas/carrusel6.jpg'
 import carrusel7 from '../imagenes/peliculas/carrusel7.jpg'
-
+import { Grid } from '@mui/material';
 
 
 //const navigate = useNavigate();
@@ -154,27 +154,38 @@ setImagenesActores(imagenesArrayActores);
       </div>
 
       <div className="botones-inicio">
-        <Stack spacing={8} direction="row">
-    
-          <Button className="boton-genero" variant="outlined" onClick={handleAccion}>
-            Acción
-          </Button>
-          <Button className="boton-genero" variant="outlined" onClick={handleRomance}>
-            Romance
-          </Button>
-          <Button className="boton-genero" variant="outlined" onClick={handleAnimacion}>
-            Animación
-          </Button>
-          <Button className="boton-genero" variant="outlined" onClick={handleTerror}>
-            Terror
-          </Button>
-          <Button className="boton-genero" variant="outlined" onClick={handleDrama}>
-            Drama
-          </Button>
-          <Button className="boton-genero" variant="outlined" onClick={handleSuspenso}>
-            Suspenso
-          </Button>
-        </Stack>
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item xs={4} sm={4} md={4} lg={2} xl={2}>
+            <Button className="boton-genero" variant="outlined" onClick={handleAccion}>
+              Acción
+            </Button>
+          </Grid>
+          <Grid item xs={4} sm={4} md={4} lg={2} xl={2}>
+            <Button className="boton-genero" variant="outlined" onClick={handleRomance}>
+              Romance
+            </Button>
+          </Grid>
+          <Grid item xs={4} sm={4} md={4} lg={2} xl={2}>
+            <Button className="boton-genero" variant="outlined" onClick={handleAnimacion}>
+              Animación
+            </Button>
+          </Grid>
+          <Grid item xs={4} sm={4} md={4} lg={2} xl={2}>
+            <Button className="boton-genero" variant="outlined" onClick={handleTerror}>
+              Terror
+            </Button>
+          </Grid>
+          <Grid item xs={4} sm={4} md={4} lg={2} xl={2}>
+            <Button className="boton-genero" variant="outlined" onClick={handleDrama}>
+              Drama
+            </Button>
+          </Grid>
+          <Grid item xs={4} sm={4} md={4} lg={2} xl={2}>
+            <Button className="boton-genero" variant="outlined" onClick={handleSuspenso}>
+              Suspenso
+            </Button>
+          </Grid>
+        </Grid>
       </div>
       
       <div className="lista-contenidos">

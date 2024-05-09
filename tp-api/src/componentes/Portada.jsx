@@ -1,7 +1,7 @@
 import React from 'react';
 import { Await, useNavigate } from 'react-router-dom';
 import nofoto from '../imagenes/peliculas/nofoto.jpeg'
-
+import { useMediaQuery } from '@mui/material';
 
 
 const Portada = ({peliObjetoS1,peliObjetoS2, title , puntaje, anio, tipo ,imagen, descripcion, guardadito, estrella, puntuacion, otraimagen1, otraimagen2, reparto1, reparto2, reparto3, reparto4, director1, director2, nombrereparto1, nombrereparto2, nombrereparto3, nombrereparto4, nombredirector1, nombredirector2}) => {
@@ -13,36 +13,53 @@ const Portada = ({peliObjetoS1,peliObjetoS2, title , puntaje, anio, tipo ,imagen
         console.log('viajo')
         navigate('/Pelicula', { state: { objeto: peliObjetoS2 } });
     }
-    /*
-    otraimagen1 = <verImagen imagen= {otraimagen1}/>
-    otraimagen2 = <verImagen imagen= {otraimagen2}/> 
-    reparto1= <verImagen imagen= {reparto1}/> 
-    reparto2= <verImagen imagen= {reparto2}/> 
-    reparto3= <verImagen imagen= {reparto3}/> 
-    reparto4= <verImagen imagen= {reparto4}/> 
-    director1=<verImagen imagen= {director1}/>
-    director2 = <verImagen imagen= {director2}/>*/
+    const isTablet = useMediaQuery('(max-width:1025px)');
+    
     return (
     <div className='pantalla-pelicula'>
         <div className='contenedor0'>
-            <div className='Contenedor1'>
-                <h1>{title}</h1>
-                <div className='datos-pelicula'>
-                    <div>{guardadito}</div>
-                    <img className='estrellita' src={estrella}  alt='img' />
-                    <p>{puntaje}</p>
-                    <div  className='rayita'></div>
-                    <p>{anio}</p>
-                    <div  className='rayita'></div>
-                    <p>{tipo}</p>
+            {isTablet && 
+            <div>
+                <div className='contenedor2'>
+                    <img className='imagen-pelicula' src={imagen} alt="imagen1" />
+                    <div className='Contenedor1'>
+                    <h1>{title}</h1>
+                    <div className='botonguardadito'>{guardadito}</div>
+                    <div className='datos-pelicula'>
+                        <img className='estrellita' src={estrella}  alt='img' />
+                        <p>{puntaje}</p>
+                        <div  className='rayita'></div>
+                        <p>{anio}</p>
+                        <div  className='rayita'></div>
+                        <p>{tipo}</p>
+                    </div>
+                </div> 
+                    <div className='desc'>
+                    <p>{descripcion}</p>
+                    </div>
                 </div>
-            </div>   
-            <div className='contenedor2'>
-                <img className='imagen-pelicula' src={imagen} alt="imagen1" />
-                <div className='desc'>
-                <p>{descripcion}</p>
+            </div>}
+            {!isTablet && 
+            <div>
+                <div className='Contenedor1'>
+                    <h1>{title}</h1>
+                    <div className='datos-pelicula'>
+                        <div className='botonguardadito'>{guardadito}</div>
+                        <img className='estrellita' src={estrella}  alt='img' />
+                        <p>{puntaje}</p>
+                        <div  className='rayita'></div>
+                        <p>{anio}</p>
+                        <div  className='rayita'></div>
+                        <p>{tipo}</p>
+                    </div>
                 </div>
-            </div>
+                <div className='contenedor2'>
+                    <img className='imagen-pelicula' src={imagen} alt="imagen1" />
+                    <div className='desc'>
+                    <p>{descripcion}</p>
+                    </div>
+                </div>
+            </div>}
         </div>
         <div className='contenedorRepartoDirector'>
             <div className='contenedorReparto' >

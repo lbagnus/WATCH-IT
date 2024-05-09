@@ -16,10 +16,6 @@ const PortadaDirector = ({ title, perfil, bibliografia }) => {
         </div>
       </div>
 
-      <div className="lista-contenidos" id="otralista">
-        <h3 className="tituloListas">Peliculas que ha dirigido</h3>
-
-      </div>
     </div>
   )
 }

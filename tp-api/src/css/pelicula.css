@@ -35,7 +35,7 @@
   .rayita {
     width: 3px;
     height: 2vh;
-    background-color: black;
+    background-color: white;
     margin: 0 5px;
   }
   .contenedor0{
@@ -109,11 +109,10 @@
     margin-right:0 ;
   }
 
-  .contenedorReseñasyotrosbuscan{
-    margin: 3vh 25vh;
-  }
+  
 
   .contenedorReseñasyotrosbuscan{
+    margin: 3vh 25vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -197,3 +196,112 @@
     flex-direction: column;
     align-items: center;
   }
+
+
+  /*ESTILOS RESPONSIVE*/
+
+  @media (max-width: 1025px)  {
+    .contenedor0{
+      background-color: rgba(134, 171, 207, 0.3);
+      margin: 0 5vh;
+      padding:0vh 2vh;
+      border-radius: 10px;
+      box-shadow: 2px 3px 3px black;
+      display: flex;
+      align-items: center;
+    }
+    .Contenedor1{
+      display: flex;
+      flex-direction: column;
+      align-items:flex-start;
+      justify-content: space-between;
+      /*background-color:  rgba(134, 171, 207, 0.3);*/
+    }
+    .Contenedor1 h1{
+      display: flex;
+      justify-content: right; /* Alinea los elementos al inicio y al final */
+      align-items: flex-start; /* Alinea los elementos en la parte superior */
+      margin: 3vh 0; /* Espacio entre el título y los datos */
+      font-size: 2.5vh!important;
+    }
+    #demo-customized-button{
+      background-color: #C38EB4;
+      color: black;
+      text-decoration: none;
+      width: 100% !important;
+      font-size:  80%;
+      float: right;
+    }
+    #botonbookmark{
+      width: 100%;
+    }
+    .Contenedor1 .datos-pelicula {
+      display: flex;
+      justify-content:left;
+      margin: 3vh 0;
+      font-size: 10%;
+
+    }
+    .datos-pelicula p {
+      margin: 0;
+      font-size: 2vh;
+      font-family: 'jost', sans-serif;;
+    }
+    .contenedor2{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 3vh;
+      align-items: center;
+      
+    }
+    
+    .imagen-pelicula {
+      width: 80%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 5px 5px 5px rgb(0, 0, 0);
+      margin-top: 5%;
+    }
+    .contenedorRepartoDirector{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin:0 5vh ;
+    }
+    .reparto img{
+      width: 100%;
+      
+    }
+    .contenedores{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .reparto{
+      display: flex;
+      flex-direction: column;
+      justify-content:  center;
+     margin-right: 2%;
+    }
+
+    .contenedorReseñasyotrosbuscan{
+      margin: 0 5vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .reseña{
+      margin-left: 0;
+      background-color:  rgba(195, 142, 180, 0.8);
+      border-radius: 5px 10px ;
+      width: 100%;
+      margin-bottom: 2vh;
+      box-shadow: 3px 1px 1px 1px rgb(0, 0, 0);
+      color: black;
+      padding-bottom: 5px;
+    }
+  }
+  
+ 
+  
+  

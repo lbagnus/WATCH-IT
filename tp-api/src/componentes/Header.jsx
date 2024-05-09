@@ -56,7 +56,7 @@ const Header = ({ isLoggedIn, handleLogout }) => {
     };
   });
 
-  const isMobile = useMediaQuery('(max-width:700px)'); // Verificar si es un dispositivo móvil
+  const isMobile = useMediaQuery('(max-width:880px)'); // Verificar si es un dispositivo móvil
 
   return (
     <div className="contenedor-header">

@@ -42,3 +42,38 @@ flex-direction: column;}
 #otralista{
     margin-left: 15vh;
 }
+
+@media (max-width: 1025px){
+  .contenedor1{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(134, 171, 207, 0.3);
+    margin: 0 3vh;
+    padding:0vh 5vh;
+    border-radius: 10px;
+    box-shadow: 2px 3px 3px black;
+    padding-bottom: 5vh;
+    
+}
+.contenedor1 h1{
+    display: flex;
+    justify-content: left; /* Alinea los elementos al inicio y al final */
+    margin: 3vh 0; /* Espacio entre el título y los datos */
+    font-size: 3vh;
+}
+.contenedorfotos{
+    display: flex;
+    flex-direction: column;
+}
+.fotoperfil {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);;
+}
+#otralista{
+    margin-left: 3vh;
+}
+
+
+}
