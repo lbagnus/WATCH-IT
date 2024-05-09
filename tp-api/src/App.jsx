@@ -19,7 +19,7 @@ import CodigoRecupero from './componentes/CodigoRecupero';
 import CondicionesDeUso from './componentes/CondicionesDeUso';
 import Contactenos from './componentes/Contactenos';
 import BotonFiltro from './componentes/BotonFiltro'
-
+import  Drawer from './componentes/Drawer';
 
 import './App.css';
 import './css/header.css';
@@ -90,7 +90,7 @@ function App() {
                 <Route path='/Preferidas' element= {<Preferidas/>}/>
                 <Route path='/Vistas' element= {<Vistas/>}/>
                 <Route path='/BotonFiltro' element= {<BotonFiltro/>}/>
-                {/*<Route path='/Drawer' element= {<Drawer/>}/>*/}
+                {<Route path='/Drawer' element= {<Drawer/>}/>}
 
                 {/* Ruta para Footer */}
                 <Route path='/CondicionesDeUso' element= {<CondicionesDeUso/>}/>

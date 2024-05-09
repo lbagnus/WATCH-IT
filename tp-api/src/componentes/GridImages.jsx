@@ -59,8 +59,8 @@ function GridImages({imagenes ,  peliObjeto, genero}) {
     return (
       <div>
           <div>
-          <FormControl id="filtroboton" sx={{ m: 1, minWidth: 120, outlinecolor: 'white'}}>
-            <InputLabel id="grouped-select" htmlFor="grouped-select" sx={{ outlinecolor: 'white' }}>Idioma</InputLabel> {/*el estilo va a estar en listas.css*/}
+          <FormControl id="filtroboton" sx={{ m: 1, minWidth: 120, }}>
+            <InputLabel id="grouped-select" htmlFor="grouped-select" sx={{ outlinecolor: 'white', backgroundcolor: 'white'}}>Idioma</InputLabel> {/*el estilo va a estar en listas.css*/}
             <Select defaultValue=""  label="Grouping">
               <MenuItem value=""></MenuItem>
               <MenuItem onClick={() => handleIdiomaClick("None", genero,  peliObjeto)} value={1}>None</MenuItem>

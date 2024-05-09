@@ -55,6 +55,7 @@ export default function BotonPerfil({handleLogout}) {
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
+            
             '& .MuiAvatar-root': {
               width: 32,
               height: 32,
@@ -70,13 +71,12 @@ export default function BotonPerfil({handleLogout}) {
               width: 10,
               height: 10,
               bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
+              transform: 'translateY(-50%) rotate(15deg)',
+              zIndex: 1000,
             },
           },
         }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        
       >
         <MenuItem  onClick={handleClose}>
           <Avatar /> My account

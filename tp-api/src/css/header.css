@@ -2,6 +2,7 @@
   height: 9vh;
   float: left;
 }
+
 .contenedormenu {
 overflow: hidden; /* para contener el navbar en su lugar */
 display: flex;
@@ -100,6 +101,76 @@ background-color: #26425A; /* color de fondo al pasar el ratón */
 }
 
 
+
+
+/*aca va lo responsive*/
 #mainDrawer{
   background-color: #0D1E2E;
+}
+.logo-header-responsive{
+  width: 40%;
+  float: left;
+  margin-left:25%;
+  
+}
+
+.contenedor-header{
+  background-color: #0D1E2E;
+}
+#buscado-responsive{
+  z-index: 999;
+  float:right;
+  padding: 8px; /* espacio interior */
+  border: none; /* quitar borde */
+  border-radius: 5px; /* borde redondeado */
+  background-color: rgba(134, 171, 207, 0.5);
+  color:white;
+  box-shadow: 1PX 1PX 1px 1PX #26425A;
+  height: 100%;
+  margin: 1%;
+}
+
+.contenedorheaderresponsive{
+  display: flex;
+  flex-direction: row;
+  margin: 0 5%;
+  justify-content: space-between;
+}
+.listas-responsive{
+  display: flex ;
+  flex-direction: column;
+}
+
+.itemresponsive{
+  text-decoration: none;
+  color: white;
+  font-weight:400;
+  font-size: 3vh;
+  margin-left: 15%;
+  margin-bottom: 8%;
+}
+
+.css-121u1r5-MuiDrawer-docked{
+  width: 0;
+}
+
+.botonLogin-responsive{
+  float: right;
+  border-color: #e1cbd7;
+  background-color: #0D1E2E;
+  margin-right: 0;
+  margin-left: 40PX;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.8vh;
+  font-weight: bold;
+  color: #e1cbd7;
+}
+.perfil-responsive{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  float: right;
+ 
+
 }

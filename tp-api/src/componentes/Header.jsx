@@ -1,15 +1,11 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 import BotonPerfil from "./BotonPerfil";
 import Buscador from "./Buscador";
-import { useRef } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Navigation } from "swiper/modules";
-import { useEffect, useState } from 'react';
-import  Drawer  from "./Drawer";
+import Drawer from "./Drawer";
+import { useMediaQuery } from '@mui/material';
 
-
-const Header = ({ isLoggedIn, handleLogout}) => {
+const Header = ({ isLoggedIn, handleLogout }) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [nombre, setNombre] = useState(null);
@@ -17,35 +13,27 @@ const Header = ({ isLoggedIn, handleLogout}) => {
   const handleName = () => {
     const savedData = localStorage.getItem('userData');
     if (savedData) {
-        const data = JSON.parse(savedData);
-        return data.firstName; // Retorna el nombre
+      const data = JSON.parse(savedData);
+      return data.firstName; // Retorna el nombre
     }
     return null; // Si no hay datos, retorna null
-};
-  useEffect(() => {
-  const nombre = handleName();
-  setNombre(nombre);
-  
-}, []); // El efecto se ejecuta una sola vez cuando el componente se monta
+  };
 
-  
+  useEffect(() => {
+    const nombre = handleName();
+    setNombre(nombre);
+  }, []); // El efecto se ejecuta una sola vez cuando el componente se monta
+
   // Crea una referencia para el elemento de entrada
   const inputRef = useRef(null);
- 
 
   // Define la función que se ejecutará cuando se presione "Enter"
   function onEnterPress(event) {
     if (event.key === 'Enter') {
       const inputValue = inputRef.current.value;
       navigate("/Buscador", { state: { input: inputValue } });
-      
-    
-      
-      event.preventDefault();
 
-      // Aquí puedes realizar las acciones deseadas al presionar Enter
-      // Por ejemplo, usar el valor del inputRef.current.value para buscar algo
-      // y luego, llamar a una función para manejar la búsqueda
+      event.preventDefault();
     }
   }
 
@@ -68,10 +56,35 @@ const Header = ({ isLoggedIn, handleLogout}) => {
     };
   });
 
+  const isMobile = useMediaQuery('(max-width:700px)'); // Verificar si es un dispositivo móvil
+
   return (
-    <div>
-      {/*<Drawer/>*/}
-      <nav className="contenedormenu">
+    <div className="contenedor-header">
+      {isMobile && <div className="contenedorheaderresponsive">
+        <Drawer />
+        
+        <input
+            id="buscado-responsive"
+            ref={inputRef}
+            className="buscado2"
+            type="text"
+            placeholder="Busca aquí..."
+        />
+        <div>
+            {isLoggedIn ? (
+              <div className="perfil-responsive">
+                <h4>{nombre}</h4>
+                <BotonPerfil handleLogout={handleLogout} />
+              </div>
+            ) : (
+              <Link to="/Login">
+                <button className="botonLogin-responsive">Login</button>
+              </Link>
+            )}
+          </div>
+        </div>
+      } {/* Mostrar el Drawer solo en dispositivos móviles */}
+      {!isMobile && <nav className="contenedormenu">
         <div className="logo">
           <img
             className="logo-header"
@@ -107,7 +120,7 @@ const Header = ({ isLoggedIn, handleLogout}) => {
           <div>
             {isLoggedIn ? (
               <div className="perfil">
-              <h4>{nombre}</h4>
+                <h4>{nombre}</h4>
                 <BotonPerfil handleLogout={handleLogout} />
               </div>
             ) : (
@@ -117,7 +130,7 @@ const Header = ({ isLoggedIn, handleLogout}) => {
             )}
           </div>
         </div>
-      </nav>
+      </nav>}
     </div>
   );
 };
