@@ -20,6 +20,7 @@ import CondicionesDeUso from './componentes/CondicionesDeUso';
 import Contactenos from './componentes/Contactenos';
 import BotonFiltro from './componentes/BotonFiltro'
 import  Drawer from './componentes/Drawer';
+import { DataProvider } from './componentes/DataContext';
 
 import './App.css';
 import './css/header.css';
@@ -65,6 +66,7 @@ function App() {
 
     return (
         <div>
+         <DataProvider> 
             {/* Muestra Header solo si no está en la página de Login */}
             {!isLoginPage && <Header isLoggedIn={isLoggedIn} handleLogout={handleLogout} />}
             
@@ -80,9 +82,9 @@ function App() {
                 <Route path="/Registro" element={<Registro/>} />
                 <Route path="/Olvido" element={<OlvidoSenha/>} />
                 <Route path='/CodigoRecupero' element= {<CodigoRecupero/>}/>
-                
+            
                 {/* Ruta para Pelicula */}
-                <Route path="/Pelicula" element={isLoggedIn ? <Pelicula /> : <Login onLogin={handleLogin} />} />
+                <Route path="/Pelicula" element={<Pelicula/>} />
                 <Route path='/Generos' element= {<Generos/>}/>
                 <Route path='/Actor' element= {<Actor/>}/>
                 <Route path='/Director' element= {<Director/>}/>
@@ -101,8 +103,9 @@ function App() {
             
             {/* Muestra Footer solo si no está en la página de Login */}
             {!isLoginPage && <Footer />}
+        </DataProvider> 
         </div>
-        
+    
     );
 }
 

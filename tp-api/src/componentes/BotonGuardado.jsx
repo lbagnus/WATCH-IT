@@ -56,7 +56,7 @@ const StyledMenu = styled((props) => (
 }));
 
 export default function CustomizedMenus({pelicula}) {
-  console.log("esto es la pelicula", pelicula)
+  
   const navigate = useNavigate();
   
   const [anchorEl, setAnchorEl] = React.useState(null);

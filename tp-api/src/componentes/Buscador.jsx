@@ -30,14 +30,14 @@ const Buscador = () => {
         
 
         const arrayDatosBuscados = datosBuscador.results
-        .filter(dato => dato.poster_path !== null || dato.profile_path !== null) 
+        .filter(dato => dato.poster_path || dato.profile_path) // Filtramos los datos que tienen o poster_path o profile_path definidos.
         .map((dato) => {
           if (dato.poster_path) {
-              return `https://image.tmdb.org/t/p/w500/${dato.poster_path}`;
+            return `https://image.tmdb.org/t/p/w500/${dato.poster_path}`;
           } else if (dato.profile_path) {
-              return `https://image.tmdb.org/t/p/w500/${dato.profile_path}`;
+            return `https://image.tmdb.org/t/p/w500/${dato.profile_path}`;
           }
-      });
+        });
 
       setDatosBuscados(arrayDatosBuscados);
 

@@ -59,7 +59,7 @@ const Generos = () => {
 
         // Extraer las imágenes de las películas
         const imagenesArray = datos.results
-        .filter(pelicula => pelicula.poster_path !== null) 
+        .filter(pelicula => pelicula.poster_path) 
         .map(pelicula => {
           // Verificar que poster_path existe antes de formar la URL de la imagen
           if (pelicula.poster_path) {

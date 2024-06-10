@@ -61,7 +61,7 @@ const Inicio = () => {
 
 // Extraer las imágenes de las películas populares y almacenarlas en el array
 const imagenesArrayPopulares = datosPopulares.results
-  .filter(pelicula1 => pelicula1.poster_path !== null) // Filtra las películas que tienen poster_path
+  .filter(pelicula1 => pelicula1.poster_path !== undefined) // Filtra las películas que tienen poster_path
   .map(pelicula1 => {
     const urlImagenP = `https://image.tmdb.org/t/p/w500/${pelicula1.poster_path}`;
     return urlImagenP;
@@ -70,7 +70,7 @@ setImagenesTrending(imagenesArrayPopulares);
 
 // Extraer las imágenes de las películas en cines y almacenarlas en el array
 const imagenesArrayCines = datosCines.results
-  .filter(pelicula2 => pelicula2.poster_path !== null) // Filtra las películas que tienen poster_path
+  .filter(pelicula2 => pelicula2.poster_path) // Filtra las películas que tienen poster_path
   .map(pelicula2 => {
     const urlImagenU = `https://image.tmdb.org/t/p/w500/${pelicula2.poster_path}`;
     return urlImagenU;
@@ -79,7 +79,7 @@ setImagenesCines(imagenesArrayCines);
 
 // Extraer las imágenes de los actores y almacenarlas en el array
 const imagenesArrayActores = datosActores.results
-  .filter(actor => actor.profile_path !== null) // Filtra los actores que tienen profile_path
+  .filter(actor => actor.profile_path) // Filtra los actores que tienen profile_path
   .map(actor => {
     const urlImagenA = `https://image.tmdb.org/t/p/w500/${actor.profile_path}`;
     return urlImagenA;
