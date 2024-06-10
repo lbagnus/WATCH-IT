@@ -87,9 +87,9 @@ function App() {
                 <Route path='/Actor' element= {<Actor/>}/>
                 <Route path='/Director' element= {<Director/>}/>
                 <Route path='/Buscador' element= {<Buscador/>}/>
-                <Route path='/PorVer' element= {<PorVer/>}/>
-                <Route path='/Preferidas' element= {<Preferidas/>}/>
-                <Route path='/Vistas' element= {<Vistas/>}/>
+                <Route path='/PorVer' element= {isLoggedIn ? <PorVer /> : <Login onLogin={handleLogin} />}/>
+                <Route path='/Preferidas' element= {isLoggedIn ? <Preferidas /> : <Login onLogin={handleLogin} />}/>
+                <Route path='/Vistas' element= {isLoggedIn ? <Vistas /> : <Login onLogin={handleLogin} />}/>
                 <Route path='/BotonFiltro' element= {<BotonFiltro/>}/>
                 {<Route path='/Drawer' element= {<Drawer/>}/>}
 

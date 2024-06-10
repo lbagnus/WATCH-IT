@@ -10,7 +10,10 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "body-parser": "^1.20.2",
     "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "node-fetch": "^2.7.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
@@ -19,8 +22,11 @@
     "react-scripts": "^5.0.1",
     "react-slick": "^0.30.2",
     "react-toastify": "^10.0.5",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7",
     "styled-components": "^6.1.8",
     "swiper": "^11.1.1",
+    "tedious": "^18.2.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -46,5 +52,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
