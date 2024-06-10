@@ -33,8 +33,7 @@ useEffect(()=>{
     <div>
     <DataContext.Provider value={{porver,setPorver, porVerPoster, setPorVerPoster}}>
     {props.children}
-
-     </DataContext.Provider>
+    </DataContext.Provider>
 
     </div>
   )
