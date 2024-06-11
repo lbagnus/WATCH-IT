@@ -1,27 +1,16 @@
 import React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Container, Box, Typography, Grid, TextField, Button, Link, ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import Loginpic from "../imagenes/logos/logo negro2.png";
-
+import axios from 'axios';
+import Loginpic from "../imagenes/logos/logo negro2.png";  // Asegúrate de que esta ruta sea correcta
 
 const defaultTheme = createTheme();
 
 function Registro() {
     const navigate = useNavigate();
     
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         
@@ -30,21 +19,23 @@ function Registro() {
         const lastName = data.get('lastName');
         const email = data.get('email');
         const password = data.get('password');
-       
         
-        // Guardar los datos en local storage
-        const userData = {
-            firstName,
-            lastName,
-            email,
-            password,
-        };
-        localStorage.setItem('userData', JSON.stringify(userData));
-        
-        console.log('Datos guardados:', userData);
-        
-        // Redirige a la página de inicio de sesión después de registrarse
-        navigate('/Login');
+        // Enviar los datos al backend
+        try {
+            const response = await axios.post('http://localhost:3000/users', {
+                firstName,
+                lastName,
+                email,
+                password,
+            });
+            
+            console.log('Usuario creado:', response.data);
+            
+            // Redirige a la página de inicio de sesión después de registrarse
+            navigate('/Login');
+        } catch (error) {
+            console.error('Error al registrar el usuario:', error);
+        }
     };
 
     const handleSignIn = () => {
@@ -54,7 +45,6 @@ function Registro() {
     return (
         <ThemeProvider theme={defaultTheme}>
             <Container component="main" maxWidth="sm">
-                
                 <Box id='box'
                     sx={{
                         marginTop: 8,
@@ -111,7 +101,6 @@ function Registro() {
                                     autoComplete="new-password"
                                 />
                             </Grid>
-                           
                         </Grid>
                         <Button
                             type="submit"

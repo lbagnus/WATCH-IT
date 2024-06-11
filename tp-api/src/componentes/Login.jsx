@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Loginpic from "../imagenes/logos/logo negro2.png";
 import Button from '@mui/material/Button';
-//import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -10,15 +10,14 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import { withTheme } from '@emotion/react';
 
 const defaultTheme = createTheme();
 
-function Login({onLogin}) {
+function Login({ onLogin }) {
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         
@@ -26,52 +25,42 @@ function Login({onLogin}) {
         const email = data.get('email');
         const password = data.get('password');
       
-        
-        // Recuperar los datos guardados en local storage
-        const savedData = localStorage.getItem('userData');
-        const parsedData = savedData ? JSON.parse(savedData) : null;
-
-        // Verificar si las credenciales coinciden
-        if (parsedData && email === parsedData.email && password === parsedData.password) {
-            onLogin(); // Llama a la función onLogin para notificar a App.jsx
+        // Enviar los datos al backend para autenticación
+        try {
+            const response = await axios.post('http://localhost:3000/login', { email, password });
+            const userData = response.data.user;
+            onLogin(userData); // Llama a la función onLogin para notificar a App.jsx
             navigate('/inicio');
-           
-        } else {
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error);
             setErrorMessage('Usuario y/o contraseña incorrectos');
         }
     };
 
     const manejarClickRegistro = () => {
-        // Navegar a la ruta deseada
         navigate('/Registro');
-      };
-      const manejarClickOlvido = () => {
-        // Navegar a la ruta deseada
+    };
+
+    const manejarClickOlvido = () => {
         navigate('/Olvido');
-      };
+    };
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Container id='contenedor'  component="main" maxWidth="sm">
-                
-               
-                <Box  id='box'
-
+            <Container id='contenedor' component="main" maxWidth="sm">
+                <Box id='box'
                     sx={{
                         marginTop: 8,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         padding: 0,
-                      
-                       
                     }}
                 >
-                     <img className='logoLogIn' src={Loginpic} alt="Avatar" />
+                    <img className='logoLogIn' src={Loginpic} alt="Avatar" />
                     <Typography component="h1" variant="h5" color={'black'} id='titulo'>
-                    Login
+                        Login
                     </Typography>
-                   
 
                     {errorMessage && (
                         <Typography variant="body2" color="error" sx={{ mt: 2 }}>
@@ -79,9 +68,8 @@ function Login({onLogin}) {
                         </Typography>
                     )}
 
-                    <Box  component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                         <TextField 
-                           
                             margin="normal"
                             required
                             fullWidth
