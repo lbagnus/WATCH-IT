@@ -1,20 +1,27 @@
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize(process.env.DB_NAME, null, null, {
+const sequelize = new Sequelize({
+  dialect: process.env.DB_DIALECT,
   host: process.env.DB_HOST,
-  dialect: 'mssql',
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   dialectOptions: {
-    instanceName: process.env.DB_INSTANCE,
     options: {
-      trustedConnection: true // Esto indica que se usará la autenticación de Windows
-    }
+      encrypt: false, // cambiar a true si usas Azure
+      enableArithAbort: true,
+      trustServerCertificate: true, // cambiar a false en producción si usas un certificado SSL
+      dateStrings: true, // Puede ser necesario para manejar fechas como cadenas
+      typeCast: true, // Puede ser necesario para convertir automáticamente tipos de datos
+      
+    },
   },
-  logging: false
+    
+  logging: console.log, // Opcional: activa los logs de Sequelize
 });
 
-
-// Probar la conexión
 (async () => {
   try {
     await sequelize.authenticate();

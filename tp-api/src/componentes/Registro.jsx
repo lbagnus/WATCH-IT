@@ -34,10 +34,22 @@ function Registro() {
             // Redirige a la página de inicio de sesión después de registrarse
             navigate('/Login');
         } catch (error) {
-            console.error('Error al registrar el usuario:', error);
+            if (error.response) {
+                // El servidor respondió con un código de error (ej. 4xx, 5xx)
+                console.error('Error de respuesta:', error.response.data);
+            } else if (error.request) {
+                // La solicitud fue realizada pero no se recibió respuesta
+                console.error('No se recibió respuesta del servidor:', error.request);
+            } else {
+                // Ocurrió un error durante la configuración de la solicitud
+                console.error('Error al configurar la solicitud:', error.message);
+            }
+            
+            // Mostrar un mensaje de error al usuario
+            alert('Error al intentar registrar el usuario. Por favor, intenta nuevamente más tarde.');
         }
     };
-
+    
     const handleSignIn = () => {
         navigate('/Login');
     };
