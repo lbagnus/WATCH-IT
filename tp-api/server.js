@@ -28,7 +28,7 @@ app.post('/users', async (req, res) => {
 });
 
 // Ruta para manejar el inicio de sesión
-app.post('/userlogin', async (req, res) => {
+app.post('/Login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -50,10 +50,9 @@ app.post('/userlogin', async (req, res) => {
     res.status(200).json({ user });
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
-    res.status(500).json({ message: 'Error interno del servidor' });
+    res.status(500).json({ message: 'Error interno del servidor', error: error.message });
   }
 });
-
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 3000;
