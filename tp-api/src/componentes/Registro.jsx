@@ -3,7 +3,7 @@ import { Container, Box, Typography, Grid, TextField, Button, Link, ThemeProvide
 import { createTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Loginpic from "../imagenes/logos/logo negro2.png";  // Asegúrate de que esta ruta sea correcta
+
 
 const defaultTheme = createTheme();
 
@@ -32,7 +32,7 @@ function Registro() {
             console.log('Usuario creado:', response.data);
             
             // Redirige a la página de inicio de sesión después de registrarse
-            navigate('/Login');
+            navigate('/Inicio');
         } catch (error) {
             if (error.response) {
                 // El servidor respondió con un código de error (ej. 4xx, 5xx)
@@ -65,7 +65,7 @@ function Registro() {
                         alignItems: 'center',
                     }}
                 >
-                    <img className='logoLogIn' src={Loginpic} alt="Avatar" />
+                    <img className='logoLogIn' src={"/imagenes/logos/logo negro2.png"} alt="Avatar" />
                     <Typography component="h1" variant="h5" color={'black'} id='titulo'>
                         Sign Up
                     </Typography>

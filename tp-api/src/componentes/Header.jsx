@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 import BotonPerfil from "./BotonPerfil";
-import Buscador from "./Buscador";
 import Drawer from "./Drawer";
 import { useMediaQuery } from '@mui/material';
 
@@ -88,7 +87,7 @@ const Header = ({ isLoggedIn, handleLogout }) => {
         <div className="logo">
           <img
             className="logo-header"
-            src={require("../imagenes/logos/logo blanco3.png")}
+            src={'/imagenes/logos/logo blanco3.png'}
             alt="logo-header"
           />
 

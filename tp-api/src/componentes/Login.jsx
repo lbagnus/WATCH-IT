@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Loginpic from "../imagenes/logos/logo negro2.png";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
@@ -24,7 +23,7 @@ function Login({ onLogin }) {
         // Obtener los datos de inicio de sesión ingresados por el usuario
         const email = data.get('email');
         const password = data.get('password');
-      
+      console.log(email)
         // Enviar los datos al backend para autenticación
         try {
             const response = await axios.post('http://localhost:3000/Login', { email, password });
@@ -57,7 +56,7 @@ function Login({ onLogin }) {
                         padding: 0,
                     }}
                 >
-                    <img className='logoLogIn' src={Loginpic} alt="Avatar" />
+                    <img className='logoLogIn' src={"/imagenes/logos/logo negro2.png"} alt="Avatar" />
                     <Typography component="h1" variant="h5" color={'black'} id='titulo'>
                         Login
                     </Typography>
@@ -100,12 +99,12 @@ function Login({ onLogin }) {
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                            <Link class="forgot" href="#" variant="body2" onClick={manejarClickOlvido}>
+                            <Link className="forgot" href="#" variant="body2" onClick={manejarClickOlvido}>
                                 {"Forgot password?"}
                             </Link>
                             </Grid>
                             <Grid item>
-                            <Link href = "" class="forgot" variant="body2" onClick={manejarClickRegistro}>
+                            <Link href = "" className="forgot" variant="body2" onClick={manejarClickRegistro}>
                                 {"Don't have an account? Sign Up"}
                             </Link>
                             </Grid>

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useState } from "react";
-import Avatar from "../imagenes/logos/logo negro2.png";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
@@ -82,7 +81,7 @@ function ForgotPassword() {
                     alignItems: "center",
                 }}
             >
-                <img className='logoLogIn' src={Avatar} alt="Logo" />
+                <img className='logoLogIn' src={"/imagenes/logos/logo negro2.png"} alt="Logo" />
                 <Typography component="h1" variant="h5" color={'black'} id='titulo2'>
                     Olvidé mi contraseña
                 </Typography>

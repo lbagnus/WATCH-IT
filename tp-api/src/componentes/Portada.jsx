@@ -1,6 +1,5 @@
 import React from 'react';
 import { Await, useNavigate } from 'react-router-dom';
-import nofoto from '../imagenes/peliculas/nofoto.jpeg'
 import { useMediaQuery } from '@mui/material';
 
 

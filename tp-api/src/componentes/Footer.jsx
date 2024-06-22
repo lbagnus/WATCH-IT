@@ -8,7 +8,7 @@ const Footer = () => {
     <div className="contenedorfooter">
       <img
         className="logo-footer"
-        src={require("../imagenes/logos/logo blanco3.png")}
+        src={"/imagenes/logos/logo blanco3.png"}
         alt="logo-header"
       />
         <div className="lineaFooter"></div>

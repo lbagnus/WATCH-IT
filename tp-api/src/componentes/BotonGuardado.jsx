@@ -69,7 +69,8 @@ export default function CustomizedMenus({pelicula}) {
   };
   
   const handlePorVer = () =>{
-    navigate("/PorVer", { state: { objeto: pelicula } });
+    PorVer.agregarPeliculaPorVer()
+    navigate("/PorVer", { state: { objetoPelicula: pelicula } });
     
   }
   const handlePreferidas = () =>{

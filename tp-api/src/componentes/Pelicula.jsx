@@ -1,7 +1,6 @@
 import React from "react";
 import Portada from "./Portada";
 import { useLocation } from 'react-router-dom';
-import star from "../imagenes/iconitos/star.png";
 import BotonGuardado from "./BotonGuardado";
 import Rating from '@mui/material/Rating';
 
@@ -110,7 +109,7 @@ const Pelicula = () => {
         imagen={`https://image.tmdb.org/t/p/w500/${objeto.poster_path}`}
         descripcion={objeto.overview}
         guardadito = {<BotonGuardado pelicula = {objeto}/>}
-        estrella = {star}
+        estrella = {"/imagenes/iconitos/star.png"}
         puntuacion =  <Rating name="read-only" value={3} readOnly />
         otraimagen1 = {imagenS[0]}
         otraimagen2 = {imagenS[1]} 

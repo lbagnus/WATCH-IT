@@ -5,13 +5,6 @@ import CarruselAutomatico from "./Carrusel";
 import ListaContenidos from "./ListaContenidos";
 import { Await, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import carrusel1 from '../imagenes/peliculas/carruselposta1.jpg'
-import carrusel2 from '../imagenes/peliculas/carrusel2.jpg'
-import carrusel3 from '../imagenes/peliculas/carrusel3.jpg'
-import carrusel4 from '../imagenes/peliculas/carrusel4.jpg'
-import carrusel5 from '../imagenes/peliculas/carrusel5.jpg'
-import carrusel6 from '../imagenes/peliculas/carrusel6.jpg'
-import carrusel7 from '../imagenes/peliculas/carrusel7.jpg'
 import { Grid } from '@mui/material';
 
 
@@ -23,7 +16,7 @@ const Inicio = () => {
   const [imagenesArrayPopulares, setImagenesTrending] = useState([]);
   const [imagenesArrayCines, setImagenesCines] = useState([]);
   const [imagenesArrayActores, setImagenesActores] = useState([]);
-  const imagenesArrayCarrusel =[carrusel1, carrusel2, carrusel3, carrusel4, carrusel5, carrusel6, carrusel7];
+  const imagenesArrayCarrusel =['/imagenes/peliculas/carruselposta1.jpg', '/imagenes/peliculas/carrusel2.jpg','/imagenes/peliculas/carrusel3.jpg', '/imagenes/peliculas/carrusel4.jpg', '/imagenes/peliculas/carrusel5.jpg', '/imagenes/peliculas/carrusel6.jpg', '/imagenes/peliculas/carrusel7.jpg'];
   const [objetoPelicula, setObjetoPelicula] = useState([]);
   const [objetoPelicula2, setObjetoPelicula2] = useState([]);
   const [objetoActor ,setObjetoActor] = useState([]);

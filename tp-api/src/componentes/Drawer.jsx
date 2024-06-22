@@ -78,7 +78,7 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <img
             className="logo-header-responsive"
-            src={require("../imagenes/logos/logo blanco3.png")}
+            src={"/imagenes/logos/logo blanco3.png"}
             alt="logo-header"
           />
         <Divider />

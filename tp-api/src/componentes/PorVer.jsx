@@ -1,58 +1,61 @@
-import React, { useContext,useState, useEffect } from "react";
-import GridImages from "./GridImages";
-import { useLocation } from "react-router-dom";
-import { DataContext } from "./DataContext";
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const PorVer = () => {
-    const location = useLocation();
-    const objetoPelicula = location.state?.objeto;
-    const  {porver,setPorver} = useContext(DataContext)
-    const  {porVerPoster,setPorVerPoster} = useContext(DataContext)
+  const location = useLocation();
+  const { imagen } = location.state || {};
+  const [porVerPelis, setPorVerPelis] = useState([]);
 
-    useEffect(() => {
-        const addToPorVer = (objetoPelicula) => {
-            const check = porver.every(item =>{
-                setPorver([...porver,item])
-              //return item.id !== objetoPelicula.id
-            })
-            console.log('check',check)
-            if (check) {
-              setPorver([...porver,objetoPelicula])
-            }else{
-              alert("This movie is already added")
-            }
-            }
-            addToPorVer(objetoPelicula);
-            console.log(porver)
+  useEffect(() => {
+    fetchPorVerPelis();
+  }, []);
 
-            const addToPorVerPoster = (objetoPelicula) => {
-                const check2 = porVerPoster.every(item => {
-                   const poster = item.poster_path
-                   setPorVerPoster([...porVerPoster, poster]);
-                return item.id !== objetoPelicula.id
-                });
+  const fetchPorVerPelis = async () => {
+    {/*try {
+      const response = await axios.get('http://localhost:3000/peliculas');
+      setPorVerPelis(response.data);
+    } catch (error) {
+      console.error('Error al obtener películas por ver:', error);
+    }*/}
+  };
 
-                if (check2) {
-                    const nuevaPeliculaConPoster = {
-                        id: objetoPelicula.id,
-                        poster_path: objetoPelicula.poster_path
-                    };
-                    setPorVerPoster([...porVerPoster, nuevaPeliculaConPoster]);
-                } else {
-                    // Mostramos una alerta si la película ya está agregada.
-                    alert("This movie is already added");
-                }
-                }
-                addToPorVerPoster(objetoPelicula);
-    }, []);
+  const agregarPeliculaPorVer = async (imagen) => {
+    const poster_path = imagen;
+    const estado = 'Por Ver';
+    console.log('imagen en porver',poster_path)
+    try {
+      const response = await axios.post ('http://localhost:3000/peliculas', { poster_path, estado })
+      console.log('Respuesta del servidor al agregar película:', response.data);
+      fetchPorVerPelis();
+    } catch (error) {
+      if (error.response) {
+        // El servidor respondió con un código de error (ej. 4xx, 5xx)
+        console.error('Error de respuesta: porver', error.response.data);
+    } else if (error.request) {
+        // La solicitud fue realizada pero no se recibió respuesta
+        console.error('No se recibió respuesta del servidor:', error.request);
+    } else {
+        // Ocurrió un error durante la configuración de la solicitud
+        console.error('Error al configurar la solicitud:', error.message);
+    }
+    }
+  };
 
-
-    return (
-        <div>
-           <GridImages imagenes={porVerPoster} peliObjeto={porver} />
-        </div>
-    );
+  agregarPeliculaPorVer(imagen)
+  return (
+    <div>
+      <h2>Películas Por Ver</h2>
+      <ul>
+       {/* {porVerPelis.map((pelicula, index) => (
+          <li key={index}>
+            <img src={pelicula.poster_path} alt={`Poster de ${pelicula.title}`} />
+            <p>{pelicula.title}</p>
+          </li>
+        ))}*/}
+      </ul>
+    </div>
+  );
 };
 
 export default PorVer;
-

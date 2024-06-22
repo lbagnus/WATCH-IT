@@ -37,7 +37,7 @@ export default function BotonPerfil({handleLogout}) {
             aria-expanded={open ? 'true' : undefined}
           >
             <Avatar id="icono-arrow" sx={{ width: 24, height: 24 }}><img  id='imagenarrow'
-            src={require("../imagenes/iconitos/arrowwhite.png")}
+            src={"/imagenes/iconitos/arrowwhite.png"}
             alt="icono-arrow"
           /></Avatar>
           </IconButton>

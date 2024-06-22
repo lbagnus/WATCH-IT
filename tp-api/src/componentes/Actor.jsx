@@ -1,9 +1,7 @@
 import React from "react";
 import PortadaActor from "./PortadaActor";
 import { useLocation } from 'react-router-dom';
-import star from "../imagenes/iconitos/star.png";
-import BotonGuardado from "./BotonGuardado";
-import Rating from '@mui/material/Rating';
+
 
 import { Await, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
