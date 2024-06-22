@@ -42,7 +42,7 @@ app.post('/users', async (req, res) => {
   }
 });
 
-/// Ruta para manejar el inicio de sesión
+// Ruta para manejar el inicio de sesión
 app.post('/Login', async (req, res) => {
   const { email, password } = req.body;
   
@@ -93,23 +93,28 @@ app.listen(PORT, () => {
 });
 
 
-// Obtener películas por estado
-app.get('/peliculas/:estado', async (req, res) => {
-  const { estado } = req.params;
+// Ruta para obtener películas por estado
+{/*app.get('/peliculas/:estado/:usuarioId', async (req, res) => {
+  const { estado, usuarioId } = req.params;
+
   try {
-    const peliculas = await Pelicula.findAll({ where: { estado } });
-    res.json(peliculas);
+    const peliculas = await Pelicula.findAll({ where: { estado, usuarioId } });
+    res.status(200).json(peliculas);
   } catch (error) {
-    console.error('Error al obtener películas:', error);
-    res.status(500).json({ error: 'Error al obtener películas' });
+    console.error(`Error al obtener películas de la lista ${estado}:`, error);
+    res.status(500).json({ error: `Error al obtener películas de la lista ${estado}` });
   }
-});
+});*/}
 
 // Agregar película
 app.post('/peliculas', async (req, res) => {
-  const {poster_path, estado } = req.body;
+  const {id_usuario, poster_path, estado } = req.body;
+
+  if (!id_usuario || !poster_path || !estado) {
+    return res.status(400).json({ error: 'Faltan datos requeridos para agregar la película' });
+  }
   try {
-    const nuevaPelicula = await Pelicula.create({poster_path, estado });
+    const nuevaPelicula = await Pelicula.create({id_usuario,poster_path, estado });
     res.status(201).json(nuevaPelicula);
   } catch (error) {
     console.error('Error al agregar película:', error);

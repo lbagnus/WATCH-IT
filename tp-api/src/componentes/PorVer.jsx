@@ -21,11 +21,12 @@ const PorVer = () => {
   };
 
   const agregarPeliculaPorVer = async (imagen) => {
+    const id_usuario = localStorage.getItem('usuarioId')
     const poster_path = imagen;
     const estado = 'Por Ver';
-    console.log('imagen en porver',poster_path)
+    
     try {
-      const response = await axios.post ('http://localhost:3000/peliculas', { poster_path, estado })
+      const response = await axios.post ('http://localhost:3000/peliculas', { id_usuario, poster_path, estado })
       console.log('Respuesta del servidor al agregar película:', response.data);
       fetchPorVerPelis();
     } catch (error) {

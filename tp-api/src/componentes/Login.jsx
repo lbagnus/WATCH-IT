@@ -26,8 +26,10 @@ function Login({ onLogin }) {
       console.log(email)
         // Enviar los datos al backend para autenticación
         try {
-            const response = await axios.post('http://localhost:3000/Login', { email, password });
+            const response = await axios.post('http://localhost:3000/Login', { email, password});
             const userData = response.data.user;
+            const id = userData.id
+            localStorage.setItem('usuarioId', id);
             onLogin(userData); // Llama a la función onLogin para notificar a App.jsx
             navigate('/inicio');
         } catch (error) {

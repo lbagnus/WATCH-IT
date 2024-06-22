@@ -2,8 +2,16 @@
 
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const User = require('./user');
 
 const Pelicula = sequelize.define('Pelicula', {
+  id_usuario: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: User, // Nombre del modelo de usuario
+      key: 'id'}
+    },
+
   poster_path: {
     type: DataTypes.STRING,
     allowNull: false
@@ -11,6 +19,7 @@ const Pelicula = sequelize.define('Pelicula', {
   estado: {
     type: DataTypes.ENUM('Por Ver', 'Vistas', 'Preferidas'),
   }
+
 });
 
 module.exports = Pelicula;
