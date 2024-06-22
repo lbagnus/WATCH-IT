@@ -7,10 +7,30 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AddIcon from "@mui/icons-material/Add";
-import PorVer from './PorVer';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
-const GridImages = ({ imagenes, peliObjeto, genero }) => {
+const agregarPeliculaPorVer = async (imagen) => {
+  const id_usuario = localStorage.getItem('usuarioId');
+  const poster_path = imagen;
+  const estado = 'PorVer';
+
+  try {
+    const response = await axios.post('http://localhost:3000/peliculas', { id_usuario, poster_path, estado });
+    console.log('Respuesta del servidor al agregar película:', response.data);
+    // Puedes llamar a una función para actualizar la lista de películas aquí si es necesario
+  } catch (error) {
+    if (error.response) {
+      console.error('Error de respuesta: porver', error.response.data);
+    } else if (error.request) {
+      console.error('No se recibió respuesta del servidor:', error.request);
+    } else {
+      console.error('Error al configurar la solicitud:', error.message);
+    }
+  }
+};
+
+const GridImages = ({ imagenes, peliObjeto }) => {
   const navigate = useNavigate();
   const urlBase = "https://image.tmdb.org/t/p/w500/";
 
@@ -57,7 +77,7 @@ const GridImages = ({ imagenes, peliObjeto, genero }) => {
         break;
       case "Por Ver":
         console.log(`Agregar "${selectedImage}" a Por Ver`);
-        navigate('/PorVer', { state: { imagen: selectedImage }});
+        agregarPeliculaPorVer(selectedImage)
         break;
       case "Vistas":
         console.log(`Agregar "${selectedImage}" a Vistas`);

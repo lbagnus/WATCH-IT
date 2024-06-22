@@ -17,7 +17,7 @@ const Pelicula = sequelize.define('Pelicula', {
     allowNull: false
   },
   estado: {
-    type: DataTypes.ENUM('Por Ver', 'Vistas', 'Preferidas'),
+    type: DataTypes.STRING //DataTypes.ENUM('Por Ver', 'Vistas', 'Preferidas'),
   }
 
 });

@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const app = express();
 app.use(express.json());
+const fs = require('fs');
 
 
 // Configura CORS para permitir solicitudes desde todos los orígenes
@@ -94,27 +95,43 @@ app.listen(PORT, () => {
 
 
 // Ruta para obtener películas por estado
-{/*app.get('/peliculas/:estado/:usuarioId', async (req, res) => {
-  const { estado, usuarioId } = req.params;
+app.get(`/peliculas/:estado/:id_usuario`, async (req, res) => {
+
+  const { id_usuario, estado } = req.query;
+  
+  if (!id_usuario || !estado) {
+    //console.log(id_usuario,estado)
+    return res.status(400).json({ error: 'id_usuario y estado son requeridos'});
+  }
 
   try {
-    const peliculas = await Pelicula.findAll({ where: { estado, usuarioId } });
+    const peliculas = await Pelicula.findAll({
+      where: {
+        id_usuario: {
+          [Op.eq]: id_usuario // Utiliza Op.eq para comparar exactamente igual a id_usuario
+        },
+        estado: {
+          [Op.eq]: estado // Utiliza Op.eq para comparar exactamente igual a estado
+        }
+      }
+
+     });
     res.status(200).json(peliculas);
   } catch (error) {
-    console.error(`Error al obtener películas de la lista ${estado}:`, error);
-    res.status(500).json({ error: `Error al obtener películas de la lista ${estado}` });
+    console.error('Error al obtener películas:', error);
+    res.status(500).json({ error: 'Error al obtener películas' });
   }
-});*/}
+});
 
 // Agregar película
 app.post('/peliculas', async (req, res) => {
+  console.log(id_usuario,poster_path,estado)
   const {id_usuario, poster_path, estado } = req.body;
-
   if (!id_usuario || !poster_path || !estado) {
     return res.status(400).json({ error: 'Faltan datos requeridos para agregar la película' });
   }
   try {
-    const nuevaPelicula = await Pelicula.create({id_usuario,poster_path, estado });
+    const nuevaPelicula = await Pelicula.create({id_usuario, poster_path, estado });
     res.status(201).json(nuevaPelicula);
   } catch (error) {
     console.error('Error al agregar película:', error);
