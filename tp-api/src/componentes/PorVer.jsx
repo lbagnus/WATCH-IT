@@ -1,41 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
-
 const PorVer = () => {
-  const location = useLocation();
-  const estado = 'PorVer'
   const [porVerPelis, setPorVerPelis] = useState([]);
+  const id_usuario = localStorage.getItem('usuarioId');
 
-  const id_usuario = localStorage.getItem('usuarioId'); // Obtener el ID del usuario logueado
+  useEffect(() => {
+    const fetchPorVerPelis = async () => {
+      try {
+        console.log('Obteniendo películas con estado:', 'PorVer', 'y id_usuario:', id_usuario);
+        const response = await axios.get('http://localhost:3000/peliculas', {
+          params: {
+            estado: 'PorVer',
+            id_usuario: id_usuario
+          }
+        });
+        setPorVerPelis(response.data);
+        console.log('Lista de películas por ver:', response.data);
+      } catch (error) {
+        console.error('Error al obtener películas por ver:', error.message || error);
+      }
+    };
 
- const fetchPorVerPelis = async (id_usuario,estado) => {
-    try {
-      const response = await axios.get(`http://localhost:3000/peliculas/${encodeURIComponent(estado)}/${id_usuario}`);
-      setPorVerPelis(response.data);
-      console.log('lista', response.data);
-    } catch (error) {
-      console.error('Error al obtener películas por ver:', error);
+    if (id_usuario) {
+      fetchPorVerPelis();
+    } else {
+      console.error('ID de usuario no encontrado en localStorage');
     }
-  };
-
- 
-  fetchPorVerPelis(id_usuario,estado);
-
-
+  }, [id_usuario]);
 
   return (
     <div>
       <h2>Películas Por Ver</h2>
-      {/*<ul>
+      <ul>
         {porVerPelis.map((pelicula, index) => (
           <li key={index}>
             <img src={pelicula.poster_path} alt={`Poster de ${pelicula.title}`} />
             <p>{pelicula.title}</p>
           </li>
         ))}
-      </ul>*/}
+      </ul>
     </div>
   );
 };
