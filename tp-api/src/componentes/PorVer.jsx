@@ -32,19 +32,44 @@ const PorVer = () => {
     }
   }, [id_usuario]); // Ejecuta useEffect cuando id_usuario cambia
 
+  // Función para manejar la eliminación de una película
+  const eliminarPelicula = async (idPelicula) => {
+    try {
+      const response = await axios.delete(`http://localhost:3000/peliculas/${idPelicula}`);
+      console.log('Respuesta del servidor al eliminar película:', response.data);
+
+      // Actualiza el estado para reflejar la eliminación en la interfaz
+      setPorVerPelis((prevPelis) => prevPelis.filter((peli) => peli.id !== idPelicula));
+    } catch (error) {
+      console.error('Error al eliminar película:', error.message || error);
+    }
+  };
+
   return (
     <div>
       <h2>Películas Por Ver</h2>
-      <GridImages 
-        imagenes={porVerPelis.map(pelicula => `https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`)} 
-        peliObjeto={porVerPelis} 
-        mostrarBotonAgregar={false} // No mostrar el botón en la lista "Por Ver"
-      />
+      {porVerPelis.length === 0 ? (
+        <p>No hay películas disponibles</p>
+      ) : (
+        <GridImages
+          imagenes={porVerPelis.map(pelicula => `https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`)}
+          peliObjeto={porVerPelis}
+          mostrarBotonAgregar={false} // No mostrar el botón en la lista "Por Ver"
+          onEliminarPelicula={eliminarPelicula} // Asegúrate de pasar correctamente la función eliminarPelicula
+        />
+      )}
     </div>
   );
 };
 
 export default PorVer;
+
+
+
+
+
+
+
 
 
 

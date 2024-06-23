@@ -29,7 +29,9 @@ function Login({ onLogin }) {
             const response = await axios.post('http://localhost:3000/Login', { email, password});
             const userData = response.data.user;
             const id = userData.id
+            const firstName = userData.firstName
             localStorage.setItem('usuarioId', id);
+            localStorage.setItem('firstName', firstName)
             onLogin(userData); // Llama a la función onLogin para notificar a App.jsx
             navigate('/inicio');
         } catch (error) {

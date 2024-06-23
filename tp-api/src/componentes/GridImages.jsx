@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -18,11 +19,10 @@ const agregarPeliculaPorVer = async (imagen) => {
   try {
     const response = await axios.post('http://localhost:3000/peliculas', { id_usuario, poster_path, estado });
     console.log('Respuesta del servidor al agregar película:', response.data);
-    // Puedes llamar a una función para actualizar la lista de películas aquí si es necesario
   } catch (error) {
     if (error.response) {
-      console.error('Error de respuesta: porver', error.response.data);
-      alert("La película ya fue agregada")
+      console.error('Error de respuesta:', error.response.data);
+      alert("La película ya fue agregada");
     } else if (error.request) {
       console.error('No se recibió respuesta del servidor:', error.request);
     } else {
@@ -31,7 +31,7 @@ const agregarPeliculaPorVer = async (imagen) => {
   }
 };
 
-const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true }) => {
+const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true, onEliminarPelicula }) => {
   const navigate = useNavigate();
   const urlBase = "https://image.tmdb.org/t/p/w500/";
 
@@ -97,6 +97,12 @@ const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true }) => {
     handleClick(event, url);
   };
 
+  // Función para manejar el clic en el botón "-" encima de la imagen
+  const handleDeleteButtonClick = (event, peliculaId) => {
+    event.stopPropagation(); // Detener la propagación del evento click para evitar que se abra la imagen
+    onEliminarPelicula(peliculaId);
+  };
+
   return (
     <div>
       <Box sx={{ flexGrow: 1, padding: 2 }}>
@@ -121,7 +127,7 @@ const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true }) => {
                     alt={`Imagen ${index + 1}`}
                     onClick={() => handlePelicula(url)}
                   />
-                  {mostrarBotonAgregar && (
+                  {mostrarBotonAgregar ? (
                     <IconButton
                       aria-label="Agregar a lista"
                       style={{
@@ -134,6 +140,20 @@ const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true }) => {
                       onClick={(event) => handleAddButtonClick(event, url)}
                     >
                       <AddIcon />
+                    </IconButton>
+                  ) : (
+                    <IconButton
+                      aria-label="Eliminar de lista"
+                      style={{
+                        position: "absolute",
+                        top: 10,
+                        right: 10,
+                        backgroundColor: "#f44336", // Fondo rojo
+                        color: "#ffffff", // Color blanco para el icono
+                      }}
+                      onClick={(event) => handleDeleteButtonClick(event, peliObjeto[index].id)}
+                    >
+                      <DeleteIcon />
                     </IconButton>
                   )}
                 </Card>
@@ -164,5 +184,12 @@ const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true }) => {
 };
 
 export default GridImages;
+
+
+
+
+
+
+
 
 

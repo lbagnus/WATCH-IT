@@ -7,7 +7,7 @@ import { useMediaQuery } from '@mui/material';
 const Header = ({ isLoggedIn, handleLogout }) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
-  const [nombre, setNombre] = useState(null);
+  const nombre= localStorage.getItem('firstName');
 
   const handleName = () => {
     const savedData = localStorage.getItem('userData');
@@ -18,10 +18,6 @@ const Header = ({ isLoggedIn, handleLogout }) => {
     return null; // Si no hay datos, retorna null
   };
 
-  useEffect(() => {
-    const nombre = handleName();
-    setNombre(nombre);
-  }, []); // El efecto se ejecuta una sola vez cuando el componente se monta
 
   // Crea una referencia para el elemento de entrada
   const inputRef = useRef(null);

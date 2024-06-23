@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors'); // Importa el middleware cors
+const cors = require('cors');
 const sequelize = require('./config/database');
 const User = require('./models/user');
 const Pelicula = require('./models/peliculas');
@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const app = express();
 app.use(express.json());
-const fs = require('fs');
 const { Op } = require('sequelize');
 
 // Configura CORS para permitir solicitudes desde todos los orígenes
@@ -16,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Sincronizar la base de datos
-sequelize.sync({ force: false }) // Utiliza force: true para desarrollo, false para producción
+sequelize.sync({ force: false })
   .then(() => console.log('Base de datos sincronizada'))
   .catch(err => console.error('Error al sincronizar la base de datos:', err));
 
@@ -25,15 +24,12 @@ app.post('/users', async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
   try {
-    // Generar el hash de la contraseña
-    const hashedPassword = await bcrypt.hash(password, 10); // Usar 10 salt rounds
-
-    // Crear un nuevo usuario con la contraseña hasheada
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({
       firstName,
       lastName,
       email,
-      password: hashedPassword // Almacenar el hash en la base de datos
+      password: hashedPassword
     });
 
     res.status(201).json(newUser);
@@ -48,21 +44,18 @@ app.post('/Login', async (req, res) => {
   const { email, password } = req.body;
   
   try {
-    // Buscar el usuario por el email proporcionado
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
       return res.status(404).json({ message: 'Usuario no encontrado' });
     }
 
-    // Comparar la contraseña ingresada con la contraseña almacenada
     const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (!isPasswordMatch) {
       return res.status(401).json({ message: 'Credenciales inválidas' });
     }
 
-    // Si las credenciales son válidas, devolver el usuario
     res.status(200).json({ user });
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
@@ -70,20 +63,13 @@ app.post('/Login', async (req, res) => {
   }
 });
 
-//cargar archivos estaticos
-const path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
-// Middleware para manejar errores 404
-//app.use((req, res, next) => {
- //res.status(404).send('Archivo no encontrado');
- //});
-
+// Ruta para agregar películas
 app.post('/peliculas', async (req, res) => {
   const { id_usuario, poster_path, estado } = req.body;
 
   try {
-    // Verificar si la película ya existe para el usuario y el estado proporcionados
     const existingPelicula = await Pelicula.findOne({
       where: {
         id_usuario,
@@ -93,11 +79,9 @@ app.post('/peliculas', async (req, res) => {
     });
 
     if (existingPelicula) {
-      alert("Esta película ya existe");
       return res.status(400).json({ message: 'La película ya existe en la lista' });
     }
 
-    // Si no existe, crear una nueva entrada
     const newPelicula = await Pelicula.create({
       id_usuario,
       poster_path,
@@ -111,6 +95,7 @@ app.post('/peliculas', async (req, res) => {
   }
 });
 
+// Ruta para obtener películas
 app.get('/peliculas', async (req, res) => {
   const { estado, id_usuario } = req.query;
 
@@ -126,6 +111,25 @@ app.get('/peliculas', async (req, res) => {
   } catch (error) {
     console.error('Error al obtener películas:', error);
     res.status(500).json({ message: 'Error al obtener películas', error: error.message });
+  }
+});
+
+// Ruta para eliminar una película por ID
+app.delete('/peliculas/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const pelicula = await Pelicula.findByPk(id);
+
+    if (!pelicula) {
+      return res.status(404).json({ message: 'Película no encontrada' });
+    }
+
+    await pelicula.destroy();
+    res.status(200).json({ message: 'Película eliminada exitosamente' });
+  } catch (error) {
+    console.error('Error al eliminar película:', error);
+    res.status(500).json({ message: 'Error al eliminar película', error: error.message });
   }
 });
 
