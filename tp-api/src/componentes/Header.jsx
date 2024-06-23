@@ -85,12 +85,15 @@ const Header = ({ isLoggedIn, handleLogout }) => {
       } {/* Mostrar el Drawer solo en dispositivos móviles */}
       {!isMobile && <nav className="contenedormenu">
         <div className="logo">
+
+        <Link to="/inicio">
+
           <img
             className="logo-header"
             src={'/imagenes/logos/logo blanco3.png'}
             alt="logo-header"
           />
-
+             </Link>
           <ul className="nav">
             <li>
               <Link to="/inicio">Inicio</Link>

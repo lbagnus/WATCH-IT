@@ -22,6 +22,7 @@ const agregarPeliculaPorVer = async (imagen) => {
   } catch (error) {
     if (error.response) {
       console.error('Error de respuesta: porver', error.response.data);
+      alert("La película ya fue agregada")
     } else if (error.request) {
       console.error('No se recibió respuesta del servidor:', error.request);
     } else {
@@ -30,14 +31,13 @@ const agregarPeliculaPorVer = async (imagen) => {
   }
 };
 
-const GridImages = ({ imagenes, peliObjeto }) => {
+const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true }) => {
   const navigate = useNavigate();
   const urlBase = "https://image.tmdb.org/t/p/w500/";
 
   // Estado para controlar el menú desplegable
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  
 
   // Función para manejar el clic en una imagen
   const handlePelicula = (imagenPeli) => {
@@ -77,7 +77,7 @@ const GridImages = ({ imagenes, peliObjeto }) => {
         break;
       case "Por Ver":
         console.log(`Agregar "${selectedImage}" a Por Ver`);
-        agregarPeliculaPorVer(selectedImage)
+        agregarPeliculaPorVer(selectedImage);
         break;
       case "Vistas":
         console.log(`Agregar "${selectedImage}" a Vistas`);
@@ -121,19 +121,21 @@ const GridImages = ({ imagenes, peliObjeto }) => {
                     alt={`Imagen ${index + 1}`}
                     onClick={() => handlePelicula(url)}
                   />
-                 <IconButton
-                    aria-label="Agregar a lista"
-                    style={{
-                      position: "absolute",
-                      top: 10,
-                      right: 10,
-                      backgroundColor: "#2196f3", // Fondo azul
-                      color: "#ffffff", // Color blanco para el icono
-                    }}
-                    onClick={(event) => handleAddButtonClick(event, url)}
-                  >
-                    <AddIcon />
-                  </IconButton>
+                  {mostrarBotonAgregar && (
+                    <IconButton
+                      aria-label="Agregar a lista"
+                      style={{
+                        position: "absolute",
+                        top: 10,
+                        right: 10,
+                        backgroundColor: "#2196f3", // Fondo azul
+                        color: "#ffffff", // Color blanco para el icono
+                      }}
+                      onClick={(event) => handleAddButtonClick(event, url)}
+                    >
+                      <AddIcon />
+                    </IconButton>
+                  )}
                 </Card>
 
                 {/* Menú para seleccionar acción */}
@@ -162,3 +164,5 @@ const GridImages = ({ imagenes, peliObjeto }) => {
 };
 
 export default GridImages;
+
+

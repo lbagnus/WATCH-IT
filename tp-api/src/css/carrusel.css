@@ -1,6 +1,6 @@
 .carrusel{
   width: 100%;
-  height: auto; /* Altura del carrusel */
+  height: 555px; /* Altura del carrusel */
   position: relative;
   overflow: hidden;
 }
