@@ -1,7 +1,6 @@
 import React from "react";
 import Portada from "./Portada";
 import { useLocation } from 'react-router-dom';
-import BotonGuardado from "./BotonGuardado";
 import Rating from '@mui/material/Rating';
 
 import { Await, useNavigate } from 'react-router-dom';
@@ -108,7 +107,6 @@ const Pelicula = () => {
         tipo={handleGenero(objeto.genre_ids)}
         imagen={`https://image.tmdb.org/t/p/w500/${objeto.poster_path}`}
         descripcion={objeto.overview}
-        guardadito = {<BotonGuardado pelicula = {objeto}/>}
         estrella = {"/imagenes/iconitos/star.png"}
         puntuacion =  <Rating name="read-only" value={3} readOnly />
         otraimagen1 = {imagenS[0]}

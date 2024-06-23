@@ -1,75 +1,67 @@
-import React, { useState, useEffect } from "react";
-import GridImages from "./GridImages";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import GridImages from './GridImages'; // Asegúrate de importar el componente correctamente
 
-const PeliculasVistas = () => {
-    const location = useLocation();
-    const objetoPeliculaVista = location.state?.objeto;
+const Vistas = () => {
+  const [VistasPelis, setVistas] = useState([]);
+  const id_usuario = localStorage.getItem('usuarioId'); // Obtener el ID del usuario logueado
 
-    // Estados para almacenar la lista de películas vistas y `posterPath`
-    const [vistas, setVistas] = useState([]);
-    const [listaPosterPathV, setListaPosterPathV] = useState([]);
+  useEffect(() => {
+    const fetchVistasPelis = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/peliculas', {
+          params: {
+            estado: 'Vistas',
+            id_usuario: id_usuario
+          }
+        });
 
-    // Carga inicial de las listas desde `localStorage`
-    useEffect(() => {
-        const cargarDatos = () => {
-            const listaVistasGuardada = localStorage.getItem("Vistas");
-            const listaPosterPathGuardadaV = localStorage.getItem("listaPosterPathV");
+        // Configura las películas para ver
+        setVistas(response.data);
 
-            if (listaVistasGuardada) {
-                const listaVistasParseada = JSON.parse(listaVistasGuardada);
-                setVistas(listaVistasParseada);
-            }
-
-            if (listaPosterPathGuardadaV) {
-                const listaPosterPathParseadaV = JSON.parse(listaPosterPathGuardadaV);
-                setListaPosterPathV(listaPosterPathParseadaV);
-            }
-        };
-        cargarDatos();
-    }, []);
-
-    // Función para guardar la lista de películas vistas en `localStorage`
-    const guardarListaVistas = (nuevaLista) => {
-        localStorage.setItem("Vistas", JSON.stringify(nuevaLista));
-        setVistas(nuevaLista);
+        // Imprime la respuesta
+        console.log('Lista:', response.data);
+      } catch (error) {
+        // Manejo del error
+        console.error('Error al obtener películas por ver:', error.message || error);
+      }
     };
 
-    // Función para guardar `listaPosterPathV` en `localStorage`
-    const guardarListaPosterPathV = (nuevaLista) => {
-        localStorage.setItem("listaPosterPathV", JSON.stringify(nuevaLista));
-        setListaPosterPathV(nuevaLista);
-    };
+    if (id_usuario) {
+        fetchVistasPelis(); // Llama a la función solo si id_usuario está definido
+    }
+  }, [id_usuario]); // Ejecuta useEffect cuando id_usuario cambia
 
-    // Función para agregar una película a la lista de películas vistas y su `posterPath` a `listaPosterPath`
-    const agregarPeliculaVistas = (pelicula) => {
-        // Verifica si la película ya está en la lista de películas vistas
-        const peliculaExistente = vistas.find(p => p.movieId === pelicula.movieId);
+  // Función para manejar la eliminación de una película
+  const eliminarPelicula = async (idPelicula) => {
+    try {
+      const response = await axios.delete(`http://localhost:3000/peliculas/${idPelicula}`);
+      console.log('Respuesta del servidor al eliminar película:', response.data);
 
-        if (!peliculaExistente) {
-            // Agrega la película a la lista de películas vistas
-            const nuevaListaVistas = [...vistas, pelicula];
-            guardarListaVistas(nuevaListaVistas);
+      // Actualiza el estado para reflejar la eliminación en la interfaz
+      setVistas((prevPelis) => prevPelis.filter((peli) => peli.id !== idPelicula));
+    } catch (error) {
+      console.error('Error al eliminar película:', error.message || error);
+    }
+  };
 
-            // Agrega el `poster_path` de la película a `listaPosterPathV`
-            const nuevoPosterPath = `https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`;
-            const nuevaListaPosterPathV = [...listaPosterPathV, nuevoPosterPath];
-            guardarListaPosterPathV(nuevaListaPosterPathV);
-        }
-    };
-
-    // Agrega la película pasada como prop a la lista de películas vistas al recibir `objetoPeliculaVista`
-    useEffect(() => {
-        if (objetoPeliculaVista) {
-            agregarPeliculaVistas(objetoPeliculaVista);
-        }
-    }, [objetoPeliculaVista]);
-
-    return (
-        <div>
-            <GridImages imagenes={listaPosterPathV} peliObjeto={vistas} />
-        </div>
-    );
+  return (
+    <div>
+      <h2>Películas Vistas</h2>
+      {VistasPelis.length === 0 ? (
+        <p>No hay películas disponibles</p>
+      ) : (
+        <GridImages
+          imagenes={VistasPelis.map(pelicula => `https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`)}
+          peliObjeto={VistasPelis}
+          mostrarBotonAgregar={false} // No mostrar el botón en la lista "Por Ver"
+          onEliminarPelicula={eliminarPelicula} // Asegúrate de pasar correctamente la función eliminarPelicula
+        />
+      )}
+    </div>
+  );
 };
 
-export default PeliculasVistas;
+export default Vistas;
+
+

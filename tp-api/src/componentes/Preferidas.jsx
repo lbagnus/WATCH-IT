@@ -1,75 +1,67 @@
-import React, { useState, useEffect } from "react";
-import GridImages from "./GridImages";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import GridImages from './GridImages'; // Asegúrate de importar el componente correctamente
 
 const Preferidas = () => {
-    const location = useLocation();
-    const objetoPelicula = location.state?.objeto;
+  const [PreferidasPelis, setPreferidas] = useState([]);
+  const id_usuario = localStorage.getItem('usuarioId'); // Obtener el ID del usuario logueado
 
-    // Estados para almacenar la lista de películas "por ver" y `posterPath`
-    const [preferidas, setPreferidas] = useState([]);
-    const [listaPosterPathP, setListaPosterPathP] = useState([]);
+  useEffect(() => {
+    const fetchPreferidasPelis = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/peliculas', {
+          params: {
+            estado: 'Preferidas',
+            id_usuario: id_usuario
+          }
+        });
 
-    // Carga inicial de las listas desde `localStorage`
-    useEffect(() => {
-        const cargarDatos = () => {
-            const listaPreferidasGuardada = localStorage.getItem("Preferidas");
-            const listaPosterPathGuardadaP = localStorage.getItem("listaPosterPathP");
+        // Configura las películas para ver
+        setPreferidas(response.data);
 
-            if (listaPreferidasGuardada) {
-                const listaPreferidasParseada = JSON.parse(listaPreferidasGuardada);
-                setPreferidas(listaPreferidasParseada);
-            }
-
-            if (listaPosterPathGuardadaP) {
-                const listaPosterPathParseadaP = JSON.parse(listaPosterPathGuardadaP);
-                setListaPosterPathP(listaPosterPathParseadaP);
-            }
-        };
-        cargarDatos();
-    }, []);
-
-    // Función para guardar la lista de películas "por ver" en `localStorage`
-    const guardarListaPreferidas = (nuevaLista) => {
-        localStorage.setItem("Preferidas", JSON.stringify(nuevaLista));
-        setPreferidas(nuevaLista);
+        // Imprime la respuesta
+        console.log('Lista:', response.data);
+      } catch (error) {
+        // Manejo del error
+        console.error('Error al obtener películas por ver:', error.message || error);
+      }
     };
 
-    // Función para guardar `listaPosterPath` en `localStorage`
-    const guardarListaPosterPathP = (nuevaLista) => {
-        localStorage.setItem("listaPosterPathP", JSON.stringify(nuevaLista));
-        setListaPosterPathP(nuevaLista);
-    };
+    if (id_usuario) {
+        fetchPreferidasPelis(); // Llama a la función solo si id_usuario está definido
+    }
+  }, [id_usuario]); // Ejecuta useEffect cuando id_usuario cambia
 
-    // Función para agregar una película a la lista "por ver" y su `posterPath` a `listaPosterPath`
-    const agregarPeliculaPreferidas = (pelicula) => {
-        // Verifica si la película ya está en la lista "por ver"
-        const peliculaExistente = preferidas.find(p => p.movieId === pelicula.movieId);
+  // Función para manejar la eliminación de una película
+  const eliminarPelicula = async (idPelicula) => {
+    try {
+      const response = await axios.delete(`http://localhost:3000/peliculas/${idPelicula}`);
+      console.log('Respuesta del servidor al eliminar película:', response.data);
 
-        if (!peliculaExistente) {
-            // Agrega la película a la lista "por ver"
-            const nuevaListaPreferida = [...preferidas, pelicula];
-            guardarListaPreferidas(nuevaListaPreferida);
+      // Actualiza el estado para reflejar la eliminación en la interfaz
+      setPreferidas((prevPelis) => prevPelis.filter((peli) => peli.id !== idPelicula));
+    } catch (error) {
+      console.error('Error al eliminar película:', error.message || error);
+    }
+  };
 
-            // Agrega el `poster_path` de la película a `listaPosterPath`
-            const nuevoPosterPath = `https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`;
-            const nuevaListaPosterPathP = [...listaPosterPathP, nuevoPosterPath];
-            guardarListaPosterPathP(nuevaListaPosterPathP);
-        }
-    };
-
-    // Agrega la película pasada como prop a la lista "por ver" al recibir `objetoPelicula`
-    useEffect(() => {
-        if (objetoPelicula) {
-            agregarPeliculaPreferidas(objetoPelicula);
-        }
-    }, [objetoPelicula]);
-
-    return (
-        <div>
-            <GridImages imagenes={listaPosterPathP} peliObjeto={preferidas} />
-        </div>
-    );
+  return (
+    <div>
+      <h2>Películas Vistas</h2>
+      {PreferidasPelis.length === 0 ? (
+        <p>No hay películas disponibles</p>
+      ) : (
+        <GridImages
+          imagenes={PreferidasPelis.map(pelicula => `https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`)}
+          peliObjeto={PreferidasPelis}
+          mostrarBotonAgregar={false} // No mostrar el botón en la lista "Por Ver"
+          onEliminarPelicula={eliminarPelicula} // Asegúrate de pasar correctamente la función eliminarPelicula
+        />
+      )}
+    </div>
+  );
 };
 
 export default Preferidas;
+
+

@@ -21,7 +21,7 @@ import Contactenos from './componentes/Contactenos';
 import BotonFiltro from './componentes/BotonFiltro'
 import  Drawer from './componentes/Drawer';
 import ListaDePeliculas from './componentes/ListaDePeliculas'
-import { DataProvider } from './componentes/DataContext';
+import GridImages from './componentes/GridImages';
 
 import './App.css';
 import './css/header.css';
@@ -67,7 +67,7 @@ function App() {
 
     return (
         <div>
-         <DataProvider> 
+         
             {/* Muestra Header solo si no está en la página de Login */}
             {!isLoginPage && <Header isLoggedIn={isLoggedIn} handleLogout={handleLogout} />}
             
@@ -96,6 +96,7 @@ function App() {
                 <Route path='/BotonFiltro' element= {<BotonFiltro/>}/>
                 {<Route path='/Drawer' element= {<Drawer/>}/>}
                 <Route path='/ListaDePeliculas' element= {<ListaDePeliculas/>}/>
+                <Route path="/GridImages" element={<GridImages isLoggedIn={isLoggedIn} />} />
 
                 {/* Ruta para Footer */}
                 <Route path='/CondicionesDeUso' element= {<CondicionesDeUso/>}/>
@@ -105,7 +106,7 @@ function App() {
             
             {/* Muestra Footer solo si no está en la página de Login */}
             {!isLoginPage && <Footer />}
-        </DataProvider> 
+        
         </div>
     
     );

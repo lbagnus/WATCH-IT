@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 
 const filtrarPeliculasPorIdioma = (idioma, peliculas) => {
+
     console.log("idioma es", idioma)
        const resultadoIngles = peliculas.map(pelicula => { 
         console.log("esto el OBJETO PELICULA", pelicula)

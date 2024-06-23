@@ -11,33 +11,19 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-const agregarPeliculaPorVer = async (imagen) => {
-  const id_usuario = localStorage.getItem('usuarioId');
-  const poster_path = imagen;
-  const estado = 'PorVer';
-
-  try {
-    const response = await axios.post('http://localhost:3000/peliculas', { id_usuario, poster_path, estado });
-    console.log('Respuesta del servidor al agregar película:', response.data);
-  } catch (error) {
-    if (error.response) {
-      console.error('Error de respuesta:', error.response.data);
-      alert("La película ya fue agregada");
-    } else if (error.request) {
-      console.error('No se recibió respuesta del servidor:', error.request);
-    } else {
-      console.error('Error al configurar la solicitud:', error.message);
-    }
-  }
-};
-
 const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true, onEliminarPelicula }) => {
   const navigate = useNavigate();
   const urlBase = "https://image.tmdb.org/t/p/w500/";
 
-  // Estado para controlar el menú desplegable
+  // Estado para controlar el menú desplegable y la autenticación
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('usuarioId')); // Verifica si el usuario está logueado
+
+  // Función para manejar el inicio de sesión
+  const handleLogin = () => {
+    setIsLoggedIn(true); // Actualiza el estado a logueado
+  };
 
   // Función para manejar el clic en una imagen
   const handlePelicula = (imagenPeli) => {
@@ -69,19 +55,24 @@ const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true, onElimin
   };
 
   // Función para manejar la selección de opción en el menú desplegable
-  const handleMenuItemClick = (accion) => {
+  const handleMenuItemClick = async (accion) => {
+    if (!isLoggedIn) {
+      alert('Debes estar logueado para agregar películas.');
+      return;
+    }
+
     switch (accion) {
       case "Preferidas":
         console.log(`Agregar "${selectedImage}" a Preferidas`);
-        navigate('/Preferidas', { state: { selectedImage, lista: 'Preferidas' } });
+        await agregarPelicula(selectedImage, 'Preferidas');
         break;
       case "Por Ver":
         console.log(`Agregar "${selectedImage}" a Por Ver`);
-        agregarPeliculaPorVer(selectedImage);
+        await agregarPelicula(selectedImage, 'PorVer');
         break;
       case "Vistas":
         console.log(`Agregar "${selectedImage}" a Vistas`);
-        navigate('/Vistas', { state: { selectedImage, lista: 'Vistas' } });
+        await agregarPelicula(selectedImage, 'Vistas');
         break;
       default:
         console.log(`Opción no reconocida: ${accion}`);
@@ -94,6 +85,15 @@ const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true, onElimin
   // Función para manejar el clic en el botón "+" encima de la imagen
   const handleAddButtonClick = (event, url) => {
     event.stopPropagation(); // Detener la propagación del evento click para evitar que se abra la imagen
+    console.log(isLoggedIn)
+    // Verificar si el usuario está autenticado
+    if (!isLoggedIn) {
+      
+      alert('Debes estar logueado para agregar películas.');
+      return;
+    }
+
+    // Si está logueado, abrir el menú desplegable
     handleClick(event, url);
   };
 
@@ -101,6 +101,26 @@ const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true, onElimin
   const handleDeleteButtonClick = (event, peliculaId) => {
     event.stopPropagation(); // Detener la propagación del evento click para evitar que se abra la imagen
     onEliminarPelicula(peliculaId);
+  };
+
+  // Función para agregar película con estado específico
+  const agregarPelicula = async (imagen, estado) => {
+    const id_usuario = localStorage.getItem('usuarioId');
+    const poster_path = imagen;
+
+    try {
+      const response = await axios.post('http://localhost:3000/peliculas', { id_usuario, poster_path, estado });
+      console.log('Respuesta del servidor al agregar película:', response.data);
+    } catch (error) {
+      if (error.response) {
+        console.error('Error de respuesta:', error.response.data);
+        alert("La película ya fue agregada");
+      } else if (error.request) {
+        console.error('No se recibió respuesta del servidor:', error.request);
+      } else {
+        console.error('Error al configurar la solicitud:', error.message);
+      }
+    }
   };
 
   return (
@@ -184,12 +204,3 @@ const GridImages = ({ imagenes, peliObjeto, mostrarBotonAgregar = true, onElimin
 };
 
 export default GridImages;
-
-
-
-
-
-
-
-
-
