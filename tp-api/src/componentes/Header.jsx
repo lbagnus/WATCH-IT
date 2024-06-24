@@ -6,18 +6,9 @@ import { useMediaQuery } from '@mui/material';
 
 const Header = ({ isLoggedIn, handleLogout }) => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState(null);
   const nombre= localStorage.getItem('firstName');
 
-  const handleName = () => {
-    const savedData = localStorage.getItem('userData');
-    if (savedData) {
-      const data = JSON.parse(savedData);
-      return data.firstName; // Retorna el nombre
-    }
-    return null; // Si no hay datos, retorna null
-  };
-
+  
 
   // Crea una referencia para el elemento de entrada
   const inputRef = useRef(null);
