@@ -59,7 +59,8 @@ function App() {
      // Función para manejar el cierre de sesión
      const handleLogout = () => {
       setIsLoggedIn(false);
-      localStorage.setItem('isLoggedIn', false);
+      localStorage.clear();
+      //localStorage.setItem('isLoggedIn', false);
       navigate('/inicio');
   };
     
@@ -75,7 +76,7 @@ function App() {
          
             {/* Muestra Header solo si no está en la página de Login */}
             {!isLoginPage && <Header isLoggedIn={isLoggedIn} handleLogout={handleLogout} />}
-            {<GridImages isLoggedIn={isLoggedIn} />}
+            
             
 
             {/* Configura las rutas */}
@@ -102,6 +103,7 @@ function App() {
                 <Route path='/BotonFiltro' element= {<BotonFiltro/>}/>
                 {<Route path='/Drawer' element= {<Drawer/>}/>}
                 <Route path='/ListaDePeliculas' element= {<ListaDePeliculas/>}/>
+                <Route path='/GridImages' element= {<GridImages isLoggedIn={isLoggedIn}/>}/>
                
 
                 {/* Ruta para Footer */}

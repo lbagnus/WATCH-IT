@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
+import { FormControl, InputLabel, Select} from '@mui/material';
 import axios from "axios";
 
 const agregarPeliculaPorVer = async (imagen) => {
@@ -88,11 +89,12 @@ const GridImages = ({
   peliObjeto,
   mostrarBotonAgregar = true,
   onEliminarPelicula,
+  genero
 }) => {
   const navigate = useNavigate();
   const urlBase = "https://image.tmdb.org/t/p/w500/";
   const savedLoginState = localStorage.getItem("isLoggedIn");
-  console.log(savedLoginState);
+  console.log("log",savedLoginState);
   // Estado para controlar el menú desplegable
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -161,8 +163,56 @@ const GridImages = ({
     onEliminarPelicula(peliculaId);
   };
 
+  const handleIdiomaClick = (idioma, genero, peliculas) => {
+    // Navegar a la ruta de BotonFiltro con los parámetros
+    navigate(`/BotonFiltro?idioma=${idioma}&genero=${genero}&peliculas=${encodeURIComponent(JSON.stringify(peliObjeto))}`);
+    //<BotonFiltro idioma = {idioma} genero={genero} peliculas={peliculas}/>
+    
+  };
+
   return (
     <div>
+
+{mostrarBotonAgregar && (
+  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+    <FormControl id="filtroboton" sx={{ m: 1, minWidth: 130, border: 'solid 2px white !important' }}>
+      <InputLabel id="grouped-select" htmlFor="grouped-select" >Idioma</InputLabel>
+      <Select
+        defaultValue=""
+        label="Grouping"
+        sx={{
+          '& .MuiSelect-icon': {
+            color: 'white',
+          },
+        }}
+      >
+        <MenuItem value=""></MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("None", genero, peliObjeto)} value={1}>None</MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("Ingles", genero, peliObjeto)} value={1}>Ingles</MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("Español", genero, peliObjeto)} value={1}>Español</MenuItem>
+      </Select>
+    </FormControl>
+    <FormControl sx={{ m: 1, minWidth: 130, border: 'solid 2px white !important' }}>
+      <InputLabel id="grouped-select" htmlFor="grouped-select" sx={{ color: 'white' }}>Antiguedad</InputLabel>
+      <Select
+        defaultValue=""
+        label="Grouping"
+        sx={{
+          '& .MuiSelect-icon': {
+            color: 'white',
+          },
+        }}
+      >
+        <MenuItem value=""></MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("None", genero, peliObjeto)} value={1}>None</MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("Antigua", genero, peliObjeto)} value={1}>Antigûa</MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("Reciente", genero, peliObjeto)} value={1}>Reciente</MenuItem>
+      </Select>
+    </FormControl>
+  </div>
+)}
+
+      
       <Box sx={{ flexGrow: 1, padding: 2 }}>
         <Grid container spacing={2}>
           {imagenes &&
@@ -185,15 +235,15 @@ const GridImages = ({
                     alt={`Imagen ${index + 1}`}
                     onClick={() => handlePelicula(url)}
                   />
-                    {savedLoginState && mostrarBotonAgregar ? (
+                  {savedLoginState && mostrarBotonAgregar ? (
                     <IconButton
                       aria-label="Agregar a lista"
                       style={{
-                        position: 'absolute',
+                        position: "absolute",
                         top: 10,
                         right: 10,
-                        backgroundColor: '#2196f3', // Fondo azul
-                        color: '#ffffff', // Color blanco para el icono
+                        backgroundColor: "#2196f3", // Fondo azul
+                        color: "#ffffff", // Color blanco para el icono
                       }}
                       onClick={(event) => handleAddButtonClick(event, url)}
                     >
