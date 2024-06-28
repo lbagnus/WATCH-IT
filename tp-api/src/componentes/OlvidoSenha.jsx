@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+  
 function generateToken() {
     return Math.random().toString(36).substring(2, 15);
 }
@@ -31,7 +31,9 @@ function ForgotPassword() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        handleEnviar(); // Mover la llamada aquí para evitar manejar el evento dos veces
     };
+
 
     const handleEnviar = async () => {
         try {
@@ -42,7 +44,7 @@ function ForgotPassword() {
                 if (data.exists) {
                     const recoveryToken = generateToken();
                     alert(`Token de recuperación: ${recoveryToken}`);
-                    navigate('/CodigoRecupero', { state: { tokenReal: recoveryToken } });
+                    navigate('/CodigoRecupero', { state: { tokenReal: recoveryToken, email: email } });
                 } else {
                     setMessage('El correo electrónico ingresado no está registrado.');
                 }
@@ -70,7 +72,6 @@ function ForgotPassword() {
                     Olvidé mi contraseña
                 </Typography>
 
-                {/* Muestra el mensaje de confirmación si existe */}
                 {message && (
                     <Typography
                         variant="body2"
@@ -106,7 +107,6 @@ function ForgotPassword() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                         id="BotonLogIn"
-                        onClick={handleEnviar}
                     >
                         Enviar instrucciones
                     </Button>
@@ -114,14 +114,18 @@ function ForgotPassword() {
                     <Grid container justifyContent="center">
                         <Grid item>
                             <Link className="forgot" variant="body2" onClick={handleLogin}>
-                                {"¿Volver a iniciar sesión?"}
+                                ¿Ya tienes cuenta? Inicia sesión
                             </Link>
                         </Grid>
                     </Grid>
                 </Box>
             </Box>
+            <ToastContainer />
         </Container>
     );
 }
 
 export default ForgotPassword;
+
+
+

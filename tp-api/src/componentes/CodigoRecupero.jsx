@@ -9,6 +9,7 @@ function CodigoRecupero() {
     const navigate = useNavigate();
     const location = useLocation();
     const tokenReal = location.state?.tokenReal;
+    const email = location.state
     const [token, setToken] = useState('');
     const [mensaje, setMensaje] = useState('');
 
@@ -20,9 +21,9 @@ function CodigoRecupero() {
     const verificarToken = (token) => {
         console.log(tokenReal)
         // Verifica si los datos del usuario están cargados
-       if (tokenReal == token) {
+       if (tokenReal === token) {
             // Compara el token ingresado con el token de recuperación guardado
-            return tokenReal == token;
+            return tokenReal === token;
       }
         // Si no hay datos de usuario o recoveryToken, el token no es válido
           return false;
@@ -35,7 +36,7 @@ function CodigoRecupero() {
         
         // Establece el mensaje basado en si el token es válido o no
         if (esValido) {
-            navigate('/NuevaSenha')
+            navigate('/NuevaSenha',{ state: { email: email } })
 
         } else {
             setMensaje('El token es inválido. Inténtalo de nuevo.');
@@ -52,8 +53,9 @@ function CodigoRecupero() {
                     alignItems: "center",
                 }}
             >
-                <Typography component="h1" variant="h5" sx={{ marginBottom: 2 }}>
-                    Ingresar Código de Recupero
+                <img className='logoLogIn' src={"/imagenes/logos/logo negro2.png"} alt="Logo" />
+                <Typography component="h1" variant="h5" color={'black'} id='titulo2'>
+                    Ingresar Código Recupero
                 </Typography>
 
                 {/* Mensaje que indica si el token es válido o no */}

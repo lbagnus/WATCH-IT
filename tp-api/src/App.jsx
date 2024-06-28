@@ -21,6 +21,7 @@ import Contactenos from './componentes/Contactenos';
 import BotonFiltro from './componentes/BotonFiltro'
 import  Drawer from './componentes/Drawer';
 import GridImages from './componentes/GridImages';
+import NuevaSenha from './componentes/NuevaSenha';
 
 import './App.css';
 import './css/header.css';
@@ -33,6 +34,7 @@ import './css/listas.css';
 import './css/actor.css'
 import './css/condiciones.css'
 import './css/contactenos.css'
+
 
 
 
@@ -89,6 +91,8 @@ function App() {
                 <Route path="/Registro" element={<Registro/>} />
                 <Route path="/Olvido" element={<OlvidoSenha/>} />
                 <Route path='/CodigoRecupero' element= {<CodigoRecupero/>}/>
+                <Route path='/NuevaSenha' element= {<NuevaSenha/>}/>
+
             
                 {/* Ruta para Pelicula */}
                 <Route path="/Pelicula" element={<Pelicula/>} />

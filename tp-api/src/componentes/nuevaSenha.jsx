@@ -1,46 +1,46 @@
 import React, { useState } from "react";
 import { TextField, Button, Box, Container, Typography } from "@mui/material";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 function NuevaSenha() {
     const navigate = useNavigate();
-    // Estado para almacenar la nueva contraseña
+    const location = useLocation();
+    const { email } = location.state?.email;
     const [newPassword, setNewPassword] = useState('');
-    // Estado para almacenar la confirmación de la nueva contraseña
     const [confirmPassword, setConfirmPassword] = useState('');
-    // Estado para almacenar mensajes para el usuario
     const [mensaje, setMensaje] = useState('');
 
-    // Maneja el cambio en el campo de la nueva contraseña
     const handleNewPasswordChange = (event) => {
         setNewPassword(event.target.value);
     };
 
-    // Maneja el cambio en el campo de confirmación de la nueva contraseña
     const handleConfirmPasswordChange = (event) => {
         setConfirmPassword(event.target.value);
     };
 
-    // Maneja el envío del formulario para cambiar la contraseña
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        
-        // Verifica si la nueva contraseña y su confirmación coinciden
+
+        console.log(email)
         if (newPassword === confirmPassword) {
-            // Si coinciden, procesa el cambio de contraseña
-            // Aquí debes agregar el código para manejar el cambio de contraseña, por ejemplo, hacer una solicitud a un servidor
-            console.log("Contraseña cambiada con éxito");
-            setMensaje('La contraseña ha sido cambiada con éxito.');
-            const userData = localStorage.getItem('userData');
-            if (userData) {
-                const data = JSON.parse(userData);
-                data.password = newPassword;
-                const updatedUserData = JSON.stringify(data);
-                localStorage.setItem('userData', updatedUserData);
+            try {
+                const response = await axios.post('http://localhost:3000/reset-password', {
+                    email,
+                    password: newPassword
+                });
+
+                if (response.status === 200) {
+                    setMensaje('La contraseña ha sido cambiada con éxito.');
+                    navigate('/login');
+                } else {
+                    setMensaje('Error al cambiar la contraseña.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                setMensaje('Error al cambiar la contraseña.');
             }
-            navigate('/login')
         } else {
-            // Si no coinciden, muestra un mensaje de error
             setMensaje('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
         }
     };
@@ -59,7 +59,6 @@ function NuevaSenha() {
                     Ingresar Nueva Contraseña
                 </Typography>
 
-                {/* Mensaje para el usuario */}
                 {mensaje && (
                     <Typography variant="body2" color="error">
                         {mensaje}
@@ -72,7 +71,6 @@ function NuevaSenha() {
                     noValidate
                     sx={{ mt: 1 }}
                 >
-                    {/* Campo de entrada para la nueva contraseña */}
                     <TextField
                         margin="normal"
                         required
@@ -86,7 +84,6 @@ function NuevaSenha() {
                         id="newPassword"
                     />
 
-                    {/* Campo de entrada para confirmar la nueva contraseña */}
                     <TextField
                         margin="normal"
                         required
@@ -100,7 +97,6 @@ function NuevaSenha() {
                         id="confirmPassword"
                     />
 
-                    {/* Botón para enviar la nueva contraseña */}
                     <Button
                         type="submit"
                         fullWidth
@@ -116,3 +112,5 @@ function NuevaSenha() {
 }
 
 export default NuevaSenha;
+
+

@@ -10,16 +10,13 @@ const app = express();
 app.use(express.json());
 const { Op } = require('sequelize');
 
-// Configura CORS para permitir solicitudes desde todos los orígenes
 app.use(cors());
 app.use(bodyParser.json());
 
-// Sincronizar la base de datos
 sequelize.sync({ force: false })
   .then(() => console.log('Base de datos sincronizada'))
   .catch(err => console.error('Error al sincronizar la base de datos:', err));
 
-// Ruta para registrar usuarios con hash de contraseña
 app.post('/users', async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -39,7 +36,6 @@ app.post('/users', async (req, res) => {
   }
 });
 
-// Ruta para manejar el inicio de sesión
 app.post('/Login', async (req, res) => {
   const { email, password } = req.body;
   
@@ -65,7 +61,6 @@ app.post('/Login', async (req, res) => {
 
 app.use(express.static('public'));
 
-// Ruta para agregar películas
 app.post('/peliculas', async (req, res) => {
   const { id_usuario, poster_path, estado } = req.body;
 
@@ -95,7 +90,6 @@ app.post('/peliculas', async (req, res) => {
   }
 });
 
-// Ruta para obtener películas
 app.get('/peliculas', async (req, res) => {
   const { estado, id_usuario } = req.query;
 
@@ -114,7 +108,6 @@ app.get('/peliculas', async (req, res) => {
   }
 });
 
-// Ruta para eliminar una película por ID
 app.delete('/peliculas/:id', async (req, res) => {
   const { id } = req.params;
 
@@ -133,27 +126,52 @@ app.delete('/peliculas/:id', async (req, res) => {
   }
 });
 
-
-//Chequear email para el recupero de contraseña
+/// Ruta para chequear el email para el recupero de contraseña
 app.post('/email/:email', async (req, res) => {
-  console.log('server', email)
-  try {
-      const { email } = req.params;
-      const user = await User.findOne({ where: { email } });
+  const { email } = req.params;
+  console.log('Email recibido:', email);  // Agregar un log para verificar el email recibido
 
-      if (user) {
-          res.status(200).json({ exists: true });
-      } else {
-          res.status(404).json({ exists: false });
-      }
+  try {
+    const user = await User.findOne({ where: { email } });
+
+    if (user) {
+      res.status(200).json({ exists: true });
+    } else {
+      res.status(404).json({ exists: false });
+    }
   } catch (error) {
-      console.error('Error:', error);
-      res.status(500).json({ error: 'Error al verificar el correo electrónico.' });
+    console.error('Error al verificar el correo electrónico:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 });
 
-// Iniciar el servidor
+//RESETAR LA CONTRASEÑA
+app.put('/reset-password', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const [updated] = await User.update(
+          { password: hashedPassword },
+          { where: { email } }
+      );
+
+      if (updated) {
+          res.status(200).send('Password updated successfully');
+      } else {
+          res.status(404).send('User not found');
+      }
+  } catch (error) {
+      console.error('Error:', error);
+      res.status(500).send(`Internal Server Error: ${error.message}`);
+  }
+});
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
+
+
