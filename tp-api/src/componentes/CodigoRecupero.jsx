@@ -45,7 +45,7 @@ function CodigoRecupero() {
 
     return (
         <Container component="main" maxWidth="xs">
-            <Box
+            <Box id='box'
                 sx={{
                     marginTop: 8,
                     display: "flex",
@@ -54,7 +54,7 @@ function CodigoRecupero() {
                 }}
             >
                 <img className='logoLogIn' src={"/imagenes/logos/logo negro2.png"} alt="Logo" />
-                <Typography component="h1" variant="h5" color={'black'} id='titulo2'>
+                <Typography component="h1" variant="h5" color={'black !important'} id='titulo2'>
                     Ingresar Código Recupero
                 </Typography>
 
@@ -87,6 +87,7 @@ function CodigoRecupero() {
 
                     {/* Botón para enviar el token */}
                     <Button
+                        id='BotonLogIn'
                         type="submit"
                         fullWidth
                         variant="contained"

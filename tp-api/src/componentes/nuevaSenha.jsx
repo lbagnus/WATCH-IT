@@ -48,14 +48,15 @@ function NuevaSenha() {
     return (
         <Container component="main" maxWidth="xs">
             <Box
+                id='box'
                 sx={{
                     marginTop: 8,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                 }}
-            >
-                <Typography component="h1" variant="h5" sx={{ marginBottom: 2 }}>
+            >   <img className='logoLogIn' src={"/imagenes/logos/logo negro2.png"} alt="Logo" />
+                <Typography color={'black !important'} id='titulo2' component="h1" variant="h5" sx={{ marginBottom: 2 }}>
                     Ingresar Nueva Contraseña
                 </Typography>
 
@@ -98,6 +99,7 @@ function NuevaSenha() {
                     />
 
                     <Button
+                        id='BotonLogIn'
                         type="submit"
                         fullWidth
                         variant="contained"
