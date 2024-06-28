@@ -37,8 +37,6 @@ const Director = () => {
           title={objeto.name}
           perfil={`https://image.tmdb.org/t/p/w500/${objeto.profile_path}`}
           bibliografia={infoDirector.biography}
-          /*similares={infoDirector.known_for_department === "Directing" ? infoDirector.known_for : []}
-          objetoSimilares={objeto.known_for}*/
         />
       
     </div>

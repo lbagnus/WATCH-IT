@@ -7,15 +7,12 @@ import { useLocation } from 'react-router-dom';
 
 const filtrarPeliculasPorIdioma = (idioma, peliculas) => {
 
-    console.log("idioma es", idioma)
        const resultadoIngles = peliculas.map(pelicula => { 
-        console.log("esto el OBJETO PELICULA", pelicula)
          if (pelicula.original_language === "en") {
            return pelicula;
          } })
   
         const resultadoEspañol = peliculas.map(pelicula => { 
-            console.log("esto el OBJETO PELICULA", pelicula)
          if (pelicula.original_language === "es") {
            return pelicula;
          } })
@@ -30,10 +27,8 @@ const filtrarPeliculasPorIdioma = (idioma, peliculas) => {
             } })
 
          if(idioma === "Ingles"){
-          console.log("LLEGUE")
           return(resultadoIngles)
          }else if(idioma === "Español"){
-          console.log("ANTIGUA", resultadoAntigua)
           return (resultadoEspañol)
         }else if(idioma === "Antigua"){
           return (resultadoAntigua)
@@ -55,12 +50,10 @@ const filtrarPeliculasPorIdioma = (idioma, peliculas) => {
     const genero = searchParams.get("genero");
     const peliculas = JSON.parse(decodeURIComponent(searchParams.get("peliculas")));
     const [imagenesResultados, setImagenes] = useState([]);
-    console.log("IDIOMAAAAA", idioma)
     var filtro = filtrarPeliculasPorIdioma(idioma, peliculas);
     useEffect(() => {
       
       const resultado = filtro
-      console.log("RESULTADO", resultado);
       var imagenesResultados = resultado
         .filter(pelicula1 => pelicula1) // Filtra los elementos undefined
         .map(pelicula1 => {
@@ -69,13 +62,12 @@ const filtrarPeliculasPorIdioma = (idioma, peliculas) => {
           return urlImagenP;
         });
       setImagenes(imagenesResultados);
-      console.log("estas son las imagenes", imagenesResultados);
     }, [filtro, genero]);
   
     // El return debe estar fuera del useEffect
     return (
       <div>
-        <h2 className='tituloGenero'> Películas de {genero} </h2> {/*ver como traer genero*/}
+        <h2 className='tituloGenero'> Películas de {genero} </h2> 
        
         <GridImages imagenes={imagenesResultados} peliObjeto={peliculas} genero = {genero} />
       </div>

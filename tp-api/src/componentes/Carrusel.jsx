@@ -20,7 +20,7 @@ function CarruselAutomatico({imagenes}) {
           <img className='imagenCarrusel' src={url} alt={`Imagen ${index + 1}`} />
         </div>
       ))}
-    </Slider> // HACER EL CAMBIO EN EL IMPORT DE LAS IMAGENES
+    </Slider> 
   );
 }
 

@@ -61,7 +61,10 @@ background-color: #26425A; /* color de fondo al pasar el ratón */
   box-shadow: 1PX 1PX 1px 1PX #26425A;
 }
 
-
+/* Cambiar el color del placeholder a blanco */
+.contenedormenu .buscador input[type='text']::placeholder {
+  color: white;
+}
 .contenedormenu .buscador h4 {
   display: inline; /* para colocar los elementos de texto en línea */
   color: white; /* color del texto */

@@ -1,5 +1,5 @@
 import React from "react";
-import ListaContenidos from "./ListaContenidos";
+//import ListaContenidos from "./ListaContenidos";
 
 const InfoDirector = ({ imagen, nombre_director, desc_director }) => {
   return (

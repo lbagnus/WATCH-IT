@@ -25,7 +25,7 @@ const Footer = () => {
             <a href="https://www.google.com/search?hl=es&q=que+es+una+politica+de+privacidad&lr=">Politica de privacidad</a>
           </li>
           <li>
-              <Link to="/Pelicula">SuburbanCo</Link>
+              <a>SuburbanCo</a>
           </li>
         </ul>
       </div>

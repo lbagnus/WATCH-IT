@@ -12,15 +12,15 @@ import { useState, useEffect } from 'react';
 const Actor = () => {
   const location = useLocation();
   const objeto = location.state?.objeto;
-  const [data, setData] = useState(null);
+ // const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [arrayObjetoGenero, setObjetoGenero] = useState([]);
+  /*const [arrayObjetoGenero, setObjetoGenero] = useState([]);
   const [imagenS, setImagenesSimilares] = useState([]);
   const [perfilActor, setImagenActor] = useState([]);
   const [perfilDirec, setImagenDir] = useState([]);
   const [nameActor, setNameAct] = useState([]);
   const [nameDir, setNameDir] = useState([]);
-  const [arraySimilares, setSimilares] = useState([]);
+  const [arraySimilares, setSimilares] = useState([]);*/
   const [infoActor, setActor] = useState([]);
 
  
@@ -45,7 +45,7 @@ const Actor = () => {
     }, []);
    
     const imagenesArrayPopulares = objeto.known_for.map(pelicula1 => {
-      const urlImagenP = `https://image.tmdb.org/t/p/w500/${pelicula1.poster_path}`;//CAMI "W500" EN EL PATH ES EL TAMANIO DE LA IMAGEN POR SI TE SIRVE
+      const urlImagenP = `https://image.tmdb.org/t/p/w500/${pelicula1.poster_path}`;
       return urlImagenP;
     })
      

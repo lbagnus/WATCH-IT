@@ -2,12 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import GridImages from './GridImages';
 import { useLocation, useNavigate } from 'react-router-dom'; // Importa useNavigate
-import BotonFiltro from './BotonFiltro';
+/*import BotonFiltro from './BotonFiltro';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import ListSubheader from '@mui/material/ListSubheader';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Select from '@mui/material/Select';*/
 
 const Generos = () => {
   const [data, setData] = useState([]);
@@ -16,7 +16,7 @@ const Generos = () => {
   const location = useLocation();
   const [objetoPelicula, setObjetoPelicula] = useState([]);
   const { id } = location.state || {};
-  const [botonFiltroResultado, setBotonFiltroResultado] = useState([]);
+  //const [botonFiltroResultado, setBotonFiltroResultado] = useState([]);
   const navigate = useNavigate(); // Usa useNavigate para la navegación
 
   useEffect(() => {
@@ -85,12 +85,12 @@ const Generos = () => {
     return <div>Cargando...</div>;
   }
 
-  const handleIdiomaClick = (idioma, genero, peliculas) => {
+ /* const handleIdiomaClick = (idioma, genero, peliculas) => {
     // Navegar a la ruta de BotonFiltro con los parámetros
     navigate(`/BotonFiltro?idioma=${idioma}&genero=${genero}&peliculas=${encodeURIComponent(JSON.stringify(peliculas))}`);
     //<BotonFiltro idioma = {idioma} genero={genero} peliculas={peliculas}/>
     
-  };
+  };*/
 
   const obtenerGenero = (id) => {
     switch (id) {

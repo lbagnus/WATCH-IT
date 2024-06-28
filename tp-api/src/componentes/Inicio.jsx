@@ -20,7 +20,7 @@ const Inicio = () => {
   const [objetoPelicula, setObjetoPelicula] = useState([]);
   const [objetoPelicula2, setObjetoPelicula2] = useState([]);
   const [objetoActor ,setObjetoActor] = useState([]);
-  const [imagenesArrayDirectores, setImagenesDirectores] = useState([]);
+
   
   useEffect(() => {
     window.scrollTo(0, 0); // Esta línea hace que la página se desplace hacia arriba cuando se cargas
@@ -29,19 +29,18 @@ const Inicio = () => {
         const populares = await fetch('http://api.themoviedb.org/3/movie/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
         const upcoming = await fetch ('https://api.themoviedb.org/3/movie/top_rated?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
         const actores = await fetch ('https://api.themoviedb.org/3/person/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES');
-        const directores = await fetch('https://api.themoviedb.org/3/person/popular?api_key=7d453285a143f326ed0b2747103b04c1&language=es-ES') 
+       
         
         const datosPopulares = await populares.json();
         const datosCines = await upcoming.json();
         const datosActores = await actores.json();
-        const datosDirectores = await directores.json();
+      
        
         setData(datosPopulares.results); // Asegúrate de acceder a 'results' que contiene la lista de películas
         setData(datosCines.results);
         setData(datosActores.results);
         console.log('actores', datosActores.results)
-        setData(datosDirectores.results);
-        console.log("datos directores", datosDirectores.results)
+    
 
         const objetoPelicula = datosPopulares.results
         setObjetoPelicula(objetoPelicula)
@@ -80,14 +79,6 @@ const imagenesArrayActores = datosActores.results
 setImagenesActores(imagenesArrayActores);
 
 
-       /*const imagenesArrayDirectores = datosDirectores.results.map(director => {
-        if(director.known_for_department === "Directing"){
-          const urlImagenP = `https://image.tmdb.org/t/p/w500/${director.profile_path}`;
-          return urlImagenP;
-        }
-          
-        })
-        setImagenesDirectores(imagenesArrayDirectores);*/
         
 
       } catch (error) {
@@ -197,12 +188,7 @@ setImagenesActores(imagenesArrayActores);
           <ListaContenidos imagenes={imagenesArrayCines} peliObjeto={objetoPelicula2}/>
       </div>
 
-      {/*<div className="lista-contenidos">
-        <h3 className="tituloListas">Directores del momento</h3>
-       <ListaContenidos imagenes={imagenesArrayDirectores}/>
-        
-      </div>*/}
-
+     
     </main>
   );
 };

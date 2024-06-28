@@ -109,6 +109,22 @@ const GridImages = ({
     if (peliculaCorrespondiente) {
       navigate("/Pelicula", { state: { objeto: peliculaCorrespondiente } });
     } else {
+        const ActorCorrespondiente = peliObjeto.find((Actor) => {
+          const urlCompleta = `${urlBase}${Actor.profile_path}`;
+          return urlCompleta === imagenPeli;
+        });
+        if (ActorCorrespondiente.known_for_department === "Acting") {
+          navigate("/Actor", { state: { objeto: ActorCorrespondiente } });
+        } else if (ActorCorrespondiente.known_for_department === "Directing") {
+          navigate("/Director", { state: { objeto: ActorCorrespondiente } });
+        }else{
+          console.log(
+            "No se encontró información que coincida con la imagen proporcionada.",
+            imagenPeli,
+            "aca empieza el objeto"
+          );
+          return null; // Si no se encuentra, retorna nulo o realiza alguna otra acción}
+        } 
       console.log(
         "No se encontró información que coincida con la imagen proporcionada:",
         imagenPeli
@@ -170,6 +186,13 @@ const GridImages = ({
     
   };
 
+  const isNotPelicula = (imagenPeli) => {
+    return peliObjeto.some((pelicula) => {
+      const urlCompleta = `${urlBase}${pelicula.profile_path}`;
+      return urlCompleta === imagenPeli;
+    });
+  };
+
   return (
     <div>
 
@@ -181,6 +204,7 @@ const GridImages = ({
         defaultValue=""
         label="Grouping"
         sx={{
+          color: 'white !important',
           '& .MuiSelect-icon': {
             color: 'white',
           },
@@ -188,8 +212,8 @@ const GridImages = ({
       >
         <MenuItem value=""></MenuItem>
         <MenuItem onClick={() => handleIdiomaClick("None", genero, peliObjeto)} value={1}>None</MenuItem>
-        <MenuItem onClick={() => handleIdiomaClick("Ingles", genero, peliObjeto)} value={1}>Ingles</MenuItem>
-        <MenuItem onClick={() => handleIdiomaClick("Español", genero, peliObjeto)} value={1}>Español</MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("Ingles", genero, peliObjeto)} value={2}>Ingles</MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("Español", genero, peliObjeto)} value={3}>Español</MenuItem>
       </Select>
     </FormControl>
     <FormControl sx={{ m: 1, minWidth: 130, border: 'solid 2px white !important' }}>
@@ -198,6 +222,7 @@ const GridImages = ({
         defaultValue=""
         label="Grouping"
         sx={{
+          color: 'white !important',
           '& .MuiSelect-icon': {
             color: 'white',
           },
@@ -205,8 +230,8 @@ const GridImages = ({
       >
         <MenuItem value=""></MenuItem>
         <MenuItem onClick={() => handleIdiomaClick("None", genero, peliObjeto)} value={1}>None</MenuItem>
-        <MenuItem onClick={() => handleIdiomaClick("Antigua", genero, peliObjeto)} value={1}>Antigûa</MenuItem>
-        <MenuItem onClick={() => handleIdiomaClick("Reciente", genero, peliObjeto)} value={1}>Reciente</MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("Antigua", genero, peliObjeto)} value={2}>Antigûa</MenuItem>
+        <MenuItem onClick={() => handleIdiomaClick("Reciente", genero, peliObjeto)} value={3}>Reciente</MenuItem>
       </Select>
     </FormControl>
   </div>
@@ -235,7 +260,7 @@ const GridImages = ({
                     alt={`Imagen ${index + 1}`}
                     onClick={() => handlePelicula(url)}
                   />
-                  {savedLoginState && mostrarBotonAgregar ? (
+                  {savedLoginState && mostrarBotonAgregar && !isNotPelicula(url) ? (
                     <IconButton
                       aria-label="Agregar a lista"
                       style={{
@@ -249,7 +274,7 @@ const GridImages = ({
                     >
                       <AddIcon />
                     </IconButton>
-                  ) :savedLoginState && !mostrarBotonAgregar ? (
+                  ) :savedLoginState && !mostrarBotonAgregar  && !isNotPelicula(url)? (
                     <IconButton
                       aria-label="Eliminar de lista"
                       style={{

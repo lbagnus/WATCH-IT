@@ -7,16 +7,16 @@ const Contactenos = () => {
       <p>¡Estamos aquí para ayudarte! Puedes contactarnos a través de los siguientes medios:</p>
       <ul>
         <li>
-          <strong>Email:</strong>{" "}
+          <strong className= "redes">Email:</strong>{" "}
           <a href="mailto:Watchit@gmail.com">Watchit@gmail.com</a>
         </li>
         <li>
-          <strong>Instagram:</strong>{" "}
-          <a href="https://www.instagram.com/larabagnus/">@larabagnus</a>
+          <strong className= "redes">Instagram:</strong>{" "}
+          <a href="https://www.instagram.com/chenetflix/">@Watch_It_Oficial</a>
         </li>
         <li>
-          <strong>Twitter:</strong>{" "}
-          <a href="https://twitter.com/UMusicMexico">@UMusicMexico</a>
+          <strong className= "redes">Twitter:</strong>{" "}
+          <a href="https://x.com/CheNetflix">@Watch_It</a>
         </li>
       </ul>
     </div>
