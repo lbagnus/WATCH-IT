@@ -133,6 +133,25 @@ app.delete('/peliculas/:id', async (req, res) => {
   }
 });
 
+
+//Chequear email para el recupero de contraseña
+app.post('/email/:email', async (req, res) => {
+  console.log('server', email)
+  try {
+      const { email } = req.params;
+      const user = await User.findOne({ where: { email } });
+
+      if (user) {
+          res.status(200).json({ exists: true });
+      } else {
+          res.status(404).json({ exists: false });
+      }
+  } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ error: 'Error al verificar el correo electrónico.' });
+  }
+});
+
 // Iniciar el servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -20,7 +20,6 @@ import CondicionesDeUso from './componentes/CondicionesDeUso';
 import Contactenos from './componentes/Contactenos';
 import BotonFiltro from './componentes/BotonFiltro'
 import  Drawer from './componentes/Drawer';
-import ListaDePeliculas from './componentes/ListaDePeliculas'
 import GridImages from './componentes/GridImages';
 
 import './App.css';
@@ -102,7 +101,6 @@ function App() {
                 <Route path='/Vistas' element= {isLoggedIn ? <Vistas /> : <Login onLogin={handleLogin} />}/>
                 <Route path='/BotonFiltro' element= {<BotonFiltro/>}/>
                 {<Route path='/Drawer' element= {<Drawer/>}/>}
-                <Route path='/ListaDePeliculas' element= {<ListaDePeliculas/>}/>
                 <Route path='/GridImages' element= {<GridImages isLoggedIn={isLoggedIn}/>}/>
                
 
